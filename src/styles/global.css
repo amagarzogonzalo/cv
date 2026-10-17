@@ -174,4 +174,26 @@
   .shadow-lg {
     box-shadow: none !important;
   }
+
+  /* Project carousels: show every slide stacked, drop controls and artwork. */
+  .proj-controls {
+    display: none !important;
+  }
+
+  .proj-track {
+    display: block !important;
+    overflow: visible !important;
+    scroll-snap-type: none !important;
+  }
+
+  .proj-slide {
+    display: block !important;
+    width: 100% !important;
+    margin-bottom: 5mm;
+    break-inside: avoid;
+  }
+
+  .proj-media {
+    display: none !important;
+  }
 }

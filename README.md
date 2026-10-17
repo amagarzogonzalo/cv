@@ -20,7 +20,8 @@ The whole site is generated from a single file — [`src/data/cv.ts`](src/data/c
 ## Features
 
 - **Recruiter-first layout** — name, target role and positioning are visible above the fold; contact is one click away.
-- **SEO + AEO + GEO** — descriptive titles, canonical URL, Open Graph & Twitter cards, `sitemap.xml`, `robots.txt`, and **JSON-LD** (`Person`, `WebSite`, `ProfilePage`) that matches the visible page.
+- **Interactive project portfolio** — each project is an accessible, per-project carousel with generated artwork, keyboard/swipe controls, progress and a `prefers-reduced-motion` path.
+- **SEO + AEO + GEO** — descriptive titles, canonical URL, Open Graph & Twitter cards, `sitemap.xml`, `robots.txt`, and **JSON-LD** (`Person`, `WebSite`, `ProfilePage`, `CreativeWork`) that matches the visible page.
 - **AI-discoverable** — `/resume.json` (JSON Resume) and `/llms.txt` so assistants can read structured facts instead of scraping.
 - **ATS-friendly PDF** — a print stylesheet produces a clean, single-column, text-selectable A4 PDF straight from the browser (no separate document to keep in sync).
 - **Dark mode** — system-aware with a manual toggle, no flash on load.

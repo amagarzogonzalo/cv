@@ -2,13 +2,17 @@
 import { cv } from '../data/cv';
 import Icon from './Icon.astro';
 
-const { personal, links, summary } = cv;
+const { personal, links, summary, stats } = cv;
 const primaryLinks = links.filter((l) => l.icon !== 'email');
 ---
 
 <section class="mx-auto max-w-4xl px-5 pt-14 pb-4 sm:pt-20" aria-labelledby="intro-heading">
   <p class="mb-3 flex items-center gap-2 text-sm font-medium text-brand">
-    <span class="inline-block size-2 rounded-full bg-brand" aria-hidden="true"></span>
+    <span class="relative flex size-2" aria-hidden="true">
+      <span class="absolute inline-flex size-full animate-ping rounded-full bg-brand opacity-75"
+      ></span>
+      <span class="relative inline-flex size-2 rounded-full bg-brand"></span>
+    </span>
     {personal.availability ?? personal.role}
   </p>
 
@@ -65,6 +69,22 @@ const primaryLinks = links.filter((l) => l.icon !== 'email');
   <div class="mt-10 space-y-3 text-base leading-relaxed text-fg-muted">
     {summary.map((paragraph) => <p>{paragraph}</p>)}
   </div>
+
+  <dl
+    class="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-4"
+  >
+    {
+      stats.map((stat) => (
+        <div class="bg-surface px-5 py-5 text-center">
+          <dt class="sr-only">{stat.label}</dt>
+          <dd>
+            <span class="block text-2xl font-bold tracking-tight text-brand">{stat.value}</span>
+            <span class="mt-1 block text-xs text-fg-subtle">{stat.label}</span>
+          </dd>
+        </div>
+      ))
+    }
+  </dl>
 </section>
 
 <script>

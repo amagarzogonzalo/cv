@@ -77,6 +77,15 @@ export function profilePageSchema(cv: Cv) {
     inLanguage: cv.meta.locale.replace('_', '-'),
     mainEntity: { '@id': PERSON_ID },
     isPartOf: { '@id': WEBSITE_ID },
+    hasPart: cv.projects.map((project) => ({
+      '@type': 'CreativeWork',
+      name: project.name,
+      description: project.description,
+      ...(project.url ? { url: project.url } : {}),
+      ...(project.repo ? { codeRepository: project.repo } : {}),
+      keywords: project.stack.join(', '),
+      author: { '@id': PERSON_ID },
+    })),
   };
 }
 

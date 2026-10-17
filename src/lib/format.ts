@@ -18,3 +18,25 @@ export function formatRange(start: string, end: string): string {
 export function isoDate(value: string): string | undefined {
   return /^\d{4}-\d{2}$/.test(value) ? `${value}-01` : undefined;
 }
+
+function monthsBetween(start: string, end: string): number | undefined {
+  const s = /^(\d{4})-(\d{2})$/.exec(start);
+  if (!s) return undefined;
+  const now = new Date();
+  const e = /^(\d{4})-(\d{2})$/.exec(end);
+  const endYear = e ? Number(e[1]) : now.getFullYear();
+  const endMonth = e ? Number(e[2]) : now.getMonth() + 1;
+  return (endYear - Number(s[1])) * 12 + (endMonth - Number(s[2]));
+}
+
+/** Human-readable duration, e.g. "2 yrs 1 mo" or "8 mos". */
+export function duration(start: string, end: string): string | undefined {
+  const months = monthsBetween(start, end);
+  if (months === undefined || months < 0) return undefined;
+  const years = Math.floor(months / 12);
+  const rest = months % 12;
+  const parts: string[] = [];
+  if (years > 0) parts.push(`${years} yr${years > 1 ? 's' : ''}`);
+  if (rest > 0 || years === 0) parts.push(`${rest} mo${rest === 1 ? '' : 's'}`);
+  return parts.join(' ');
+}

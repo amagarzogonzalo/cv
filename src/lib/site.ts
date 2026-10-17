@@ -2,7 +2,7 @@
  * Site-level helpers: canonical URLs and absolute link building.
  * `import.meta.env.SITE` is populated from `site` in astro.config.mjs.
  */
-export const SITE_URL: string = import.meta.env.SITE ?? 'https://cv.pages.dev';
+export const SITE_URL: string = import.meta.env.SITE ?? 'https://amagarzogonzalo.dev';
 
 /** Build an absolute URL from a site-relative path. */
 export function abs(path = '/'): string {
