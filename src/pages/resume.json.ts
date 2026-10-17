@@ -51,7 +51,7 @@ export const GET: APIRoute = () => {
       name: project.name,
       description: project.description,
       url: project.url ?? project.repo ?? '',
-      highlights: project.slides.map((slide) => `${slide.title} — ${slide.text}`),
+      highlights: project.points.map((point) => `${point.label}: ${point.text}`),
       keywords: project.stack,
     })),
     education: cv.education.map((edu) => ({

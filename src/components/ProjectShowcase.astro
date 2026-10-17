@@ -1,0 +1,277 @@
+---
+import { cv } from '../data/cv';
+import Icon from './Icon.astro';
+
+const projects = cv.projects;
+const count = projects.length;
+const pad = (n: number) => String(n).padStart(2, '0');
+---
+
+<div
+  class="proj-carousel relative overflow-hidden rounded-2xl border border-border bg-surface"
+  data-showcase
+  role="group"
+  aria-roledescription="carousel"
+  aria-label="Selected projects"
+>
+  <div
+    class="proj-track flex snap-x snap-mandatory overflow-x-auto"
+    data-track
+    tabindex="0"
+    aria-label="Project slides. Use the left and right arrow keys to move between projects."
+  >
+    {
+      projects.map((project, i) => (
+        <article
+          class="proj-slide grid w-full shrink-0 snap-start lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)]"
+          data-slide
+          role="group"
+          aria-roledescription="slide"
+          aria-label={`${project.name} — project ${i + 1} of ${count}`}
+        >
+          <div class="proj-media relative aspect-[16/10] w-full overflow-hidden bg-bg-subtle lg:aspect-auto lg:min-h-[27rem]">
+            <img
+              src={`/projects/${project.slug}.webp`}
+              alt=""
+              width="1200"
+              height="800"
+              loading={i === 0 ? 'eager' : 'lazy'}
+              decoding="async"
+              class="absolute inset-0 size-full object-cover"
+            />
+            <span class="absolute left-5 top-5 rounded-md bg-black/35 px-2 py-1 font-mono text-[11px] tabular-nums text-white/85 backdrop-blur-sm">
+              {pad(i + 1)} / {pad(count)}
+            </span>
+          </div>
+
+          <div class="proj-body flex flex-col gap-5 p-6 sm:p-8">
+            <p class="font-mono text-[11px] uppercase tracking-widest text-brand">
+              {project.role} · {project.year}
+            </p>
+
+            <div>
+              <h3
+                id={`proj-${project.slug}-title`}
+                class="text-xl font-bold tracking-tight sm:text-2xl"
+              >
+                {project.name}
+              </h3>
+              <p class="mt-1 text-sm text-fg-muted">{project.tagline}</p>
+            </div>
+
+            <dl class="space-y-3">
+              {project.points.map((point) => (
+                <div class="grid grid-cols-[4.75rem_1fr] gap-3">
+                  <dt class="pt-px font-mono text-[11px] uppercase tracking-wider text-fg-subtle">
+                    {point.label}
+                  </dt>
+                  <dd class="text-sm leading-relaxed text-fg-muted">{point.text}</dd>
+                </div>
+              ))}
+            </dl>
+
+            <div class="flex flex-wrap items-center gap-2">
+              {project.metric && (
+                <p class="inline-flex items-center gap-2 rounded-full bg-brand-soft px-3 py-1 text-xs font-semibold text-brand">
+                  <span class="tabular-nums">{project.metric.value}</span>
+                  <span class="font-normal opacity-80">{project.metric.label}</span>
+                </p>
+              )}
+              <ul class="flex flex-wrap gap-1.5" aria-label="Technologies">
+                {project.stack.map((tech) => (
+                  <li class="rounded border border-border px-2 py-0.5 font-mono text-[11px] text-fg-muted">
+                    {tech}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {(project.repo || project.url) && (
+              <div class="mt-auto flex flex-wrap gap-2 pt-1">
+                {project.repo && (
+                  <a
+                    href={project.repo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-fg-muted transition hover:bg-bg-subtle hover:text-fg"
+                  >
+                    <Icon name="github" class="size-3.5" />
+                    Source
+                  </a>
+                )}
+                {project.url && (
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-fg-muted transition hover:bg-bg-subtle hover:text-fg"
+                  >
+                    <Icon name="external" class="size-3.5" />
+                    Live
+                  </a>
+                )}
+              </div>
+            )}
+          </div>
+        </article>
+      ))
+    }
+  </div>
+
+  <div class="proj-controls flex items-center gap-3 border-t border-border px-4 py-3 sm:px-5">
+    <div class="flex shrink-0 items-center gap-1.5">
+      <button
+        type="button"
+        data-prev
+        aria-label="Previous project"
+        class="grid size-8 place-items-center rounded-lg border border-border text-fg-muted transition hover:bg-bg-subtle hover:text-fg disabled:cursor-not-allowed disabled:opacity-35"
+      >
+        <Icon name="chevron-left" class="size-4" />
+      </button>
+      <button
+        type="button"
+        data-next
+        aria-label="Next project"
+        class="grid size-8 place-items-center rounded-lg border border-border text-fg-muted transition hover:bg-bg-subtle hover:text-fg disabled:cursor-not-allowed disabled:opacity-35"
+      >
+        <Icon name="chevron-right" class="size-4" />
+      </button>
+    </div>
+
+    <ol
+      class="flex min-w-0 flex-1 items-center gap-0.5 overflow-x-auto"
+      aria-label="Choose a project"
+    >
+      {
+        projects.map((project, i) => (
+          <li class="shrink-0">
+            <button
+              type="button"
+              data-dot
+              aria-current={i === 0 ? 'true' : 'false'}
+              aria-label={`Show ${project.name}`}
+              class="rail flex items-center gap-2 rounded-lg px-2.5 py-1.5 font-mono text-xs text-fg-subtle transition hover:bg-bg-subtle hover:text-fg"
+            >
+              <span class="tabular-nums">{pad(i + 1)}</span>
+              <span class="hidden lg:inline">{project.shortName}</span>
+            </button>
+          </li>
+        ))
+      }
+    </ol>
+
+    <p
+      class="hidden shrink-0 font-mono text-xs tabular-nums text-fg-subtle sm:block"
+      data-count
+      aria-hidden="true"
+    >
+      {pad(1)} / {pad(count)}
+    </p>
+    <p class="sr-only" data-status aria-live="polite"></p>
+  </div>
+</div>
+
+<style>
+  .proj-track {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .proj-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .rail[aria-current='true'] {
+    color: var(--brand);
+    background-color: var(--brand-soft);
+  }
+
+  ol {
+    scrollbar-width: none;
+  }
+
+  ol::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<script>
+  const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.querySelectorAll<HTMLElement>('[data-showcase]').forEach((root) => {
+    const track = root.querySelector<HTMLElement>('[data-track]');
+    if (!track) return;
+
+    const slides = Array.from(track.querySelectorAll<HTMLElement>('[data-slide]'));
+    const prev = root.querySelector<HTMLButtonElement>('[data-prev]');
+    const next = root.querySelector<HTMLButtonElement>('[data-next]');
+    const dots = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-dot]'));
+    const status = root.querySelector<HTMLElement>('[data-status]');
+    const count = root.querySelector<HTMLElement>('[data-count]');
+
+    if (slides.length === 0) return;
+
+    let index = 0;
+    const pad = (n: number) => String(n).padStart(2, '0');
+
+    const render = () => {
+      if (prev) prev.disabled = index <= 0;
+      if (next) next.disabled = index >= slides.length - 1;
+      dots.forEach((dot, i) => {
+        dot.setAttribute('aria-current', i === index ? 'true' : 'false');
+      });
+      if (count) count.textContent = `${pad(index + 1)} / ${pad(slides.length)}`;
+      if (status) status.textContent = `Project ${index + 1} of ${slides.length} shown.`;
+    };
+
+    const goTo = (i: number) => {
+      index = Math.max(0, Math.min(slides.length - 1, i));
+      const left = slides[index].offsetLeft - slides[0].offsetLeft;
+      track.scrollTo({ left, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+      const activeDot = dots[index];
+      if (activeDot) {
+        activeDot.scrollIntoView({ inline: 'nearest', block: 'nearest' });
+      }
+      render();
+    };
+
+    prev?.addEventListener('click', () => goTo(index - 1));
+    next?.addEventListener('click', () => goTo(index + 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+    track.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        goTo(index + 1);
+      } else if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        goTo(index - 1);
+      } else if (event.key === 'Home') {
+        event.preventDefault();
+        goTo(0);
+      } else if (event.key === 'End') {
+        event.preventDefault();
+        goTo(slides.length - 1);
+      }
+    });
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const i = slides.indexOf(entry.target as HTMLElement);
+            if (i !== -1 && i !== index) {
+              index = i;
+              render();
+            }
+          });
+        },
+        { root: track, threshold: 0.55 },
+      );
+      slides.forEach((slide) => observer.observe(slide));
+    }
+
+    render();
+  });
+</script>

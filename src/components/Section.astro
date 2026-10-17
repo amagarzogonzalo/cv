@@ -1,0 +1,30 @@
+---
+interface Props {
+  id: string;
+  /** Monospace section number, e.g. "01". */
+  number: string;
+  title: string;
+  /** Small right-aligned meta note, e.g. "4 projects". */
+  meta?: string;
+}
+
+const { id, number, title, meta } = Astro.props;
+const headingId = `${id}-heading`;
+---
+
+<section
+  id={id}
+  aria-labelledby={headingId}
+  class="mx-auto max-w-5xl scroll-mt-20 px-5 py-14 sm:py-16"
+>
+  <header class="flex items-baseline gap-3 border-b border-border pb-4 sm:gap-4">
+    <span class="font-mono text-xs font-medium tabular-nums text-brand" aria-hidden="true">
+      [{number}]
+    </span>
+    <h2 id={headingId} class="text-xl font-bold tracking-tight sm:text-2xl">{title}</h2>
+    {meta && <p class="ml-auto hidden font-mono text-xs text-fg-subtle sm:block">{meta}</p>}
+  </header>
+  <div class="mt-8">
+    <slot />
+  </div>
+</section>

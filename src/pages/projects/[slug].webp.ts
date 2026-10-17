@@ -1,12 +1,12 @@
 import type { APIRoute, GetStaticPaths } from 'astro';
 import sharp from 'sharp';
-import { cv } from '../../../data/cv';
+import { cv } from '../../data/cv';
 
 /**
- * Generates the abstract artwork for every project slide at build time.
- * Route: /projects/<slug>/<n>.webp  (n is 1-based)
+ * Generates one piece of abstract artwork per project at build time.
+ * Route: /projects/<slug>.webp
  *
- * The images are decorative: the slide's real content is HTML, so alt text
+ * The images are decorative: the project's real content is HTML, so alt text
  * stays empty and nothing important is baked into pixels.
  */
 
@@ -25,13 +25,13 @@ function hslToHex(h: number, s: number, l: number): string {
   return `#${f(0)}${f(8)}${f(4)}`;
 }
 
-function variantShapes(variant: number, h: number): string {
+function composition(variant: number, h: number): string {
   const stroke = hslToHex(h, 70, 60);
   const strokeSoft = hslToHex(h, 60, 45);
 
   if (variant === 0) {
     return `
-      <g fill="none" stroke="${strokeSoft}" stroke-width="1.4" opacity="0.55">
+      <g fill="none" stroke="${strokeSoft}" stroke-width="1.4" opacity="0.5">
         <path d="M-100 640 C 220 520 380 760 720 600 S 1180 520 1320 620" />
         <path d="M-100 700 C 220 580 380 820 720 660 S 1180 580 1320 680" opacity="0.7" />
         <path d="M-100 760 C 220 640 380 880 720 720 S 1180 640 1320 740" opacity="0.45" />
@@ -42,7 +42,7 @@ function variantShapes(variant: number, h: number): string {
 
   if (variant === 1) {
     return `
-      <g fill="none" stroke="${stroke}" stroke-width="1.6" opacity="0.5">
+      <g fill="none" stroke="${stroke}" stroke-width="1.6" opacity="0.45">
         <path d="M120 220 C 420 120 620 420 980 300 S 1240 180 1320 240" />
         <path d="M120 300 C 420 200 620 500 980 380 S 1240 260 1320 320" opacity="0.7" />
         <path d="M120 380 C 420 280 620 580 980 460 S 1240 340 1320 400" opacity="0.4" />
@@ -60,19 +60,17 @@ function variantShapes(variant: number, h: number): string {
   }).join('');
   return `
       ${rings}
-      <g stroke="${stroke}" stroke-width="1.6" opacity="0.45">
+      <g stroke="${stroke}" stroke-width="1.6" opacity="0.4">
         <path d="M-100 780 L 700 -80" />
         <path d="M-100 900 L 820 -60" />
       </g>`;
 }
 
 export const getStaticPaths: GetStaticPaths = () => {
-  return cv.projects.flatMap((project, projectIndex) =>
-    project.slides.map((_, slideIndex) => ({
-      params: { slug: project.slug, slide: String(slideIndex + 1) },
-      props: { hue: HUES[projectIndex % HUES.length], variant: slideIndex % 3 },
-    })),
-  );
+  return cv.projects.map((project, index) => ({
+    params: { slug: project.slug },
+    props: { hue: HUES[index % HUES.length], variant: index % 3 },
+  }));
 };
 
 export const GET: APIRoute = async ({ props }) => {
@@ -111,7 +109,7 @@ export const GET: APIRoute = async ({ props }) => {
   <rect width="1200" height="800" fill="url(#dots)"/>
   <rect width="1200" height="800" fill="url(#g1)"/>
   <rect width="1200" height="800" fill="url(#g2)"/>
-  ${variantShapes(variant, hue)}
+  ${composition(variant, hue)}
   <rect width="1200" height="800" fill="url(#vig)"/>
 </svg>`;
 

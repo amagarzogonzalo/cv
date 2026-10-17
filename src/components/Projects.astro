@@ -1,29 +1,15 @@
 ---
 import { cv } from '../data/cv';
-import ProjectCard from './ProjectCard.astro';
+import Section from './Section.astro';
+import ProjectShowcase from './ProjectShowcase.astro';
 
-const { projects } = cv;
+const projects = cv.projects;
 ---
 
-<section
-  id="projects"
-  class="mx-auto max-w-4xl scroll-mt-20 px-5 py-10"
-  aria-labelledby="projects-heading"
->
-  <div class="flex flex-wrap items-end justify-between gap-3">
-    <div>
-      <h2 id="projects-heading" class="text-2xl font-bold tracking-tight">Selected work</h2>
-      <p class="mt-2 max-w-xl text-fg-muted">
-        Production AI systems, from problem framing to deployment. Use the arrows or swipe to move
-        through each project.
-      </p>
-    </div>
-    <p class="text-sm text-fg-subtle">
-      <span class="tabular-nums">{String(projects.length).padStart(2, '0')}</span> projects
-    </p>
-  </div>
-
-  <div class="mt-8 space-y-8">
-    {projects.map((project, i) => <ProjectCard project={project} index={i} />)}
-  </div>
-</section>
+<Section id="work" number="01" title="Selected work" meta={`${projects.length} projects`}>
+  <p class="mb-6 max-w-2xl text-sm text-fg-muted">
+    Production AI systems, from problem framing to deployment. Use the arrows, the names below, or
+    swipe to move through projects.
+  </p>
+  <ProjectShowcase />
+</Section>

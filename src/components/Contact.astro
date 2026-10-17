@@ -2,21 +2,19 @@
 import { cv } from '../data/cv';
 import Icon from './Icon.astro';
 
-const { personal, links } = cv;
+const { personal, links, languages } = cv;
+const contactLinks = links.filter((l) => l.icon !== 'email' && l.icon !== 'website');
 ---
 
-<section
-  id="contact"
-  class="mx-auto max-w-4xl scroll-mt-20 px-5 py-12"
-  aria-labelledby="contact-heading"
->
-  <div class="card rounded-3xl border border-border bg-bg-subtle p-8 sm:p-10">
-    <h2 id="contact-heading" class="text-2xl font-bold tracking-tight">Get in touch</h2>
-    <p class="mt-3 max-w-xl text-fg-muted">
+<section id="contact" class="mx-auto max-w-5xl scroll-mt-20 px-5 py-14 sm:py-16">
+  <div class="rounded-2xl border border-border bg-bg-subtle p-8 sm:p-10">
+    <p class="font-mono text-xs uppercase tracking-widest text-brand">Contact</p>
+    <h2 class="mt-3 text-xl font-bold tracking-tight sm:text-2xl">Get in touch</h2>
+    <p class="mt-2 max-w-xl text-sm text-fg-muted">
       {personal.availability ?? 'Always happy to talk'} — the fastest way to reach me is email.
     </p>
 
-    <div class="no-print mt-6 flex flex-wrap gap-3">
+    <div class="no-print mt-6 flex flex-wrap gap-2.5">
       <a
         href={`mailto:${personal.email}`}
         class="inline-flex items-center gap-2 rounded-xl bg-brand px-4 py-2.5 text-sm font-semibold text-brand-fg shadow-sm transition hover:opacity-90"
@@ -26,20 +24,37 @@ const { personal, links } = cv;
       </a>
 
       {
-        links
-          .filter((link) => link.icon !== 'email')
-          .map((link) => (
-            <a
-              href={link.url}
-              target={link.url.startsWith('http') ? '_blank' : undefined}
-              rel={link.url.startsWith('http') ? 'me noopener noreferrer' : undefined}
-              class="inline-flex items-center gap-2 rounded-xl border border-border bg-surface px-4 py-2.5 text-sm font-semibold text-fg transition hover:bg-bg-subtle"
-            >
-              <Icon name={link.icon} class="size-4" />
-              {link.label}
-            </a>
-          ))
+        contactLinks.map((link) => (
+          <a
+            href={link.url}
+            target={link.url.startsWith('http') ? '_blank' : undefined}
+            rel={link.url.startsWith('http') ? 'me noopener noreferrer' : undefined}
+            class="inline-flex items-center gap-2 rounded-xl border border-border bg-surface px-4 py-2.5 text-sm font-semibold text-fg transition hover:bg-bg-subtle"
+          >
+            <Icon name={link.icon} class="size-4" />
+            {link.label}
+          </a>
+        ))
       }
     </div>
+
+    <dl class="mt-8 grid gap-5 border-t border-border pt-6 sm:grid-cols-3">
+      <div>
+        <dt class="font-mono text-[11px] uppercase tracking-wider text-fg-subtle">Location</dt>
+        <dd class="mt-1 text-sm text-fg-muted">
+          {personal.location}{personal.remote ? ' · Remote-friendly' : ''}
+        </dd>
+      </div>
+      <div>
+        <dt class="font-mono text-[11px] uppercase tracking-wider text-fg-subtle">Languages</dt>
+        <dd class="mt-1 text-sm text-fg-muted">
+          {languages.map((lang) => `${lang.name} (${lang.level.toLowerCase()})`).join(' · ')}
+        </dd>
+      </div>
+      <div>
+        <dt class="font-mono text-[11px] uppercase tracking-wider text-fg-subtle">Status</dt>
+        <dd class="mt-1 text-sm text-fg-muted">{personal.availability ?? personal.role}</dd>
+      </div>
+    </dl>
   </div>
 </section>
