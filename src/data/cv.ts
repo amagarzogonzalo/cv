@@ -4,14 +4,13 @@
  * ============================================================================
  *  This file drives every page, the print/PDF layout, the JSON-LD structured
  *  data, the shared Open Graph card and the machine-readable `resume.json`.
- *  Edit values here and the entire site updates.
  *
- *  The content below is realistic PLACEHOLDER data so the site builds and looks
- *  finished out of the box. Replace every entry with your real information,
- *  then delete this note. Keep the field names as they are.
+ *  Content below is imported from the user's own CV (resume_data.yaml) and
+ *  resume builder output. Replace / extend values here and the whole site
+ *  updates together.
  *
  *  Writing tips that measurably help recruiters and search engines:
- *   - Lead with outcomes and numbers ("cut onboarding from 4 min to 30 s").
+ *   - Lead with outcomes and numbers ("6.3% benchmark improvement").
  *   - Keep `summary` to 2–3 short paragraphs; the first sentence is reused
  *     as the meta description and the Open Graph subtitle.
  *   - Use the same canonical name everywhere (site, LinkedIn, GitHub).
@@ -34,15 +33,15 @@ export interface Personal {
   name: string;
   /** Other name forms people search for. */
   alternateName?: string;
-  /** Current target role, e.g. "Senior Backend Engineer". */
+  /** Current target role, e.g. "AI Engineer | ML Engineer". */
   role: string;
   /** One-line positioning statement shown under your name. */
   tagline: string;
-  /** City / region, e.g. "Madrid, Spain". */
+  /** City / region, e.g. "The Hague, Netherlands". */
   location: string;
   /** Whether you are open to remote work. */
   remote: boolean;
-  /** Availability line, e.g. "Open to new opportunities". */
+  /** Availability line, e.g. "AI Engineer — Data Science @ TNO". */
   availability?: string;
   /** Public contact email. */
   email: string;
@@ -64,13 +63,13 @@ export interface ExperienceItem {
   /** Company website. */
   url?: string;
   role: string;
-  /** e.g. "Remote" or "Madrid, Spain". */
+  /** e.g. "Remote" or "The Hague, Netherlands". */
   location: string;
-  /** e.g. "2022-03" (ISO-ish, sortable). */
+  /** e.g. "2024-12" (ISO-ish, sortable). */
   start: string;
   /** e.g. "2024-11" or "Present". */
   end: string;
-  /** Industry / domain, e.g. "Fintech". */
+  /** Industry / domain, e.g. "Research & Defence". */
   domain: string;
   /** Tech used in this role. */
   stack: string[];
@@ -131,138 +130,200 @@ export interface Cv {
 
 export const cv: Cv = {
   meta: {
-    title: 'Alejandro — Software Engineer',
+    title: 'Alejandro Magarzo Gonzalo — AI Engineer',
     description:
-      'Software engineer building reliable web platforms and developer tooling. TypeScript, Python and cloud infrastructure. Open to remote roles.',
+      'AI Engineer in The Hague building production LLM systems: agentic RAG, fine-tuning and evaluation. M.Sc. in Artificial Intelligence, Cum Laude.',
     keywords: [
-      'Alejandro',
-      'software engineer',
-      'full stack developer',
-      'TypeScript',
+      'Alejandro Magarzo Gonzalo',
+      'AI Engineer',
+      'ML Engineer',
+      'LLM engineer',
+      'RAG',
+      'agentic RAG',
+      'fine-tuning',
+      'LoRA',
+      'PyTorch',
       'Python',
-      'Cloudflare',
-      'AWS',
-      'remote',
+      'The Hague',
+      'Netherlands',
     ],
     locale: 'en_US',
   },
 
   personal: {
-    name: 'Alejandro',
+    name: 'Alejandro Magarzo Gonzalo',
     alternateName: 'Alejandro Magarzo',
-    role: 'Software Engineer',
-    tagline: 'I build reliable web platforms and the tooling that keeps them fast.',
-    location: 'Madrid, Spain',
+    role: 'AI Engineer | ML Engineer',
+    tagline: 'I build production LLM systems — agentic RAG, fine-tuning and evaluation.',
+    location: 'The Hague, Netherlands',
     remote: true,
-    availability: 'Open to new opportunities',
+    availability: 'AI Engineer · Data Science @ TNO',
     email: 'amagarzogonzalo@gmail.com',
   },
 
   summary: [
-    'Software engineer with a focus on web platforms, developer experience and cloud infrastructure. I care about measurable outcomes: faster builds, fewer incidents, interfaces people actually enjoy using.',
-    'Comfortable across the stack — from typed front-ends and design systems to APIs, data models and CI/CD on the edge. I write clearly, review carefully and ship in small, reversible steps.',
+    'AI engineer specialising in large language models: retrieval-augmented generation, agentic workflows, fine-tuning and rigorous evaluation. I take systems from prototype to production, with a focus on measurable impact.',
+    'M.Sc. in Artificial Intelligence (Cum Laude, Utrecht University) and a double B.Sc. in Computer Engineering and Business Administration. Currently building production LLM assistants in the Data Science department at TNO.',
   ],
 
   links: [
     { label: 'GitHub', url: 'https://github.com/amagarzogonzalo', icon: 'github' },
-    { label: 'LinkedIn', url: 'https://www.linkedin.com/in/your-handle', icon: 'linkedin' },
+    {
+      label: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/alejandro-magarzo-gonzalo-2397b9230',
+      icon: 'linkedin',
+    },
     { label: 'Email', url: 'mailto:amagarzogonzalo@gmail.com', icon: 'email' },
   ],
 
   experience: [
     {
-      company: 'Company One',
-      url: 'https://example.com',
-      role: 'Senior Software Engineer',
-      location: 'Remote',
-      start: '2022-03',
+      company: 'TNO · Netherlands Organisation for Applied Scientific Research',
+      url: 'https://www.tno.nl',
+      role: 'AI Engineer — Data Science Department',
+      location: 'The Hague, Netherlands',
+      start: '2024-12',
       end: 'Present',
-      domain: 'B2B SaaS',
-      stack: ['TypeScript', 'React', 'Node.js', 'PostgreSQL', 'AWS'],
+      domain: 'Research & Defence',
+      stack: ['Python', 'PyTorch', 'Agentic RAG', 'LoRA/QLoRA', 'Azure', 'Docker', 'MLflow'],
       highlights: [
-        'Led the migration of a legacy dashboard to a typed component system, cutting page load time by 48%.',
-        'Designed the CI pipeline that took average build time from 11 min to under 90 seconds.',
-        'Mentored two engineers and introduced an RFC process adopted company-wide.',
+        'Designed and delivered an end-to-end LLM assistant (CRS — Agentic RAG) for an international scientific organisation to query and synthesise internal knowledge — production deployment serving 200+ researchers and integrated into a national LLM initiative.',
+        'Evaluated a European Digital Identity Oracle for the Dutch Ministry of Interior; fine-tuned legal embedding models for RAG systems — actionable consultancy recommendations delivered to ministry stakeholders.',
+        'Designed evaluation frameworks for an EU synthetic data initiative (TrustLLM); hosted the web service on Azure App Service with Docker and reduced deployment time through code optimisations — service operational for the EU consortium.',
+        'Executed the fine-tuning pipeline and Docker-based Azure deployment for a chemistry-specialised LLM (PolyScout) using LoRA/QLoRA, surpassing previous best benchmarks; integrated MLflow for experiment tracking.',
       ],
     },
     {
-      company: 'Company Two',
-      url: 'https://example.com',
-      role: 'Software Engineer',
+      company: 'Contextual Studio',
+      role: 'AI Engineer — Data Intelligence',
       location: 'Madrid, Spain',
-      start: '2019-06',
-      end: '2022-02',
-      domain: 'Fintech',
-      stack: ['Python', 'Django', 'PostgreSQL', 'Docker', 'GCP'],
+      start: '2024-01',
+      end: '2024-12',
+      domain: 'Enterprise AI',
+      stack: ['Python', 'Azure Functions', 'Docker', 'Domain-Driven Design', 'Document AI'],
       highlights: [
-        'Built the reconciliation service processing 2M+ transactions a day with 99.98% accuracy.',
-        'Reduced p99 API latency by 60% through query tuning and caching.',
+        'Identified document parsing as the primary bottleneck and built a pipeline for contracts, invoices and technical reports — unblocking enterprise AI workflows and enabling automated document intelligence.',
+        'Designed the full system using Domain-Driven Design and Hexagonal Architecture, with genetic optimisation for document routing and serverless processing on Azure Functions; the codebase was spun out into an independent company.',
+      ],
+    },
+    {
+      company: 'Intersport International Group',
+      url: 'https://www.intersport.com',
+      role: 'Data Science Intern — Data & Content',
+      location: 'Amsterdam, Netherlands',
+      start: '2024-07',
+      end: '2024-12',
+      domain: 'Retail',
+      stack: ['Python', 'CRM Analytics', 'Generative AI', 'Data Science'],
+      highlights: [
+        'Analysed CRM and engagement data to surface segments and support reporting, informing strategic decisions for cross-country retail teams.',
+        'Prototyped a generative AI workflow for international Intersport markets; the concept was shared with the Denmark and Switzerland teams and aligned with SEO stakeholders.',
       ],
     },
   ],
 
   skills: [
     {
-      category: 'Languages',
-      items: ['TypeScript', 'JavaScript', 'Python', 'SQL', 'Go (basic)'],
+      category: 'LLM & Foundation Models',
+      items: [
+        'RAG Pipeline Design',
+        'Agentic Workflow Orchestration',
+        'GraphRAG',
+        'Prompt Engineering',
+        'LLM Evaluation (DeepEval, RAGAS)',
+        'MCP',
+      ],
     },
     {
-      category: 'Front-end',
-      items: ['React', 'Astro', 'Tailwind CSS', 'Vite', 'Accessibility (WCAG)'],
+      category: 'Model Development',
+      items: [
+        'LoRA/QLoRA',
+        'SFT/DPO/RLHF',
+        'Distributed Training (FSDP, DeepSpeed)',
+        'Model Quantization',
+        'Optuna',
+      ],
     },
     {
-      category: 'Back-end & Data',
-      items: ['Node.js', 'Django', 'REST', 'PostgreSQL', 'Redis'],
+      category: 'Inference & Deployment',
+      items: [
+        'vLLM',
+        'TensorRT-LLM',
+        'Triton Inference Server',
+        'Azure App Service',
+        'Docker/Kubernetes',
+      ],
     },
     {
-      category: 'Infrastructure & Tooling',
-      items: ['Docker', 'GitHub Actions', 'Cloudflare Pages/Workers', 'AWS', 'Linux'],
+      category: 'Programming',
+      items: [
+        'Python (Pydantic, FastAPI)',
+        'PyTorch',
+        'LangChain',
+        'HuggingFace',
+        'SQL',
+        'TypeScript',
+        'Bash',
+      ],
     },
   ],
 
   projects: [
     {
-      name: 'Project Alpha',
+      name: 'CRS — Agentic RAG',
       description:
-        'An open-source CLI that automates release notes from conventional commits, with a plugin API and 1k+ monthly downloads.',
-      url: 'https://example.com',
-      repo: 'https://github.com/amagarzogonzalo',
-      stack: ['TypeScript', 'Node.js', 'GitHub Actions'],
-      highlights: ['1,000+ monthly npm downloads', 'Used by 30+ repositories'],
+        'End-to-end LLM assistant that queries and synthesises internal knowledge, adopted into TNO workflows and the GPT-NL national initiative.',
+      stack: ['Agentic RAG', 'MCP', 'LLM Evaluation', 'Azure'],
+      highlights: ['Tech lead; production use by 200+ researchers'],
     },
     {
-      name: 'This CV website',
+      name: 'TrustLLM Web App',
       description:
-        'A static CV built with Astro and Cloudflare Pages: zero client JavaScript by default, structured data for search and AI discovery, and a print-perfect ATS-friendly PDF.',
-      repo: 'https://github.com/amagarzogonzalo/cv',
-      stack: ['Astro', 'Tailwind CSS', 'Cloudflare Pages'],
+        'EU synthetic-data evaluation web service, containerised and hosted on Azure App Service for a European consortium.',
+      stack: ['Azure App Service', 'Docker', 'Python'],
+      highlights: ['10% deployment improvement via code optimisations'],
+    },
+    {
+      name: 'Legal RAG Pipeline',
+      description: 'Multi-agent legal QA system spanning graph, relational and vector stores.',
+      stack: ['Neo4j', 'Qdrant', 'PydanticAI', 'RAG'],
+    },
+    {
+      name: 'PolyScout Fine-Tuning',
+      description: 'Chemistry-specialised LLM fine-tuned with LoRA/QLoRA and tracked with MLflow.',
+      stack: ['LoRA/QLoRA', 'PyTorch', 'MLflow'],
+      highlights: ['6.3% benchmark improvement'],
     },
   ],
 
   education: [
     {
-      institution: 'University Name',
-      url: 'https://example.com',
-      degree: 'BSc in Computer Science',
-      location: 'Madrid, Spain',
-      start: '2015',
-      end: '2019',
-      details: 'Final project on distributed task scheduling. Graduated with honours.',
+      institution: 'Utrecht University',
+      url: 'https://www.uu.nl',
+      degree: 'M.Sc. in Artificial Intelligence',
+      location: 'Netherlands',
+      start: '2023-09',
+      end: '2025-09',
+      details:
+        'Graduated Cum Laude. Thesis at TNO Security & Defence on SFT and PEFT, which led to a full-time offer. Coursework: NLP, Deep Learning, Computer Vision, RL, Large-Scale Data Systems.',
+    },
+    {
+      institution: 'Complutense University of Madrid',
+      url: 'https://www.ucm.es',
+      degree: 'B.Sc. Computer Engineering & B.B.A. Business Administration',
+      location: 'Spain',
+      start: '2018-09',
+      end: '2023-06',
+      details:
+        'Distinction for thesis: Contextual Multi-Armed Bandits for RL in Recommender Systems. Bosch Prize for Best Applied AI (2023). Business Administration: Econometrics, quantitative methods, financial analysis.',
     },
   ],
 
-  certifications: [
-    {
-      name: 'AWS Certified Developer – Associate',
-      issuer: 'Amazon Web Services',
-      url: 'https://aws.amazon.com/certification/',
-      date: '2023',
-    },
-  ],
+  certifications: [],
 
   languages: [
     { name: 'Spanish', level: 'Native' },
-    { name: 'English', level: 'C1 — Professional' },
+    { name: 'English', level: 'Fluent' },
   ],
 };
 

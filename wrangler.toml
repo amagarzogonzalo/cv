@@ -1,13 +1,20 @@
-# Cloudflare Pages configuration.
-# Used by `wrangler pages deploy` and as a reference for the dashboard settings.
+# Cloudflare Workers configuration (static assets).
 #
-# Dashboard equivalent:
-#   Framework preset:      Astro
-#   Build command:         npm run build
-#   Build output directory: dist
-#   Production branch:     main
-#   NODE_VERSION:          22
+# This project is deployed as a Workers project, not Pages, so `wrangler deploy`
+# is the correct command. The built site in `./dist` is uploaded as static
+# assets, served from Cloudflare's edge — no Worker script required.
+#
+# Dashboard equivalent (Workers & Pages → cv → Settings → Build):
+#   Build command:          npm run build
+#   Deploy command:         npx wrangler deploy
+#   Root directory:         /
+#   Build variable:         NODE_VERSION = 22
+#   Build variable:         SITE_URL = https://<your-worker>.workers.dev
 
 name = "cv"
 compatibility_date = "2026-01-01"
-pages_build_output_dir = "dist"
+
+[assets]
+directory = "./dist"
+# Serve the custom 404 page for unmatched routes (dist/404.html).
+not_found_handling = "404-page"

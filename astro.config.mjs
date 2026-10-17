@@ -7,8 +7,8 @@ import tailwindcss from '@tailwindcss/vite';
  * Canonical site URL.
  *
  * Priority:
- *  1. SITE_URL env var (set this in Cloudflare Pages → Settings → Environment variables).
- *  2. A sensible default for the free *.pages.dev subdomain.
+ *  1. SITE_URL env var (set this as a Build variable in Cloudflare Workers Builds).
+ *  2. A sensible default for the free *.workers.dev subdomain.
  *
  * When you attach a custom domain, update SITE_URL in Cloudflare (and in a local
  * `.env` file) so canonical tags, the sitemap and robots.txt stay correct.

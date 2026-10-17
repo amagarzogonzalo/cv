@@ -1,6 +1,6 @@
 # CV — personal résumé website
 
-A fast, accessible, zero-JavaScript-by-default CV built with **Astro** and **Tailwind CSS v4**, deployed free on **Cloudflare Pages**.
+A fast, accessible, zero-JavaScript-by-default CV built with **Astro** and **Tailwind CSS v4**, deployed on **Cloudflare Workers** (static assets).
 
 The whole site is generated from a single file — [`src/data/cv.ts`](src/data/cv.ts). Edit it once and the page, the print/PDF layout, the Open Graph card, the structured data, `resume.json` and `llms.txt` all update together.
 
@@ -14,14 +14,14 @@ The whole site is generated from a single file — [`src/data/cv.ts`](src/data/c
 | --------- | ------------------- | -------------------------------------------------------------------------------------- |
 | Rendering | Astro static output | Ships **zero client JS** by default → excellent Core Web Vitals.                       |
 | Styling   | Tailwind CSS v4     | One CSS import, only the classes you use reach the browser.                            |
-| Hosting   | Cloudflare Pages    | Static asset requests are free and unlimited; global edge cache; free TLS.             |
+| Hosting   | Cloudflare Workers  | Static assets are cached at the edge and free to serve; free TLS.                      |
 | Content   | One typed TS file   | Single source of truth; type-checked at build so typos fail the build, not production. |
 
 ## Features
 
 - **Recruiter-first layout** — name, target role and positioning are visible above the fold; contact is one click away.
 - **SEO + AEO + GEO** — descriptive titles, canonical URL, Open Graph & Twitter cards, `sitemap.xml`, `robots.txt`, and **JSON-LD** (`Person`, `WebSite`, `ProfilePage`) that matches the visible page.
-- **AI-discoverable** — [`/resume.json`](https://cv.pages.dev/resume.json) (JSON Resume) and [`/llms.txt`](https://cv.pages.dev/llms.txt) so assistants can read structured facts instead of scraping.
+- **AI-discoverable** — `/resume.json` (JSON Resume) and `/llms.txt` so assistants can read structured facts instead of scraping.
 - **ATS-friendly PDF** — a print stylesheet produces a clean, single-column, text-selectable A4 PDF straight from the browser (no separate document to keep in sync).
 - **Dark mode** — system-aware with a manual toggle, no flash on load.
 - **Accessible** — semantic landmarks, skip link, visible focus styles, reduced-motion support.
@@ -59,41 +59,50 @@ npm run preview      # preview the production build
 Canonical URLs, the sitemap and robots.txt are derived from `SITE_URL`.
 
 - **Locally:** copy `.env.example` to `.env` and set `SITE_URL`.
-- **On Cloudflare:** add `SITE_URL` under _Settings → Environment variables_ (Production).
+- **On Cloudflare:** add `SITE_URL` as a **Build variable** (Workers & Pages → cv → Settings → Build).
 
 When you attach a custom domain, update `SITE_URL` there and redeploy.
 
-## Deploy to Cloudflare Pages
+## Deploy to Cloudflare (Workers static assets)
 
-### Option A — Git integration (recommended)
+This repo deploys as a **Workers** project with static assets, so the deploy
+command is `npx wrangler deploy` (configured in [`wrangler.toml`](wrangler.toml)
+via the `[assets]` block).
 
-1. Push this repo to GitHub (already done if you cloned it from there).
-2. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git**.
-3. Select the repository and use these settings:
+### Git integration (already connected)
 
-   | Setting                | Value                                         |
-   | ---------------------- | --------------------------------------------- |
-   | Production branch      | `main`                                        |
-   | Framework preset       | `Astro`                                       |
-   | Build command          | `npm run build`                               |
-   | Build output directory | `dist`                                        |
-   | Environment variable   | `NODE_VERSION = 22`                           |
-   | Environment variable   | `SITE_URL = https://<your-project>.pages.dev` |
+In **Workers & Pages → cv → Settings → Build**, use:
 
-4. **Save and Deploy.** Every push to `main` redeploys; pull requests get preview URLs (automatically `noindex`).
+| Setting           | Value                                          |
+| ----------------- | ---------------------------------------------- |
+| Repository        | `amagarzogonzalo/cv`                           |
+| Production branch | `main`                                         |
+| Build command     | `npm run build`                                |
+| Deploy command    | `npx wrangler deploy`                          |
+| Root directory    | `/`                                            |
+| Build variable    | `NODE_VERSION = 22`                            |
+| Build variable    | `SITE_URL = https://<your-worker>.workers.dev` |
 
-### Option B — CLI
+Every push to `main` triggers a build and deploy; branches/PRs get their own
+preview environments.
+
+> **Important:** the deploy command must be `npx wrangler deploy` **and** the
+> `wrangler.toml` must contain the `[assets]` block. Do **not** set
+> `pages_build_output_dir` — that makes Wrangler treat the project as Pages and
+> fail with _"Missing entry-point to Worker script or to assets directory"_.
+
+### CLI
 
 ```bash
 npx wrangler login
-npm run deploy       # builds then `wrangler pages deploy dist`
+npm run deploy       # builds, then `wrangler deploy`
 ```
 
 ## Project structure
 
 ```text
 ├─ public/
-│  ├─ _headers            # security + cache headers (Cloudflare Pages)
+│  ├─ _headers            # security + cache headers (Workers static assets)
 │  ├─ favicon.svg
 │  └─ site.webmanifest
 ├─ src/
@@ -115,14 +124,14 @@ npm run deploy       # builds then `wrangler pages deploy dist`
 
 ## Scripts
 
-| Command           | Description                                       |
-| ----------------- | ------------------------------------------------- |
-| `npm run dev`     | Start the dev server                              |
-| `npm run build`   | Build the static site into `dist/`                |
-| `npm run preview` | Preview the production build                      |
-| `npm run check`   | Astro type-check + content validation             |
-| `npm run format`  | Format the codebase with Prettier                 |
-| `npm run deploy`  | Build and deploy to Cloudflare Pages via Wrangler |
+| Command           | Description                                         |
+| ----------------- | --------------------------------------------------- |
+| `npm run dev`     | Start the dev server                                |
+| `npm run build`   | Build the static site into `dist/`                  |
+| `npm run preview` | Preview the production build                        |
+| `npm run check`   | Astro type-check + content validation               |
+| `npm run format`  | Format the codebase with Prettier                   |
+| `npm run deploy`  | Build and deploy to Cloudflare Workers via Wrangler |
 
 ## License
 
