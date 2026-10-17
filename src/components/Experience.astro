@@ -1,0 +1,67 @@
+---
+import { cv } from '../data/cv';
+import { formatRange, isoDate } from '../lib/format';
+
+const { experience } = cv;
+---
+
+<section
+  id="experience"
+  class="mx-auto max-w-4xl scroll-mt-20 px-5 py-10"
+  aria-labelledby="experience-heading"
+>
+  <h2 id="experience-heading" class="text-2xl font-bold tracking-tight">Experience</h2>
+
+  <ol class="mt-6 space-y-8">
+    {
+      experience.map((job) => (
+        <li class="relative border-l border-border pl-6">
+          <span
+            class="absolute -left-[5px] top-2 size-2.5 rounded-full bg-brand ring-4 ring-bg"
+            aria-hidden="true"
+          />
+
+          <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+            <h3 class="text-lg font-semibold text-fg">
+              {job.role}
+              <span class="text-fg-subtle"> · </span>
+              {job.url ? (
+                <a
+                  href={job.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-brand hover:underline"
+                >
+                  {job.company}
+                </a>
+              ) : (
+                <span class="text-brand">{job.company}</span>
+              )}
+            </h3>
+            <p class="text-sm text-fg-subtle">
+              <time datetime={isoDate(job.start)}>{formatRange(job.start, job.end)}</time>
+            </p>
+          </div>
+
+          <p class="mt-1 text-sm text-fg-subtle">
+            {job.domain} · {job.location}
+          </p>
+
+          <ul class="mt-3 list-disc space-y-1.5 pl-5 text-fg-muted marker:text-fg-subtle">
+            {job.highlights.map((highlight) => (
+              <li>{highlight}</li>
+            ))}
+          </ul>
+
+          <ul class="mt-3 flex flex-wrap gap-2" aria-label={`Technologies used at ${job.company}`}>
+            {job.stack.map((tech) => (
+              <li class="rounded-md bg-brand-soft px-2 py-0.5 text-xs font-medium text-brand">
+                {tech}
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))
+    }
+  </ol>
+</section>

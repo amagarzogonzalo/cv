@@ -1,0 +1,13 @@
+# Cloudflare Pages configuration.
+# Used by `wrangler pages deploy` and as a reference for the dashboard settings.
+#
+# Dashboard equivalent:
+#   Framework preset:      Astro
+#   Build command:         npm run build
+#   Build output directory: dist
+#   Production branch:     main
+#   NODE_VERSION:          22
+
+name = "cv"
+compatibility_date = "2026-01-01"
+pages_build_output_dir = "dist"

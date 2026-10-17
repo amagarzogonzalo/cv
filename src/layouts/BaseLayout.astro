@@ -1,0 +1,194 @@
+---
+import '../styles/global.css';
+import { cv } from '../data/cv';
+import { SITE_URL, OG_IMAGE, abs } from '../lib/site';
+import { graph } from '../lib/schema';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Site-relative canonical path, e.g. "/" or "/404". */
+  path?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = cv.meta.title,
+  description = cv.meta.description,
+  path = Astro.url.pathname,
+  noindex = false,
+} = Astro.props;
+
+const canonical = new URL(path, SITE_URL).href;
+const ogType = 'profile';
+const jsonLd = JSON.stringify(graph(cv));
+---
+
+<!doctype html>
+<html lang={cv.meta.locale.split('_')[0]} class="scroll-pt-20">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={cv.personal.name} />
+    <meta name="keywords" content={cv.meta.keywords.join(', ')} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {!noindex && <meta name="robots" content="index, follow, max-image-preview:large" />}
+
+    <!-- Icons & manifest -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#4f46e5" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b0f19" media="(prefers-color-scheme: dark)" />
+
+    <!-- Discovery -->
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/json" href="/resume.json" title="JSON Resume" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={cv.meta.title} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={cv.meta.locale} />
+    <meta property="og:image" content={OG_IMAGE} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${cv.personal.name} — ${cv.personal.role}`} />
+    <meta property="og:profile:first_name" content={cv.personal.name} />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={OG_IMAGE} />
+    <meta name="twitter:image:alt" content={`${cv.personal.name} — ${cv.personal.role}`} />
+
+    <!-- When sharing a link over email/chat, keep the PDF handy -->
+    <link rel="alternate" type="application/pdf" href={abs('/resume.pdf')} title="CV (PDF)" />
+
+    <!-- Structured data: exactly one Person block per page. -->
+    <script type="application/ld+json" set:html={jsonLd} />
+
+    <!-- No-flash theme: runs before paint. -->
+    <script is:inline>
+      (() => {
+        try {
+          const stored = localStorage.getItem('theme');
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const dark = stored ? stored === 'dark' : prefersDark;
+          document.documentElement.classList.toggle('dark', dark);
+        } catch (_) {}
+      })();
+    </script>
+  </head>
+
+  <body class="min-h-dvh bg-bg text-fg antialiased">
+    <a
+      href="#main"
+      class="no-print sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-brand focus:px-4 focus:py-2 focus:text-brand-fg"
+    >
+      Skip to content
+    </a>
+
+    <header class="no-print sticky top-0 z-40 border-b border-border/70 bg-bg/80 backdrop-blur">
+      <div class="mx-auto flex max-w-4xl items-center justify-between gap-4 px-5 py-3">
+        <a href="/" class="font-semibold tracking-tight" aria-label={`${cv.personal.name} — home`}>
+          {cv.personal.name}
+        </a>
+        <nav aria-label="Primary" class="flex items-center gap-1 text-sm">
+          <a
+            class="hidden rounded-lg px-3 py-2 text-fg-muted hover:bg-bg-subtle hover:text-fg sm:inline-block"
+            href="#experience">Experience</a
+          >
+          <a
+            class="hidden rounded-lg px-3 py-2 text-fg-muted hover:bg-bg-subtle hover:text-fg sm:inline-block"
+            href="#skills">Skills</a
+          >
+          <a
+            class="hidden rounded-lg px-3 py-2 text-fg-muted hover:bg-bg-subtle hover:text-fg sm:inline-block"
+            href="#projects">Projects</a
+          >
+          <a
+            class="rounded-lg px-3 py-2 text-fg-muted hover:bg-bg-subtle hover:text-fg"
+            href="#contact">Contact</a
+          >
+          <button
+            type="button"
+            id="theme-toggle"
+            class="ml-1 grid size-9 place-items-center rounded-lg border border-border text-fg-muted hover:bg-bg-subtle hover:text-fg"
+            aria-label="Toggle dark mode"
+            title="Toggle dark mode"
+          >
+            <svg
+              class="size-4 dark:hidden"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4"></circle>
+              <path
+                d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+              ></path>
+            </svg>
+            <svg
+              class="hidden size-4 dark:block"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="no-print mt-16 border-t border-border">
+      <div
+        class="mx-auto flex max-w-4xl flex-col gap-2 px-5 py-8 text-sm text-fg-subtle sm:flex-row sm:items-center sm:justify-between"
+      >
+        <p>
+          © {new Date().getFullYear()}
+          {cv.personal.name}. Built with Astro &amp; Cloudflare Pages.
+        </p>
+        <p>
+          <a class="hover:text-fg hover:underline" href="/resume.json">resume.json</a>
+          <span class="px-2 opacity-40">·</span>
+          <a class="hover:text-fg hover:underline" href="/llms.txt">llms.txt</a>
+          <span class="px-2 opacity-40">·</span>
+          <a class="hover:text-fg hover:underline" href="/sitemap-index.xml">sitemap</a>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      const btn = document.getElementById('theme-toggle');
+      btn?.addEventListener('click', () => {
+        const root = document.documentElement;
+        const dark = root.classList.toggle('dark');
+        try {
+          localStorage.setItem('theme', dark ? 'dark' : 'light');
+        } catch (_) {}
+      });
+    </script>
+  </body>
+</html>
