@@ -386,6 +386,26 @@ export const cv: Cv = {
 
   projects: [
     {
+      slug: 'research-agent-orchestration',
+      name: 'Research Agent Orchestration',
+      shortName: 'Research',
+      tagline: 'Knowledge Engine — a deep-research run, replayed offline',
+      role: 'Creator · Open source',
+      year: '2026',
+      description:
+        'A real Knowledge Engine deep-research run, replayed offline: the agent plans a question, fans out to 10 branch workers, reads 167 federated sources, keeps 20 evidence bodies and writes a seven-section article with six cited papers; the viewer exposes provenance behind every citation and the deterministic gate that decides whether the artifact can publish.',
+      repo: 'https://github.com/amagarzogonzalo/research-orchestration-agents',
+      image: '/projects/research-poster.jpg',
+      video: '/projects/research-demo.mp4',
+      metric: { value: '167', label: 'federated sources' },
+      stack: ['LangGraph', 'Hexagonal architecture', 'OpenTelemetry', 'DeepEval', 'MCP', 'FastAPI'],
+      highlights: [
+        'Deep research means reading dozens of sources without losing provenance — and no artifact should publish without a deterministic check.',
+        'LangGraph orchestrator fans out to 10 branch workers, reads 167 federated sources and keeps 20 evidence bodies, producing a seven-section article with six cited papers; the live eval ran at 54.7k tokens / 50 calls.',
+        'Article → Sources → Run views expose provenance for every citation and the publish gate; 95% zero-call wiki reuse. The demo replays a recorded run offline from cassettes.',
+      ],
+    },
+    {
       slug: 'digest-agent',
       name: 'GitHub Digest Agent',
       shortName: 'Digest',
@@ -393,16 +413,16 @@ export const cv: Cv = {
       role: 'Creator · Open source',
       year: '2025 — 2026',
       description:
-        'An open-source, scheduled agent that reads commits, pull requests and real diffs, deep-dives each PR with parallel sub-agents, self-reviews until it passes a quality bar and emails a colour-coded PDF.',
+        'A GitHub digest agent that reads repo history, runs 44 tests, deep-dives three merged PRs in parallel, runs a review committee and renders a colour-coded report; the viewer opens the real PDF, verbatim source diffs and the deterministic gate.',
       repo: 'https://github.com/amagarzogonzalo/digest-agent',
       image: '/projects/digest-poster.jpg',
       video: '/projects/digest-demo.mp4',
-      metric: { value: 'Daily', label: 'unattended runs' },
+      metric: { value: '9.0/10', label: 'committee approval' },
       stack: ['LangGraph', 'Python', 'Docker', 'GitHub Actions'],
       highlights: [
         'Repository activity goes unreviewed — real diffs are never summarised into something a team actually reads.',
-        'Hexagonal core (ports & adapters) with LangGraph per-PR sub-agents running k-way in parallel, gated by a bounded review/refine committee (default 8.0, max 6 reviews).',
-        'Zero running cost — the pipeline runs unattended every morning on free model tiers, and it is open source under MIT.',
+        'Reads repo history, deep-dives three merged PRs in parallel and runs a review committee on free model tiers; per-PR scores, 9.0/10 approval, UID and notification checks, 44 tests.',
+        'Verifier opens the real PDF pages, verbatim source patches and the deterministic gate; zero running cost, MIT. Sample run uses deterministic fixtures; orchestrator and renderer are real.',
       ],
     },
     {
