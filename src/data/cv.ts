@@ -182,11 +182,11 @@ export const cv: Cv = {
     remote: true,
     availability: 'AI Engineer · Data Science @ TNO',
     email: 'amagarzogonzalo@gmail.com',
-    focus: ['Agentic systems', 'Applied AI', 'Data engineering', 'Evaluation'],
+    focus: ['Agentic systems', 'LLM orchestration', 'Data engineering', 'Evaluation'],
   },
 
   summary: [
-    'Applied AI and data engineer with 3 years of experience building agentic systems and the data and evaluation infrastructure behind them. I ship tool-using agents, deep LLM evaluation and large-scale data pipelines across public sector, research and enterprise. M.Sc. Artificial Intelligence (thesis Cum Laude, Utrecht University) and a double degree in Computer Engineering and Business Administration.',
+    'Applied AI and data engineer with 3 years of experience building agentic systems, LLM orchestration and the data and evaluation infrastructure behind them. I ship tool-using agents, deep LLM evaluation and large-scale data pipelines across public sector, research and enterprise. M.Sc. Artificial Intelligence (thesis Cum Laude, Utrecht University) and a double degree in Computer Engineering and Business Administration.',
   ],
 
   links: [
@@ -232,10 +232,11 @@ export const cv: Cv = {
       start: '2024-12',
       end: '2025-09',
       note: 'Thesis Cum Laude',
-      summary: 'Hybrid retrieval research for legal QA, graded Cum Laude.',
+      summary: 'Multi-agent LLM orchestration and hybrid retrieval for legal QA, graded Cum Laude.',
       highlights: [
-        'Hybrid RAG — designed a legal QA system combining Neo4j/Cypher knowledge-graph retrieval with FAISS vector search.',
-        'Fine-tuning — PEFT, LoRA and QLoRA pipelines plus multi-model PydanticAI workflows across graph, relational and vector stores.',
+        'LLM orchestration — built multi-agent PydanticAI workflows with tool use and structured outputs, routing queries across graph, relational and vector stores.',
+        'Hybrid RAG — designed legal QA combining Neo4j/Cypher knowledge-graph retrieval with FAISS vector search.',
+        'Fine-tuning — PEFT, LoRA and QLoRA pipelines for legal-domain models.',
       ],
     },
     {
@@ -423,20 +424,20 @@ export const cv: Cv = {
     },
     {
       slug: 'hybrid-legal-rag',
-      name: 'Hybrid Legal RAG',
-      shortName: 'Legal RAG',
-      tagline: 'Hybrid retrieval legal QA — graph plus vectors',
-      role: 'Research & Architecture',
+      name: 'Agentic Legal QA',
+      shortName: 'Legal QA',
+      tagline: 'Multi-agent LLM orchestration for legal question answering',
+      role: 'Thesis Project',
       year: '2024 — 2025',
       description:
-        'A legal QA system combining Neo4j/Cypher knowledge-graph retrieval with FAISS vector search, plus PEFT/LoRA/QLoRA fine-tuning pipelines.',
+        'A multi-agent legal QA system: PydanticAI orchestration across graph, relational and vector stores, combining Neo4j/Cypher retrieval with FAISS vector search and PEFT/LoRA/QLoRA fine-tuning.',
       metric: { value: '3', label: 'data stores unified' },
-      stack: ['Neo4j', 'Cypher', 'FAISS', 'PydanticAI', 'LoRA'],
+      stack: ['PydanticAI', 'Neo4j', 'Cypher', 'FAISS', 'LoRA'],
       points: [
         { label: 'Challenge', text: 'Legal answers required graph, relational and vector data.' },
         {
           label: 'Built',
-          text: 'Hybrid RAG over Neo4j and FAISS with PydanticAI orchestration.',
+          text: 'Multi-agent PydanticAI orchestration over Neo4j and FAISS with tool use.',
         },
         { label: 'Impact', text: 'Grounded answers with evidence; thesis graded Cum Laude.' },
       ],
