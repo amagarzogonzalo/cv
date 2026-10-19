@@ -489,8 +489,8 @@ export const cv: Cv = {
       stack: ['LoRA/QLoRA', 'PyTorch', 'MLflow', 'Azure'],
       highlights: [
         'The prior best chemistry LLM set the bar for molecular property prediction.',
-        'LoRA/QLoRA fine-tuning improving both pre- and post-training; Azure App Service deployment with MLflow tracking across 40+ runs.',
-        'Beat the prior best by 6.3% across 40+ tracked runs and was spun out as PolyScout AI.',
+        'LoRA/QLoRA fine-tuning improving both pre- and post-training; delivered in Scrum sprints with Azure App Service deployment and MLflow tracking across 40+ runs.',
+        'Serves AI models to other teams; beat the prior best by 6.3% and was spun out as PolyScout AI.',
       ],
     },
   ],
