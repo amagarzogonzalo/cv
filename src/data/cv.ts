@@ -152,7 +152,7 @@ export const cv: Cv = {
   meta: {
     title: 'Alejandro Magarzo Gonzalo — AI Engineer',
     description:
-      'AI Engineer specialised in retrieval systems, agentic AI and LLM applications. M.Sc. Artificial Intelligence, Utrecht University (Cum Laude). Based in the Netherlands.',
+      'AI Engineer specialised in retrieval systems, agentic AI and LLM applications. M.Sc. Artificial Intelligence, Utrecht University (thesis Cum Laude). Based in the Netherlands.',
     keywords: [
       'Alejandro Magarzo Gonzalo',
       'AI Engineer',
@@ -184,12 +184,12 @@ export const cv: Cv = {
     availability: 'AI Engineer · Data Science @ TNO',
     email: 'amagarzogonzalo@gmail.com',
     focus: ['RAG & agents', 'LLM evaluation', 'Fine-tuning', 'Knowledge graphs'],
-    credential: 'MSc Artificial Intelligence, Utrecht University — Cum Laude',
+    credential: 'MSc Artificial Intelligence, Utrecht University — thesis Cum Laude',
   },
 
   summary: [
     'I build LLM systems that are useful, understandable and ready to scale — leading high-impact initiatives across public sector, research and enterprise settings.',
-    'M.Sc. Artificial Intelligence (Cum Laude, Utrecht University) and a double degree in Computer Engineering and Business Administration, with a mix of technical execution, stakeholder communication and business awareness.',
+    'M.Sc. Artificial Intelligence (thesis Cum Laude, Utrecht University) and a double degree in Computer Engineering and Business Administration, with a mix of technical execution, stakeholder communication and business awareness.',
   ],
 
   links: [
@@ -229,7 +229,7 @@ export const cv: Cv = {
       start: '2024-12',
       end: '2025-09',
       domain: 'Legal AI',
-      note: 'Cum Laude · full-time offer',
+      note: 'Thesis Cum Laude · full-time offer',
       summary: 'Hybrid retrieval research that became a production NLP stack.',
       stack: ['Neo4j', 'Cypher', 'FAISS', 'Qdrant', 'PEFT', 'PydanticAI'],
       highlights: [
@@ -405,28 +405,29 @@ export const cv: Cv = {
       institution: 'Utrecht University',
       url: 'https://www.uu.nl',
       degree: 'M.Sc. Artificial Intelligence',
-      note: 'Research track',
+      note: 'Research-oriented · 120 EC',
       location: 'Netherlands',
       start: '2023-09',
       end: '2025-09',
-      awards: ['Cum Laude'],
+      awards: ['Thesis Cum Laude'],
       highlights: [
-        'Advanced coursework in NLP, Deep Learning, Computer Vision, Reinforcement Learning and Large-Scale Data Systems.',
-        'Completed two extra electives ahead of schedule.',
-        'Thesis at TNO Security & Defence led directly to a full-time offer.',
+        'Two-year research MSc: 76 EC of coursework and a 44 EC research thesis.',
+        'Coursework in deep learning, NLP, reinforcement learning, multi-agent systems and explainable AI; completed two extra electives ahead of schedule.',
+        'Master’s thesis at TNO Security & Defence graded Cum Laude — led directly to a full-time offer.',
       ],
     },
     {
       institution: 'Complutense University of Madrid',
       url: 'https://www.ucm.es',
       degree: 'B.Sc. Computer Engineering',
-      note: 'Double degree · 5-year programme',
+      note: 'Double degree · 5 years · 10 semesters',
       location: 'Spain',
       start: '2018-09',
       end: '2023-06',
       awards: ['Bosch Prize 2023'],
       highlights: [
-        'Machine learning, deep learning, software engineering, computer architecture and cybersecurity.',
+        'Five-year double degree with Business Administration across the Informatics and Economics faculties.',
+        'Core areas: algorithms and data structures, databases, operating systems and networks, software engineering, computer architecture, AI/ML and cybersecurity.',
         'Distinction for the thesis: Contextual Multi-Armed Bandits for RL in Recommender Systems.',
       ],
     },
@@ -434,20 +435,21 @@ export const cv: Cv = {
       institution: 'Complutense University of Madrid',
       url: 'https://www.ucm.es',
       degree: 'B.B.A. Business Administration',
-      note: 'Double degree · 5-year programme',
+      note: 'Double degree · 5 years · 10 semesters',
       location: 'Spain',
       start: '2018-09',
       end: '2023-06',
       highlights: [
-        'Data analysis (R, XGBoost), econometrics, financial analysis and strategic marketing.',
-        'Distinction in Business Law and Mathematics I & II.',
+        'Accounting and finance, marketing, business organisation and HR, economics and taxation.',
+        'Quantitative methods including econometrics, data analysis with R and XGBoost, and financial analysis.',
+        'Distinctions in Business Law and Mathematics I & II.',
       ],
     },
   ],
 
   awards: [
     {
-      title: 'Cum Laude',
+      title: 'Cum Laude — Master’s Thesis',
       detail: 'M.Sc. Artificial Intelligence — Utrecht University',
       year: '2025',
     },
@@ -473,19 +475,13 @@ export const cv: Cv = {
       date: 'December 2023',
     },
     {
-      name: 'Microsoft Certified: Azure Administrator (AZ-104)',
-      issuer: 'Microsoft',
-      date: 'In progress · 2026',
-      status: 'in-progress',
-    },
-    {
       name: 'TOEFL iBT — 105/120',
       issuer: 'ETS',
       url: 'https://www.ets.org/toefl',
       date: 'English proficiency',
     },
     {
-      name: 'JavaScript Developer',
+      name: 'TypeScript Developer',
       issuer: 'Udemy',
       url: 'https://www.udemy.com',
       date: '2024',
