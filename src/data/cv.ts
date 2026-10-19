@@ -54,7 +54,7 @@ export interface ExperienceItem {
   start: string;
   /** e.g. "2024-11" or "Present". */
   end: string;
-  /** Short note, e.g. "Thesis Cum Laude · full-time offer". */
+  /** Short note, e.g. "Thesis Cum Laude". */
   note?: string;
   /** One-line context for the role. */
   summary: string;
@@ -231,10 +231,10 @@ export const cv: Cv = {
       location: 'The Hague, NL',
       start: '2024-12',
       end: '2025-09',
-      note: 'Thesis Cum Laude · full-time offer',
+      note: 'Thesis Cum Laude',
       summary: 'Hybrid retrieval research for legal QA, graded Cum Laude.',
       highlights: [
-        'Hybrid RAG — designed a legal QA system combining Neo4j/Cypher knowledge-graph retrieval with FAISS/Qdrant vector search.',
+        'Hybrid RAG — designed a legal QA system combining Neo4j/Cypher knowledge-graph retrieval with FAISS vector search.',
         'Fine-tuning — PEFT, LoRA and QLoRA pipelines plus multi-model PydanticAI workflows across graph, relational and vector stores.',
       ],
     },
@@ -247,8 +247,8 @@ export const cv: Cv = {
       note: 'Seed → spin-off',
       summary: 'Built the seed of Contextual Docs, which became a spin-off.',
       highlights: [
-        'Contextual Docs — designed and built the seed of the product (contextualdocs.com): document data-extraction pipelines (OCR/ZeroX + LangGraph) for contracts, invoices and tax documents, deployed on Azure App Service, Functions and Container Apps.',
-        'Product & architecture — led product and technical design from 0 → 1 with DDD and Hexagonal Architecture; added genetic algorithms for automated routing, and the codebase became the foundation of a spin-off.',
+        'Contextual Docs — built the seed of the product (contextualdocs.com): an OCR + LangGraph pipeline that extracts structured data from contracts, invoices and tax documents, unblocking enterprise AI workflows that were stuck on manual parsing.',
+        'Product & architecture — led product and technical design (DDD, Hexagonal Architecture, genetic-algorithm routing) and deployed it on Azure App Service, Functions and Container Apps; the codebase became the foundation of a spin-off.',
       ],
       links: [{ label: 'Contextual Docs', url: 'https://www.contextualdocs.com' }],
     },
@@ -263,7 +263,7 @@ export const cv: Cv = {
       highlights: [
         'CRM Data Analysis — analysed customer engagement data to surface segments and behavioural patterns, informing reporting and decisions across international teams.',
         'Generative AI — prototyped an SEO-optimised product-description workflow on structured retail data, presenting it to stakeholders in Denmark and Switzerland and aligning with SEO and member-country teams.',
-        'Stakeholder collaboration — ran working sessions with member-country and SEO stakeholders, turning early prototypes into a shared concept for international rollout.',
+        'Collaboration — ran cross-team collaboration with member-country and SEO stakeholders, turning early prototypes into a shared concept for international rollout.',
       ],
     },
   ],
@@ -429,14 +429,14 @@ export const cv: Cv = {
       role: 'Research & Architecture',
       year: '2024 — 2025',
       description:
-        'A legal QA system combining Neo4j/Cypher knowledge-graph retrieval with FAISS/Qdrant vector search, plus PEFT/LoRA/QLoRA fine-tuning pipelines.',
+        'A legal QA system combining Neo4j/Cypher knowledge-graph retrieval with FAISS vector search, plus PEFT/LoRA/QLoRA fine-tuning pipelines.',
       metric: { value: '3', label: 'data stores unified' },
-      stack: ['Neo4j', 'Cypher', 'Qdrant', 'PydanticAI', 'LoRA'],
+      stack: ['Neo4j', 'Cypher', 'FAISS', 'PydanticAI', 'LoRA'],
       points: [
         { label: 'Challenge', text: 'Legal answers required graph, relational and vector data.' },
         {
           label: 'Built',
-          text: 'Hybrid RAG over Neo4j, FAISS and Qdrant with PydanticAI orchestration.',
+          text: 'Hybrid RAG over Neo4j and FAISS with PydanticAI orchestration.',
         },
         { label: 'Impact', text: 'Grounded answers with evidence; thesis graded Cum Laude.' },
       ],
@@ -492,7 +492,7 @@ export const cv: Cv = {
       highlights: [
         'Two-year research MSc: 76 EC of coursework and a 44 EC research thesis.',
         'Coursework in deep learning, NLP, reinforcement learning, multi-agent systems and explainable AI; completed two extra electives ahead of schedule.',
-        'Master’s thesis at TNO Security & Defence graded Cum Laude — led directly to a full-time offer.',
+        'Master’s thesis at TNO Security & Defence, graded Cum Laude.',
       ],
     },
     {
