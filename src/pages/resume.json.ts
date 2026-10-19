@@ -69,6 +69,11 @@ export const GET: APIRoute = () => {
       date: cert.date,
       url: cert.url ?? '',
     })),
+    awards: cv.awards.map((award) => ({
+      title: award.title,
+      summary: award.detail,
+      date: award.year ?? '',
+    })),
     languages: cv.languages.map((lang) => ({
       language: lang.name,
       fluency: lang.level,

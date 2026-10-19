@@ -2,12 +2,12 @@
  * ============================================================================
  *  SINGLE SOURCE OF TRUTH FOR THE WHOLE SITE
  * ============================================================================
- *  This file drives every page, the project showcase and its generated
- *  artwork, the print/PDF layout, the JSON-LD structured data and the
- *  machine-readable `resume.json`.
+ *  Drives every page, the project showcase and its generated artwork, the
+ *  print/PDF layout, the JSON-LD structured data and the machine-readable
+ *  `resume.json`.
  *
- *  Content is imported from the user's own CV (resume_data.yaml) and resume
- *  builder output. Replace / extend values here and the whole site updates.
+ *  Content comes from the user's own CV documents. Edit here and the whole
+ *  site updates together.
  *
  *  Editorial rules (keep the page short and scannable):
  *   - Lead with outcomes and numbers.
@@ -35,6 +35,8 @@ export interface Personal {
   phone?: string;
   /** Short focus areas shown as tags under the hero. */
   focus: string[];
+  /** One-line credential summary shown in the hero meta row. */
+  credential?: string;
 }
 
 export type SocialIcon = 'github' | 'linkedin' | 'email' | 'x' | 'website' | 'phone' | 'location';
@@ -55,13 +57,15 @@ export interface ExperienceItem {
   /** e.g. "2024-11" or "Present". */
   end: string;
   domain: string;
+  /** Short note, e.g. "Cum Laude · full-time offer". */
+  note?: string;
   /** One-line context for the role. */
   summary: string;
   stack: string[];
   highlights: string[];
 }
 
-export type SkillIcon = 'brain' | 'model' | 'server' | 'code' | 'layers';
+export type SkillIcon = 'brain' | 'model' | 'server' | 'code' | 'layers' | 'database' | 'users';
 
 export interface SkillGroup {
   category: string;
@@ -98,6 +102,8 @@ export interface EducationItem {
   institution: string;
   url?: string;
   degree: string;
+  /** e.g. "Research track" or "Double degree · 5-year programme". */
+  note?: string;
   location?: string;
   start: string;
   end: string;
@@ -105,16 +111,27 @@ export interface EducationItem {
   highlights: string[];
 }
 
+export interface Award {
+  title: string;
+  detail: string;
+  /** Optional year, e.g. "2023". */
+  year?: string;
+}
+
 export interface Certification {
   name: string;
   issuer: string;
   url?: string;
   date: string;
+  /** "completed" (default) or "in-progress". */
+  status?: 'completed' | 'in-progress';
 }
 
 export interface Language {
   name: string;
   level: string;
+  /** CEFR-style indicator 1–6; omit to hide the level bar. */
+  score?: number;
 }
 
 export interface Cv {
@@ -126,6 +143,7 @@ export interface Cv {
   skills: SkillGroup[];
   projects: Project[];
   education: EducationItem[];
+  awards: Award[];
   certifications: Certification[];
   languages: Language[];
 }
@@ -134,20 +152,23 @@ export const cv: Cv = {
   meta: {
     title: 'Alejandro Magarzo Gonzalo — AI Engineer',
     description:
-      'AI Engineer building production LLM systems: agentic RAG, fine-tuning and evaluation. M.Sc. in Artificial Intelligence (Cum Laude) based in The Hague, Netherlands.',
+      'AI Engineer specialised in retrieval systems, agentic AI and LLM applications. M.Sc. Artificial Intelligence, Utrecht University (Cum Laude). Based in the Netherlands.',
     keywords: [
       'Alejandro Magarzo Gonzalo',
       'AI Engineer',
-      'ML Engineer',
       'LLM engineer',
       'RAG',
-      'agentic RAG',
+      'GraphRAG',
+      'agentic AI',
+      'MCP',
+      'LLM evaluation',
+      'knowledge graphs',
       'fine-tuning',
       'LoRA',
       'QLoRA',
       'PyTorch',
       'Python',
-      'The Hague',
+      'Neo4j',
       'Netherlands',
     ],
     locale: 'en_US',
@@ -156,18 +177,19 @@ export const cv: Cv = {
   personal: {
     name: 'Alejandro Magarzo Gonzalo',
     alternateName: 'Alejandro Magarzo',
-    role: 'AI Engineer | ML Engineer',
-    tagline: 'I build production LLM systems — agentic RAG, fine-tuning and evaluation.',
-    location: 'The Hague, Netherlands',
+    role: 'AI Engineer',
+    tagline: 'AI Engineer specialised in retrieval systems, agentic AI and LLM applications.',
+    location: 'Netherlands',
     remote: true,
     availability: 'AI Engineer · Data Science @ TNO',
     email: 'amagarzogonzalo@gmail.com',
-    focus: ['LLM systems', 'RAG & agents', 'Fine-tuning', 'Evaluation'],
+    focus: ['RAG & agents', 'LLM evaluation', 'Fine-tuning', 'Knowledge graphs'],
+    credential: 'MSc Artificial Intelligence, Utrecht University — Cum Laude',
   },
 
   summary: [
-    'I take LLM systems from prototype to production, with a focus on measurable impact. Currently building production assistants in TNO’s Data Science department.',
-    'M.Sc. in Artificial Intelligence (Cum Laude, Utrecht University) and a double bachelor in Computer Engineering and Business Administration.',
+    'I build LLM systems that are useful, understandable and ready to scale — leading high-impact initiatives across public sector, research and enterprise settings.',
+    'M.Sc. Artificial Intelligence (Cum Laude, Utrecht University) and a double degree in Computer Engineering and Business Administration, with a mix of technical execution, stakeholder communication and business awareness.',
   ],
 
   links: [
@@ -187,15 +209,33 @@ export const cv: Cv = {
       url: 'https://www.tno.nl',
       role: 'AI Engineer — Data Science Department',
       location: 'The Hague, NL',
-      start: '2024-12',
+      start: '2025-11',
       end: 'Present',
-      domain: 'Research & Defence',
-      summary: 'Production LLM systems for research, government and EU consortia.',
-      stack: ['Python', 'PyTorch', 'Agentic RAG', 'LoRA/QLoRA', 'Azure', 'Docker'],
+      domain: 'Research & Public sector',
+      summary: 'Leading AI workstreams on retrieval, LLM evaluation and deployment.',
+      stack: ['Python', 'PyTorch', 'RAG', 'Azure', 'MLflow', 'Docker'],
       highlights: [
-        'Delivered CRS, an agentic RAG assistant in production for 200+ researchers and part of the national GPT-NL initiative.',
-        'Evaluated a European Digital Identity Oracle for the Dutch Ministry of Interior; fine-tuned legal embeddings for RAG.',
-        'Built LoRA/QLoRA fine-tuning and Docker/Azure deployment for PolyScout, beating the prior best benchmark by 6.3%.',
+        'CRS Pilot — technical lead for a multi-retrieval platform supporting an international research organisation: set technical direction, aligned stakeholders and turned an early concept into a clear solution path.',
+        'EUDI Oracle — technical lead evaluator for the European Digital Identity Oracle (Dutch Ministry of the Interior), focused on retrieval quality, explainability and trustworthiness; translated findings into actionable recommendations.',
+        'TrustLLM — designed the assessment framework for EU synthetic-data evaluation around fidelity, diversity and usefulness, clarifying where synthetic data adds value and where it misleads.',
+        'PolyScout — prepared Azure deployment workflows and managed MLflow experiments for chemistry-focused LLM work; improved the previous best result by 6.3% across 40+ runs.',
+      ],
+    },
+    {
+      company: 'TNO · Netherlands Organisation for Applied Scientific Research',
+      url: 'https://www.tno.nl',
+      role: 'AI Research Intern — MSc Thesis',
+      location: 'The Hague, NL',
+      start: '2024-12',
+      end: '2025-09',
+      domain: 'Legal AI',
+      note: 'Cum Laude · full-time offer',
+      summary: 'Hybrid retrieval research that became a production NLP stack.',
+      stack: ['Neo4j', 'Cypher', 'FAISS', 'Qdrant', 'PEFT', 'PydanticAI'],
+      highlights: [
+        'Hybrid RAG — designed a legal QA system combining Neo4j/Cypher knowledge-graph retrieval with FAISS/Qdrant vector search.',
+        'Data engineering for GPT-NL — built ETL pipelines processing Rechtspraak case law at scale and contributed processed datasets to GPT-NL.',
+        'Fine-tuning and orchestration — implemented PEFT, LoRA and QLoRA pipelines and multi-model PydanticAI workflows across graph, relational and vector stores.',
       ],
     },
     {
@@ -205,11 +245,12 @@ export const cv: Cv = {
       start: '2024-01',
       end: '2024-12',
       domain: 'Enterprise AI',
-      summary: 'Document intelligence for enterprise AI workflows.',
-      stack: ['Python', 'Azure Functions', 'Docker', 'DDD', 'Document AI'],
+      note: 'Pre-commercial stage',
+      summary: 'Document intelligence that unblocked enterprise AI pipelines.',
+      stack: ['Python', 'OCR', 'DDD', 'Docker', 'Genetic algorithms'],
       highlights: [
-        'Built the document-parsing pipeline for contracts, invoices and reports, unblocking enterprise AI workflows.',
-        'Designed it with DDD and hexagonal architecture plus serverless Azure Functions; spun out into an independent company.',
+        'Document Intelligence — identified document parsing as a bottleneck and built an OCR and structure-extraction system with ZeroX for contracts, invoices and technical reports.',
+        'Architecture and automation — designed the processing layer with Domain-Driven Design and Hexagonal Architecture and implemented genetic algorithms for automated routing; the codebase became the foundation of a spin-off.',
       ],
     },
     {
@@ -220,110 +261,124 @@ export const cv: Cv = {
       start: '2024-07',
       end: '2024-12',
       domain: 'Retail',
-      summary: 'CRM insight and generative-AI prototyping for a global retailer.',
+      summary: 'CRM analytics and generative-AI exploration for a global retailer.',
       stack: ['Python', 'CRM Analytics', 'Generative AI'],
       highlights: [
-        'Analysed CRM and engagement data to surface customer segments for cross-country teams.',
-        'Prototyped a generative AI workflow, shared with the Denmark and Switzerland teams.',
+        'CRM Data Analysis — analysed customer engagement data to identify behavioural patterns, support reporting and inform decisions across international teams.',
+        'Generative AI Exploration — prototyped an SEO-optimised product-description workflow from structured retail data; shared with Denmark and Switzerland and aligned with member-country and SEO stakeholders.',
       ],
     },
   ],
 
   skills: [
     {
-      category: 'LLM & Foundation Models',
+      category: 'AI & System Design',
       icon: 'brain',
+      items: ['RAG', 'GraphRAG', 'Agentic AI', 'MCP', 'LLM Evaluation', 'Knowledge Graphs'],
+    },
+    {
+      category: 'LLM & ML Stack',
+      icon: 'model',
+      items: ['Fine-Tuning', 'LoRA/QLoRA', 'Pre-training', 'PyTorch', 'NLP', 'VLMs'],
+    },
+    {
+      category: 'Frameworks',
+      icon: 'layers',
       items: [
-        'RAG Pipeline Design',
-        'Agentic Orchestration',
-        'GraphRAG',
-        'Prompt Engineering',
-        'LLM Evaluation',
-        'MCP',
+        'HuggingFace',
+        'LangGraph',
+        'LangChain',
+        'PydanticAI',
+        'LiteLLM',
+        'OpenAI Agents SDK',
       ],
     },
     {
-      category: 'Model Development',
-      icon: 'model',
-      items: ['LoRA/QLoRA', 'SFT/DPO/RLHF', 'Distributed Training', 'Quantization', 'Optuna'],
+      category: 'MLOps & Engineering',
+      icon: 'server',
+      items: ['MLflow', 'GitLab CI/CD', 'Docker', 'TDD', 'Azure', 'Hexagonal Arch.', 'DDD'],
     },
     {
-      category: 'Inference & Deployment',
-      icon: 'server',
-      items: ['vLLM', 'TensorRT-LLM', 'Triton Server', 'Azure App Service', 'Docker/K8s'],
+      category: 'Databases',
+      icon: 'database',
+      items: ['Neo4j (Cypher)', 'Qdrant', 'FAISS', 'MongoDB', 'PostgreSQL'],
     },
     {
       category: 'Programming',
       icon: 'code',
-      items: ['Python', 'PyTorch', 'LangChain', 'HuggingFace', 'SQL', 'TypeScript'],
+      items: ['Python', 'SQL', 'JavaScript', 'Node.js', 'React', 'Bash', 'C++', 'R'],
+    },
+    {
+      category: 'Leadership & collaboration',
+      icon: 'users',
+      items: [
+        'Technical leadership',
+        'Stakeholder management',
+        'Cross-functional collaboration',
+        'Client communication',
+        'Ownership',
+      ],
     },
   ],
 
   projects: [
     {
       slug: 'crs-agentic-rag',
-      name: 'CRS — Agentic RAG',
+      name: 'CRS — Multi-retrieval Platform',
       shortName: 'CRS',
-      tagline: 'Production LLM assistant for organisational knowledge',
-      role: 'Tech Lead',
+      tagline: 'Multi-retrieval platform for organisational knowledge',
+      role: 'Technical Lead',
       year: '2025 — Present',
       description:
-        'An end-to-end agentic RAG assistant that lets an international scientific organisation query and synthesise its internal knowledge, in production for 200+ researchers.',
-      metric: { value: '200+', label: 'researchers served' },
+        'Technical lead for the AI workstream of a multi-retrieval platform supporting an international research organisation, from early concept to a clear solution path.',
       stack: ['Agentic RAG', 'MCP', 'LLM Evaluation', 'Azure'],
       points: [
         { label: 'Challenge', text: 'Knowledge spread across disconnected documents and systems.' },
         {
           label: 'Built',
-          text: 'Agentic RAG assistant with tool-using agents and a rigorous eval harness.',
+          text: 'Multi-retrieval platform with tool-using agents and an eval harness.',
         },
         {
           label: 'Impact',
-          text: 'In production for 200+ researchers; part of the national GPT-NL initiative.',
+          text: 'Turned an early concept into a clear solution path for future TNO initiatives.',
         },
       ],
     },
     {
-      slug: 'trustllm-web-app',
-      name: 'TrustLLM Web App',
-      shortName: 'TrustLLM',
-      tagline: 'EU evaluation service for synthetic-data research',
-      role: 'Design & Hosting',
-      year: '2024 — 2025',
-      description:
-        'A containerised evaluation web service for the EU synthetic-data initiative TrustLLM, hosted on Azure App Service for a European consortium.',
-      metric: { value: '+10%', label: 'faster deploys' },
-      stack: ['Azure', 'Docker', 'Python'],
-      points: [
-        {
-          label: 'Challenge',
-          text: 'One shared evaluation service was needed across EU partners.',
-        },
-        {
-          label: 'Built',
-          text: 'Designed the service, packaged it with Docker, hosted it on Azure.',
-        },
-        {
-          label: 'Impact',
-          text: 'Deployment time cut ~10%; service operational for the consortium.',
-        },
-      ],
-    },
-    {
-      slug: 'legal-rag-pipeline',
-      name: 'Legal RAG Pipeline',
+      slug: 'hybrid-legal-rag',
+      name: 'Hybrid Legal RAG',
       shortName: 'Legal RAG',
-      tagline: 'Multi-agent legal QA across three data stores',
-      role: 'Architecture & Embeddings',
+      tagline: 'Hybrid retrieval legal QA — graph plus vectors',
+      role: 'Research & Architecture',
       year: '2024 — 2025',
       description:
-        'A multi-agent legal question-answering system spanning graph, relational and vector stores, with fine-tuned legal embedding models.',
+        'A legal QA system combining Neo4j/Cypher knowledge-graph retrieval with FAISS/Qdrant vector search, plus PEFT/LoRA/QLoRA fine-tuning pipelines.',
       metric: { value: '3', label: 'data stores unified' },
-      stack: ['Neo4j', 'Qdrant', 'PydanticAI', 'Embeddings'],
+      stack: ['Neo4j', 'Cypher', 'Qdrant', 'PydanticAI', 'LoRA'],
       points: [
         { label: 'Challenge', text: 'Legal answers required graph, relational and vector data.' },
-        { label: 'Built', text: 'PydanticAI multi-agent router across Neo4j, SQL and Qdrant.' },
-        { label: 'Impact', text: 'Grounded answers with evidence from the right source.' },
+        {
+          label: 'Built',
+          text: 'Hybrid RAG over Neo4j, FAISS and Qdrant with PydanticAI orchestration.',
+        },
+        { label: 'Impact', text: 'Grounded answers with evidence; thesis graded Cum Laude.' },
+      ],
+    },
+    {
+      slug: 'gpt-nl-data-engineering',
+      name: 'GPT-NL Data Engineering',
+      shortName: 'GPT-NL',
+      tagline: 'ETL at scale for the Dutch national LLM',
+      role: 'Data Engineering',
+      year: '2024 — 2025',
+      description:
+        'ETL pipelines processing Rechtspraak case law at scale, contributing processed datasets to the GPT-NL national language-model initiative.',
+      metric: { value: 'At scale', label: 'case-law ETL' },
+      stack: ['Python', 'ETL', 'NLP', 'Data pipelines'],
+      points: [
+        { label: 'Challenge', text: 'National LLM training needed clean, large-scale legal data.' },
+        { label: 'Built', text: 'ETL pipelines to process Rechtspraak case law at scale.' },
+        { label: 'Impact', text: 'Processed datasets contributed to the GPT-NL initiative.' },
       ],
     },
     {
@@ -332,18 +387,15 @@ export const cv: Cv = {
       shortName: 'PolyScout',
       tagline: 'Chemistry LLM that beat the prior best',
       role: 'Fine-Tuning & Deployment',
-      year: '2024 — 2025',
+      year: '2025',
       description:
-        'A chemistry-specialised LLM fine-tuned with LoRA/QLoRA, deployed with Docker on Azure and tracked with MLflow.',
-      metric: { value: '+6.3%', label: 'benchmark gain' },
-      stack: ['LoRA/QLoRA', 'PyTorch', 'MLflow'],
+        'Chemistry-focused LLM work: Azure deployment workflows and MLflow experiment management across 40+ runs.',
+      metric: { value: '+6.3%', label: 'over prior best' },
+      stack: ['LoRA/QLoRA', 'PyTorch', 'MLflow', 'Azure'],
       points: [
         { label: 'Challenge', text: 'Beat the prior best baseline for a chemistry LLM.' },
-        {
-          label: 'Built',
-          text: 'LoRA/QLoRA pipeline, Docker on Azure, MLflow experiment tracking.',
-        },
-        { label: 'Impact', text: '+6.3% on benchmarks with a fully reproducible pipeline.' },
+        { label: 'Built', text: 'Azure deployment workflows with MLflow-tracked experiments.' },
+        { label: 'Impact', text: '+6.3% over the previous best across 40+ runs.' },
       ],
     },
   ],
@@ -353,48 +405,98 @@ export const cv: Cv = {
       institution: 'Utrecht University',
       url: 'https://www.uu.nl',
       degree: 'M.Sc. Artificial Intelligence',
+      note: 'Research track',
       location: 'Netherlands',
       start: '2023-09',
       end: '2025-09',
       awards: ['Cum Laude'],
       highlights: [
-        'Thesis at TNO Security & Defence on SFT and PEFT — led to a full-time offer.',
-        'NLP, Deep Learning, Computer Vision, Reinforcement Learning, Large-Scale Data Systems.',
+        'Advanced coursework in NLP, Deep Learning, Computer Vision, Reinforcement Learning and Large-Scale Data Systems.',
+        'Completed two extra electives ahead of schedule.',
+        'Thesis at TNO Security & Defence led directly to a full-time offer.',
       ],
     },
     {
       institution: 'Complutense University of Madrid',
       url: 'https://www.ucm.es',
       degree: 'B.Sc. Computer Engineering',
+      note: 'Double degree · 5-year programme',
       location: 'Spain',
       start: '2018-09',
       end: '2023-06',
       awards: ['Bosch Prize 2023'],
       highlights: [
-        'Distinction for thesis: Contextual Multi-Armed Bandits for RL in Recommender Systems.',
-        'Machine learning, deep learning and software engineering.',
+        'Machine learning, deep learning, software engineering, computer architecture and cybersecurity.',
+        'Distinction for the thesis: Contextual Multi-Armed Bandits for RL in Recommender Systems.',
       ],
     },
     {
       institution: 'Complutense University of Madrid',
       url: 'https://www.ucm.es',
       degree: 'B.B.A. Business Administration',
+      note: 'Double degree · 5-year programme',
       location: 'Spain',
       start: '2018-09',
       end: '2023-06',
-      awards: ['Distinctions'],
       highlights: [
-        'Econometrics, quantitative methods and financial analysis.',
-        'Distinctions in Business Law and Mathematics I & II.',
+        'Data analysis (R, XGBoost), econometrics, financial analysis and strategic marketing.',
+        'Distinction in Business Law and Mathematics I & II.',
       ],
     },
   ],
 
-  certifications: [],
+  awards: [
+    {
+      title: 'Cum Laude',
+      detail: 'M.Sc. Artificial Intelligence — Utrecht University',
+      year: '2025',
+    },
+    {
+      title: 'Bosch Prize — Best Applied AI',
+      detail: 'Complutense University of Madrid',
+      year: '2023',
+    },
+    {
+      title: 'Distinction — Thesis, Computer Engineering',
+      detail: 'Multi-Armed Bandits for RL in Recommender Systems — UCM',
+    },
+    { title: 'Distinction — Business Law', detail: 'Complutense University of Madrid' },
+    { title: 'Distinction — Mathematics I', detail: 'Complutense University of Madrid' },
+    { title: 'Distinction — Mathematics II', detail: 'Complutense University of Madrid' },
+  ],
+
+  certifications: [
+    {
+      name: 'Microsoft Certified: Azure Fundamentals (AZ-900)',
+      issuer: 'Microsoft',
+      url: 'https://learn.microsoft.com/credentials/',
+      date: 'December 2023',
+    },
+    {
+      name: 'Microsoft Certified: Azure Administrator (AZ-104)',
+      issuer: 'Microsoft',
+      date: 'In progress · 2026',
+      status: 'in-progress',
+    },
+    {
+      name: 'TOEFL iBT — 105/120',
+      issuer: 'ETS',
+      url: 'https://www.ets.org/toefl',
+      date: 'English proficiency',
+    },
+    {
+      name: 'JavaScript Developer',
+      issuer: 'Udemy',
+      url: 'https://www.udemy.com',
+      date: '2024',
+    },
+  ],
 
   languages: [
-    { name: 'Spanish', level: 'Native' },
-    { name: 'English', level: 'Fluent' },
+    { name: 'Spanish', level: 'Native', score: 6 },
+    { name: 'English', level: 'Advanced', score: 5 },
+    { name: 'French', level: 'B1', score: 3 },
+    { name: 'Dutch', level: 'A1', score: 1 },
   ],
 };
 

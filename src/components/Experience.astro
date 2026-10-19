@@ -28,6 +28,11 @@ const { experience } = cv;
                 <span class="rounded bg-brand-soft px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-brand">
                   {job.domain}
                 </span>
+                {job.note && (
+                  <span class="font-mono text-[10px] uppercase tracking-wider text-fg-subtle">
+                    {job.note}
+                  </span>
+                )}
               </div>
 
               <p class="mt-1 text-sm font-medium text-brand">

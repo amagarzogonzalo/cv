@@ -2,7 +2,7 @@
 import { cv } from '../data/cv';
 import Icon from './Icon.astro';
 
-const { personal, links, languages } = cv;
+const { personal, links } = cv;
 const contactLinks = links.filter((l) => l.icon !== 'email' && l.icon !== 'website');
 ---
 
@@ -46,9 +46,9 @@ const contactLinks = links.filter((l) => l.icon !== 'email' && l.icon !== 'websi
         </dd>
       </div>
       <div>
-        <dt class="font-mono text-[11px] uppercase tracking-wider text-fg-subtle">Languages</dt>
+        <dt class="font-mono text-[11px] uppercase tracking-wider text-fg-subtle">Focus</dt>
         <dd class="mt-1 text-sm text-fg-muted">
-          {languages.map((lang) => `${lang.name} (${lang.level.toLowerCase()})`).join(' · ')}
+          {personal.focus.join(' · ')}
         </dd>
       </div>
       <div>

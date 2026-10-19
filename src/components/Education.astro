@@ -4,7 +4,8 @@ import { formatRange } from '../lib/format';
 import Icon from './Icon.astro';
 import Section from './Section.astro';
 
-const { education, certifications } = cv;
+const { education, awards, certifications, languages } = cv;
+const LEVELS = [1, 2, 3, 4, 5, 6];
 ---
 
 <Section
@@ -25,6 +26,11 @@ const { education, certifications } = cv;
           <div>
             <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
               <h3 class="text-base font-semibold tracking-tight text-fg">{edu.degree}</h3>
+              {edu.note && (
+                <span class="font-mono text-[10px] uppercase tracking-wider text-fg-subtle">
+                  {edu.note}
+                </span>
+              )}
               {edu.awards?.map((award) => (
                 <span class="inline-flex items-center gap-1 rounded bg-brand-soft px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-brand">
                   <Icon name="award" class="size-3" />
@@ -63,26 +69,97 @@ const { education, certifications } = cv;
   {
     certifications.length > 0 && (
       <div class="mt-10 border-t border-border pt-6">
-        <h3 class="font-mono text-xs uppercase tracking-wider text-fg-subtle">Certifications</h3>
-        <ul class="mt-3 grid gap-2 sm:grid-cols-2">
+        <h3 class="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-fg-subtle">
+          <Icon name="award" class="size-4 shrink-0 text-brand" />
+          Certifications
+        </h3>
+        <ul class="mt-4 grid gap-3 sm:grid-cols-2">
           {certifications.map((cert) => (
-            <li class="text-sm text-fg-muted">
-              <a
-                href={cert.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="font-medium text-fg hover:underline"
-              >
-                {cert.name}
-              </a>
-              <span class="text-fg-subtle">
-                {' '}
-                · {cert.issuer} · {cert.date}
-              </span>
+            <li class="rounded-lg border border-border bg-surface p-4">
+              <p class="text-sm font-semibold text-fg">
+                {cert.url ? (
+                  <a
+                    href={cert.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1 hover:underline"
+                  >
+                    {cert.name}
+                    <Icon name="arrow-up-right" class="size-3.5" />
+                  </a>
+                ) : (
+                  cert.name
+                )}
+              </p>
+              <p class="mt-0.5 flex flex-wrap items-center gap-2 font-mono text-[11px] text-fg-subtle">
+                <span>
+                  {cert.issuer} · {cert.date}
+                </span>
+                {cert.status === 'in-progress' && (
+                  <span class="rounded bg-amber-500/15 px-1.5 py-0.5 text-[10px] uppercase tracking-wider text-amber-600 dark:text-amber-400">
+                    In progress
+                  </span>
+                )}
+              </p>
             </li>
           ))}
         </ul>
       </div>
     )
   }
+
+  <div class="mt-10 grid gap-x-12 gap-y-8 border-t border-border pt-8 sm:grid-cols-2">
+    <div>
+      <h3 class="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-fg-subtle">
+        <Icon name="award" class="size-4 shrink-0 text-brand" />
+        Distinctions &amp; honours
+      </h3>
+      <ul class="mt-4 space-y-3">
+        {
+          awards.map((award) => (
+            <li class="flex gap-3">
+              <span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-brand" aria-hidden="true" />
+              <div class="min-w-0 flex-1">
+                <div class="flex items-baseline justify-between gap-3">
+                  <p class="text-sm font-semibold text-fg">{award.title}</p>
+                  {award.year && (
+                    <span class="shrink-0 font-mono text-[11px] tabular-nums text-fg-subtle">
+                      {award.year}
+                    </span>
+                  )}
+                </div>
+                <p class="mt-0.5 text-xs text-fg-muted">{award.detail}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="font-mono text-xs uppercase tracking-wider text-fg-subtle">Languages</h3>
+      <ul class="mt-4 space-y-3">
+        {
+          languages.map((lang) => (
+            <li class="flex items-center gap-3">
+              <span class="w-20 shrink-0 text-sm text-fg">{lang.name}</span>
+              <span class="flex w-24 shrink-0 gap-1" aria-hidden="true">
+                {LEVELS.map((step) => (
+                  <span
+                    class:list={[
+                      'h-1 flex-1 rounded-full',
+                      step <= (lang.score ?? 0) ? 'bg-brand' : 'bg-border',
+                    ]}
+                  />
+                ))}
+              </span>
+              <span class="ml-auto shrink-0 font-mono text-[11px] text-fg-subtle">
+                {lang.level}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
 </Section>

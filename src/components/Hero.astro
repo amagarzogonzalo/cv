@@ -32,6 +32,12 @@ const primaryLinks = links.filter((l) => l.icon !== 'email' && l.icon !== 'websi
     {personal.remote && <span class="font-mono text-xs">Open to remote</span>}
   </div>
 
+  {
+    personal.credential && (
+      <p class="mt-2 font-mono text-xs text-fg-subtle">{personal.credential}</p>
+    )
+  }
+
   <div class="no-print mt-7 flex flex-wrap items-center gap-2.5">
     <button
       type="button"

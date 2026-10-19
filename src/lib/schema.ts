@@ -44,6 +44,8 @@ export function personSchema(cv: Cv) {
       credentialCategory: 'certification',
       ...(cert.url ? { url: cert.url } : {}),
     })),
+    award: cv.awards.map((award) => `${award.title} — ${award.detail}`),
+    knowsLanguage: cv.languages.map((lang) => lang.name),
     worksFor: cv.experience[0]
       ? {
           '@type': 'Organization',
