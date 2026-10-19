@@ -91,6 +91,8 @@ export interface Project {
   repo?: string;
   /** Optional real screenshot/poster, replacing the generated artwork. */
   image?: string;
+  /** Optional brand logo, rendered centred on a clean panel. */
+  logo?: string;
   /** Optional demo video (mp4) shown instead of a still image. */
   video?: string;
   stack: string[];
@@ -450,6 +452,7 @@ export const cv: Cv = {
       description:
         'End-to-end technical lead for a multi-retrieval platform supporting an international research organisation — owned architecture, retrieval design, deployment and evaluation. The RAG pipeline was reused by 4+ internal projects, and I later became RAG tech lead.',
       url: 'https://crships.org',
+      logo: '/projects/crs-logo.jpg',
       metric: { value: '4+', label: 'internal reuses' },
       stack: ['Agentic RAG', 'MCP', 'LLM Evaluation', 'Azure'],
       highlights: [
@@ -468,6 +471,7 @@ export const cv: Cv = {
       description:
         'Technical evaluation of the European Digital Identity Oracle for the Dutch Ministry of the Interior and Kingdom Relations (BZK), focused on retrieval quality, explainability and trustworthiness.',
       url: 'https://eudi-wallet-oracle.nl',
+      image: '/projects/eudi-logo.jpg',
       stack: ['RAG', 'Evaluation', 'Explainability', 'Public sector'],
       highlights: [
         'A European Digital Identity oracle had to be trusted before deployment, with no agreed way to measure retrieval quality or explainability.',
@@ -485,29 +489,12 @@ export const cv: Cv = {
       description:
         'A multi-agent legal QA system: PydanticAI orchestration across graph, relational and vector stores, combining Neo4j/Cypher retrieval with FAISS vector search and PEFT/LoRA/QLoRA fine-tuning.',
       metric: { value: '3', label: 'data stores unified' },
+      logo: '/projects/tno-logo.png',
       stack: ['PydanticAI', 'Neo4j', 'Cypher', 'FAISS', 'LoRA'],
       highlights: [
         'Legal answers needed evidence from graph, relational and vector data that no single store could provide.',
         'Multi-agent PydanticAI orchestration with tool use and structured outputs; Neo4j/Cypher graph plus FAISS vectors; legal-domain embedding fine-tuning.',
         'Graded Cum Laude and led directly to a full-time role at TNO, where the orchestration patterns carried into production work.',
-      ],
-    },
-    {
-      slug: 'gpt-nl-data-engineering',
-      name: 'GPT-NL Data Engineering',
-      shortName: 'GPT-NL',
-      tagline: 'ETL at scale for the Dutch national LLM',
-      role: 'Data Engineering',
-      year: '2024 — 2025',
-      description:
-        'ETL pipelines processing Rechtspraak case law at scale, contributing processed datasets to the GPT-NL national language-model initiative.',
-      url: 'https://gpt-nl.nl',
-      metric: { value: 'At scale', label: 'case-law ETL' },
-      stack: ['Python', 'ETL', 'NLP', 'Data pipelines'],
-      highlights: [
-        'National LLM training workloads exceeded single-node capacity for data processing and model runs.',
-        'Ran large-scale HPC workloads on Slurm clusters, with dataset validation before hand-off.',
-        'Validated corpora supplied the national GPT-NL training pipeline (gpt-nl.nl).',
       ],
     },
     {
@@ -520,6 +507,7 @@ export const cv: Cv = {
       description:
         'Chemistry-focused LLM work — LoRA/QLoRA fine-tuning, Azure App Service deployment and MLflow tracking across 40+ runs — supporting PolyScout AI (polyscout.ai).',
       url: 'https://www.polyscout.ai',
+      logo: '/projects/polyscout-logo.svg',
       metric: { value: '+6.3%', label: 'over prior best' },
       stack: ['LoRA/QLoRA', 'PyTorch', 'MLflow', 'Azure'],
       highlights: [
