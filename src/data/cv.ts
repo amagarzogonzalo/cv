@@ -35,8 +35,6 @@ export interface Personal {
   phone?: string;
   /** Short focus areas shown as tags under the hero. */
   focus: string[];
-  /** One-line credential summary shown in the hero meta row. */
-  credential?: string;
 }
 
 export type SocialIcon = 'github' | 'linkedin' | 'email' | 'x' | 'website' | 'phone' | 'location';
@@ -184,12 +182,10 @@ export const cv: Cv = {
     availability: 'AI Engineer · Data Science @ TNO',
     email: 'amagarzogonzalo@gmail.com',
     focus: ['RAG & agents', 'LLM evaluation', 'Fine-tuning', 'Knowledge graphs'],
-    credential: 'MSc Artificial Intelligence, Utrecht University — thesis Cum Laude',
   },
 
   summary: [
-    'I build LLM systems that are useful, understandable and ready to scale — leading high-impact initiatives across public sector, research and enterprise settings.',
-    'M.Sc. Artificial Intelligence (thesis Cum Laude, Utrecht University) and a double degree in Computer Engineering and Business Administration, with a mix of technical execution, stakeholder communication and business awareness.',
+    'I build production LLM systems across research, public sector and enterprise, with a focus on retrieval, agentic AI and evaluation. M.Sc. Artificial Intelligence (thesis Cum Laude, Utrecht University) and a double degree in Computer Engineering and Business Administration.',
   ],
 
   links: [
@@ -215,10 +211,10 @@ export const cv: Cv = {
       summary: 'Leading AI workstreams on retrieval, LLM evaluation and deployment.',
       stack: ['Python', 'PyTorch', 'RAG', 'Azure', 'MLflow', 'Docker'],
       highlights: [
-        'CRS Pilot — technical lead for a multi-retrieval platform supporting an international research organisation: set technical direction, aligned stakeholders and turned an early concept into a clear solution path.',
-        'EUDI Oracle — technical lead evaluator for the European Digital Identity Oracle (Dutch Ministry of the Interior), focused on retrieval quality, explainability and trustworthiness; translated findings into actionable recommendations.',
-        'TrustLLM — designed the assessment framework for EU synthetic-data evaluation around fidelity, diversity and usefulness, clarifying where synthetic data adds value and where it misleads.',
-        'PolyScout — prepared Azure deployment workflows and managed MLflow experiments for chemistry-focused LLM work; improved the previous best result by 6.3% across 40+ runs.',
+        'CRS Pilot — technical lead for a multi-retrieval platform: set technical direction, aligned stakeholders and turned an early concept into a clear solution path.',
+        'EUDI Oracle — technical lead evaluator for the European Digital Identity Oracle (Dutch Ministry of the Interior), assessing retrieval quality, explainability and trustworthiness.',
+        'TrustLLM — designed the EU synthetic-data assessment framework around fidelity, diversity and usefulness.',
+        'PolyScout — Azure deployment workflows and MLflow experiments; improved the prior best result by 6.3% across 40+ runs.',
       ],
     },
     {
@@ -233,9 +229,9 @@ export const cv: Cv = {
       summary: 'Hybrid retrieval research that became a production NLP stack.',
       stack: ['Neo4j', 'Cypher', 'FAISS', 'Qdrant', 'PEFT', 'PydanticAI'],
       highlights: [
-        'Hybrid RAG — designed a legal QA system combining Neo4j/Cypher knowledge-graph retrieval with FAISS/Qdrant vector search.',
-        'Data engineering for GPT-NL — built ETL pipelines processing Rechtspraak case law at scale and contributed processed datasets to GPT-NL.',
-        'Fine-tuning and orchestration — implemented PEFT, LoRA and QLoRA pipelines and multi-model PydanticAI workflows across graph, relational and vector stores.',
+        'Hybrid RAG — legal QA combining Neo4j/Cypher knowledge-graph retrieval with FAISS/Qdrant vector search.',
+        'Data engineering for GPT-NL — ETL pipelines processing Rechtspraak case law at scale, contributed to GPT-NL.',
+        'Fine-tuning — PEFT, LoRA and QLoRA pipelines plus multi-model PydanticAI workflows across graph, relational and vector stores.',
       ],
     },
     {
@@ -249,8 +245,8 @@ export const cv: Cv = {
       summary: 'Document intelligence that unblocked enterprise AI pipelines.',
       stack: ['Python', 'OCR', 'DDD', 'Docker', 'Genetic algorithms'],
       highlights: [
-        'Document Intelligence — identified document parsing as a bottleneck and built an OCR and structure-extraction system with ZeroX for contracts, invoices and technical reports.',
-        'Architecture and automation — designed the processing layer with Domain-Driven Design and Hexagonal Architecture and implemented genetic algorithms for automated routing; the codebase became the foundation of a spin-off.',
+        'Document Intelligence — OCR and structure-extraction for contracts, invoices and technical reports (ZeroX), unblocking enterprise AI pipelines.',
+        'Architecture — DDD and Hexagonal Architecture plus genetic algorithms for automated routing; the codebase became the foundation of a spin-off.',
       ],
     },
     {
@@ -264,8 +260,8 @@ export const cv: Cv = {
       summary: 'CRM analytics and generative-AI exploration for a global retailer.',
       stack: ['Python', 'CRM Analytics', 'Generative AI'],
       highlights: [
-        'CRM Data Analysis — analysed customer engagement data to identify behavioural patterns, support reporting and inform decisions across international teams.',
-        'Generative AI Exploration — prototyped an SEO-optimised product-description workflow from structured retail data; shared with Denmark and Switzerland and aligned with member-country and SEO stakeholders.',
+        'CRM Data Analysis — analysed engagement data to surface behavioural patterns and inform decisions across international teams.',
+        'Generative AI Exploration — prototyped SEO-optimised product descriptions from structured retail data, shared with Denmark and Switzerland.',
       ],
     },
   ],
