@@ -397,12 +397,12 @@ export const cv: Cv = {
       repo: 'https://github.com/amagarzogonzalo/digest-agent',
       image: '/projects/digest-poster.jpg',
       video: '/projects/digest-demo.mp4',
-      metric: { value: '44', label: 'tests passing' },
+      metric: { value: 'Daily', label: 'unattended runs' },
       stack: ['LangGraph', 'Python', 'Docker', 'GitHub Actions'],
       highlights: [
         'Repository activity goes unreviewed — real diffs are never summarised into something a team actually reads.',
         'Hexagonal core (ports & adapters) with LangGraph per-PR sub-agents running k-way in parallel, gated by a bounded review/refine committee (default 8.0, max 6 reviews).',
-        'Runs daily in production on GitHub Actions — a colour-coded PDF every morning using free LLM tiers (Gemini → OpenRouter → Groq → Mistral); open source, MIT, 44 tests green.',
+        'Zero running cost — the pipeline runs unattended every morning on free model tiers, and it is open source under MIT.',
       ],
     },
     {

@@ -26,51 +26,58 @@ const ACCENTS = ['#6366f1', '#06b6d4', '#8b5cf6', '#10b981', '#f59e0b', '#f43f5e
     {
       projects.map((project, i) => (
         <article
-          class="proj-slide grid w-full shrink-0 snap-start lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)]"
+          class="proj-slide relative grid w-full shrink-0 snap-start lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)]"
           data-slide
           role="group"
           aria-roledescription="slide"
           aria-label={`${project.name} — project ${i + 1} of ${count}`}
           style={`--proj-accent: ${ACCENTS[i % ACCENTS.length]}`}
         >
-          <div
-            class:list={[
-              'proj-media relative w-full overflow-hidden lg:aspect-auto lg:min-h-[27rem]',
-              project.video ? 'aspect-video bg-black' : 'aspect-[16/10] bg-bg-subtle',
-            ]}
-          >
-            {project.video ? (
-              <video
-                class="absolute inset-0 size-full bg-black object-contain"
-                src={project.video}
-                poster={project.image}
-                muted
-                loop
-                playsinline
-                controls
-                preload="metadata"
-                aria-label={`${project.name} demo`}
-              />
-            ) : (
-              <img
-                src={project.image ?? `/projects/${project.slug}.webp`}
-                alt=""
-                width="1200"
-                height="800"
-                loading={i === 0 ? 'eager' : 'lazy'}
-                decoding="async"
-                class="absolute inset-0 size-full object-cover"
-              />
-            )}
-            <span class="proj-grid-overlay" aria-hidden="true" />
-            <span class="proj-glow" aria-hidden="true" />
-            <span class="proj-shine" aria-hidden="true" />
-            <span
-              class="absolute top-5 left-5 rounded-lg border px-2 py-1 font-mono text-[11px] tabular-nums text-white/90 backdrop-blur-sm"
-              style="background: color-mix(in srgb, var(--proj-accent, var(--brand)) 34%, rgb(0 0 0 / 0.4)); border-color: color-mix(in srgb, var(--proj-accent, var(--brand)) 60%, transparent);"
+          <span
+            class="absolute inset-x-0 top-0 z-20 h-[3px]"
+            style="background: linear-gradient(90deg, color-mix(in srgb, var(--proj-accent, var(--brand)) 85%, transparent), transparent);"
+            aria-hidden="true"
+          />
+          <div class="h-full p-3 lg:p-4">
+            <div
+              class:list={[
+                'proj-media relative h-full w-full overflow-hidden rounded-2xl lg:aspect-auto lg:min-h-[24rem]',
+                project.video ? 'aspect-video bg-black' : 'aspect-[16/10] bg-bg-subtle',
+              ]}
             >
-              {pad(i + 1)} / {pad(count)}
-            </span>
+              {project.video ? (
+                <video
+                  class="absolute inset-0 size-full bg-black object-contain"
+                  src={project.video}
+                  poster={project.image}
+                  muted
+                  loop
+                  playsinline
+                  controls
+                  preload="metadata"
+                  aria-label={`${project.name} demo`}
+                />
+              ) : (
+                <img
+                  src={project.image ?? `/projects/${project.slug}.webp`}
+                  alt=""
+                  width="1200"
+                  height="800"
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  class="absolute inset-0 size-full object-cover"
+                />
+              )}
+              <span class="proj-grid-overlay" aria-hidden="true" />
+              <span class="proj-glow" aria-hidden="true" />
+              <span class="proj-shine" aria-hidden="true" />
+              <span
+                class="absolute top-5 left-5 rounded-lg border px-2 py-1 font-mono text-[11px] tabular-nums text-white/90 backdrop-blur-sm"
+                style="background: color-mix(in srgb, var(--proj-accent, var(--brand)) 34%, rgb(0 0 0 / 0.4)); border-color: color-mix(in srgb, var(--proj-accent, var(--brand)) 60%, transparent);"
+              >
+                {pad(i + 1)} / {pad(count)}
+              </span>
+            </div>
           </div>
 
           <div class="proj-body flex flex-col gap-5 p-6 sm:p-8">

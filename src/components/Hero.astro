@@ -48,13 +48,9 @@ const primaryLinks = links.filter((l) => l.icon !== 'email' && l.icon !== 'websi
 
     {
       personal.photo && (
-        <div class="no-print relative isolate shrink-0">
-          <span
-            class="absolute inset-0 -z-10 scale-110 rounded-[2rem] bg-brand/25 blur-2xl"
-            aria-hidden="true"
-          />
-          <div class="rounded-[1.75rem] bg-gradient-to-br from-brand/80 via-brand/30 to-transparent p-[2px] shadow-lg shadow-brand/10">
-            <div class="rounded-[1.6rem] bg-surface p-1.5">
+        <div class="no-print relative shrink-0">
+          <div class="rounded-full bg-gradient-to-br from-brand via-brand/40 to-transparent p-[2px] shadow-lg shadow-brand/10">
+            <div class="rounded-full bg-bg p-1">
               <img
                 src={personal.photo}
                 alt={`Portrait of ${personal.name}`}
@@ -62,16 +58,14 @@ const primaryLinks = links.filter((l) => l.icon !== 'email' && l.icon !== 'websi
                 height="360"
                 loading="eager"
                 decoding="async"
-                class="size-24 rounded-[1.2rem] object-cover sm:size-32 lg:size-40"
+                class="size-24 rounded-full object-cover sm:size-32 lg:size-44"
               />
             </div>
           </div>
           <span
-            class="absolute -right-1.5 -bottom-1.5 grid size-7 place-items-center rounded-full bg-bg shadow-sm ring-1 ring-border"
+            class="absolute right-1 bottom-1 size-3.5 rounded-full bg-emerald-500 ring-2 ring-bg sm:right-2 sm:bottom-2 sm:size-4"
             aria-hidden="true"
-          >
-            <span class="size-3.5 rounded-full bg-emerald-500" />
-          </span>
+          />
         </div>
       )
     }
