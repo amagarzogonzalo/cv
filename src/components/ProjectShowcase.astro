@@ -89,15 +89,6 @@ const ACCENTS = ['#6366f1', '#06b6d4', '#8b5cf6', '#10b981', '#f59e0b', '#f43f5e
           </div>
 
           <div class="proj-body flex flex-col gap-5 p-6 sm:p-8">
-            <div class="flex flex-wrap items-center gap-2">
-              <span class="inline-flex items-center rounded-full bg-brand-soft px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-brand">
-                {project.role}
-              </span>
-              <span class="font-mono text-[10px] uppercase tracking-wider text-fg-subtle">
-                {project.year}
-              </span>
-            </div>
-
             <div>
               <h3
                 id={`proj-${project.slug}-title`}
@@ -105,7 +96,15 @@ const ACCENTS = ['#6366f1', '#06b6d4', '#8b5cf6', '#10b981', '#f59e0b', '#f43f5e
               >
                 {project.name}
               </h3>
-              <p class="mt-1 text-sm text-fg-muted">{project.tagline}</p>
+              <div class="mt-2 flex flex-wrap items-center gap-2">
+                <span class="inline-flex items-center rounded-full bg-brand-soft px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-brand">
+                  {project.role}
+                </span>
+                <span class="font-mono text-[10px] uppercase tracking-wider text-fg-subtle">
+                  {project.year}
+                </span>
+              </div>
+              <p class="mt-2 text-sm text-fg-muted">{project.tagline}</p>
             </div>
 
             <ul class="space-y-2.5">

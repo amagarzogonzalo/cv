@@ -407,7 +407,7 @@ export const cv: Cv = {
       name: 'Research Agent Orchestration',
       shortName: 'Research',
       tagline: 'Knowledge Engine — a deep-research run, replayed offline',
-      role: 'Creator · Open source',
+      role: 'Creator & Maintainer',
       year: '2026',
       description:
         'A real Knowledge Engine deep-research run, replayed offline: the agent plans a question, fans out to 10 branch workers, reads 167 federated sources, keeps 20 evidence bodies and writes a seven-section article with six cited papers; the viewer exposes provenance behind every citation and the deterministic gate that decides whether the artifact can publish.',
@@ -427,7 +427,7 @@ export const cv: Cv = {
       name: 'GitHub Digest Agent',
       shortName: 'Digest',
       tagline: 'Autonomous multi-agent engineering report generator',
-      role: 'Creator · Open source',
+      role: 'Creator & Maintainer',
       year: '2025 — 2026',
       description:
         'A GitHub digest agent that reads repo history, deep-dives three merged PRs in parallel, runs a review committee and renders a colour-coded report; the viewer opens the real PDF, verbatim source diffs and the deterministic gate.',
@@ -484,7 +484,7 @@ export const cv: Cv = {
       name: 'Agentic Legal QA',
       shortName: 'Legal QA',
       tagline: 'Multi-agent LLM orchestration for legal question answering',
-      role: 'Thesis Project',
+      role: 'Researcher',
       year: '2024 — 2025',
       description:
         'A multi-agent legal QA system: PydanticAI orchestration across graph, relational and vector stores, combining Neo4j/Cypher retrieval with FAISS vector search and PEFT/LoRA/QLoRA fine-tuning.',
