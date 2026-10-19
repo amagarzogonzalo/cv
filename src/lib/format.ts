@@ -26,7 +26,8 @@ function monthsBetween(start: string, end: string): number | undefined {
   const e = /^(\d{4})-(\d{2})$/.exec(end);
   const endYear = e ? Number(e[1]) : now.getFullYear();
   const endMonth = e ? Number(e[2]) : now.getMonth() + 1;
-  return (endYear - Number(s[1])) * 12 + (endMonth - Number(s[2]));
+  // Inclusive month count: Jan–Dec is 12 months, not 11.
+  return (endYear - Number(s[1])) * 12 + (endMonth - Number(s[2])) + 1;
 }
 
 /** Human-readable duration, e.g. "2 yrs 1 mo" or "8 mos". */

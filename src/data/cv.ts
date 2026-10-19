@@ -405,7 +405,7 @@ export const cv: Cv = {
       highlights: [
         'Deep research means reading dozens of sources without losing provenance — and no artifact should publish without a deterministic check.',
         'LangGraph orchestrator fans out to 10 branch workers, reads 167 federated sources and keeps 20 evidence bodies, producing a seven-section article with six cited papers; the live eval ran at 54.7k tokens / 50 calls.',
-        'Article → Sources → Run views expose provenance for every citation and block publication unless a deterministic gate passes; 95% of wiki lookups are served with zero model calls.',
+        'Cuts model calls by 95% through zero-call wiki reuse and holds retrieval at p95 ≈ 11 ms with zero broken provenance links, while a deterministic gate blocks publication of any unverified artifact.',
       ],
     },
     {
@@ -425,7 +425,7 @@ export const cv: Cv = {
       highlights: [
         'Repository activity goes unreviewed — real diffs are never summarised into something a team actually reads.',
         'Reads repo history, deep-dives three merged PRs in parallel and runs a review committee on free model tiers; per-PR scores, 9.0/10 approval, UID and notification checks.',
-        'Ships a reviewed, colour-coded PDF every morning at zero running cost, with a verifier that opens every source patch and refuses to publish below the quality gate.',
+        'Runs unattended at zero model cost and ships a colour-coded PDF only after a review committee clears the quality gate, with every claim traceable to a source patch.',
       ],
     },
     {
