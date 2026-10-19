@@ -93,6 +93,10 @@ export interface Project {
   metric?: { value: string; label: string };
   url?: string;
   repo?: string;
+  /** Optional real screenshot/poster, replacing the generated artwork. */
+  image?: string;
+  /** Optional demo video (mp4) shown instead of a still image. */
+  video?: string;
   stack: string[];
   points: ProjectPoint[];
 }
@@ -204,7 +208,7 @@ export const cv: Cv = {
     {
       company: 'TNO · Netherlands Organisation for Applied Scientific Research',
       url: 'https://www.tno.nl',
-      role: 'AI Engineer — Data Science Department',
+      role: 'Applied AI Engineer — Data Science',
       location: 'The Hague, NL',
       start: '2025-10',
       end: 'Present',
@@ -381,6 +385,35 @@ export const cv: Cv = {
   ],
 
   projects: [
+    {
+      slug: 'digest-agent',
+      name: 'GitHub Digest Agent',
+      shortName: 'Digest',
+      tagline: 'Autonomous multi-agent engineering report generator',
+      role: 'Creator · Open source',
+      year: '2025 — 2026',
+      description:
+        'An open-source, scheduled agent that reads commits, pull requests and real diffs, deep-dives each PR with parallel sub-agents, self-reviews until it passes a quality bar and emails a colour-coded PDF.',
+      repo: 'https://github.com/amagarzogonzalo/digest-agent',
+      image: '/projects/digest-poster.jpg',
+      video: '/projects/digest-demo.mp4',
+      metric: { value: '44', label: 'tests passing' },
+      stack: ['LangGraph', 'Python', 'Docker', 'GitHub Actions'],
+      points: [
+        {
+          label: 'Challenge',
+          text: 'Turn raw repository activity into a useful daily engineering report.',
+        },
+        {
+          label: 'Built',
+          text: 'Parallel per-PR sub-agents with a review/refine committee, hexagonal architecture and per-agent model fallback.',
+        },
+        {
+          label: 'Impact',
+          text: 'Open source under MIT, CI-tested and running end to end on a daily schedule.',
+        },
+      ],
+    },
     {
       slug: 'crs-agentic-rag',
       name: 'CRS — Multi-retrieval Platform',

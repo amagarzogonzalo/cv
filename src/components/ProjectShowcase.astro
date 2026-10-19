@@ -30,15 +30,29 @@ const pad = (n: number) => String(n).padStart(2, '0');
           aria-label={`${project.name} — project ${i + 1} of ${count}`}
         >
           <div class="proj-media relative aspect-[16/10] w-full overflow-hidden bg-bg-subtle lg:aspect-auto lg:min-h-[27rem]">
-            <img
-              src={`/projects/${project.slug}.webp`}
-              alt=""
-              width="1200"
-              height="800"
-              loading={i === 0 ? 'eager' : 'lazy'}
-              decoding="async"
-              class="absolute inset-0 size-full object-cover"
-            />
+            {project.video ? (
+              <video
+                class="absolute inset-0 size-full object-cover"
+                src={project.video}
+                poster={project.image}
+                muted
+                loop
+                playsinline
+                controls
+                preload="metadata"
+                aria-label={`${project.name} demo`}
+              />
+            ) : (
+              <img
+                src={project.image ?? `/projects/${project.slug}.webp`}
+                alt=""
+                width="1200"
+                height="800"
+                loading={i === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+                class="absolute inset-0 size-full object-cover"
+              />
+            )}
             <span class="absolute left-5 top-5 rounded-md bg-black/35 px-2 py-1 font-mono text-[11px] tabular-nums text-white/85 backdrop-blur-sm">
               {pad(i + 1)} / {pad(count)}
             </span>
