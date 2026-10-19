@@ -24,6 +24,18 @@ const contactLinks = links.filter((l) => l.icon !== 'email' && l.icon !== 'websi
       </a>
 
       {
+        personal.phone && (
+          <a
+            href={`tel:${personal.phone.replace(/\s+/g, '')}`}
+            class="inline-flex items-center gap-2 rounded-xl border border-border bg-surface px-4 py-2.5 text-sm font-semibold text-fg transition hover:bg-bg-subtle"
+          >
+            <Icon name="phone" class="size-4" />
+            {personal.phone}
+          </a>
+        )
+      }
+
+      {
         contactLinks.map((link) => (
           <a
             href={link.url}

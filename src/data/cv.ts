@@ -183,12 +183,13 @@ export const cv: Cv = {
     remote: true,
     availability: 'AI Engineer · Data Science @ TNO',
     email: 'amagarzogonzalo@gmail.com',
+    phone: '+34 657 15 69 67',
     focus: ['Agentic systems', 'LLM orchestration', 'Data engineering', 'Evaluation'],
     photo: '/me.jpg',
   },
 
   summary: [
-    'Applied AI and data engineer with 3 years of experience building agentic systems, LLM orchestration and the data and evaluation infrastructure behind them. I ship tool-using agents, deep LLM evaluation and large-scale data pipelines across public sector, research and enterprise. M.Sc. Artificial Intelligence (thesis Cum Laude, Utrecht University) and a double degree in Computer Engineering and Business Administration.',
+    'Applied AI and data engineer with 3 years of experience building agentic systems, LLM orchestration and the data and evaluation infrastructure behind them. Technical lead on multi-retrieval and evaluation projects for public-sector and research clients, shipping tool-using agents, deep LLM evaluation and large-scale data pipelines. M.Sc. Artificial Intelligence (thesis Cum Laude, Utrecht University) and a double degree in Computer Engineering and Business Administration.',
   ],
 
   links: [
@@ -401,7 +402,7 @@ export const cv: Cv = {
       highlights: [
         'Repository activity goes unreviewed — real diffs are never summarised into something a team actually reads.',
         'Hexagonal core (ports & adapters) with LangGraph per-PR sub-agents running k-way in parallel, gated by a bounded review/refine committee (default 8.0, max 6 reviews).',
-        'Per-agent model fallback chain (Gemini → OpenRouter → Groq → Mistral); a daily GitHub Actions run emails a colour-coded PDF; 44 tests, MIT.',
+        'Runs daily in production on GitHub Actions — a colour-coded PDF in the inbox every morning; 44 tests green, MIT-licensed.',
       ],
     },
     {
@@ -419,7 +420,7 @@ export const cv: Cv = {
       highlights: [
         'Knowledge was fragmented across disconnected documents and systems, with no single retrieval path.',
         'Multi-retrieval RAG with tool-using agents and MCP integrations, plus an evaluation harness for retrieval and answer quality.',
-        'Deployed on Kubernetes; the pipeline was reused by 4+ internal projects and I became RAG tech lead.',
+        'Shipped on Kubernetes and adopted as the retrieval backbone of 4+ internal projects, which led to my RAG tech lead role.',
       ],
     },
     {
@@ -436,7 +437,7 @@ export const cv: Cv = {
       highlights: [
         'A European Digital Identity oracle had to be trusted before deployment, with no agreed way to measure retrieval quality or explainability.',
         'Designed the evaluation protocol and criteria; inspected grounding, answer attribution and failure modes.',
-        'Findings and recommendations delivered to the ministry and consultancy stakeholders.',
+        'Evaluation shaped the ministry assessment, with actionable recommendations delivered to ministry and consultancy stakeholders.',
       ],
     },
     {
@@ -453,7 +454,7 @@ export const cv: Cv = {
       highlights: [
         'Legal answers needed evidence from graph, relational and vector data that no single store could provide.',
         'Multi-agent PydanticAI orchestration with tool use and structured outputs; Neo4j/Cypher graph plus FAISS vectors; legal-domain embedding fine-tuning.',
-        'Trained with PEFT/LoRA/QLoRA and evaluated on legal QA; thesis graded Cum Laude.',
+        'Graded Cum Laude and led directly to a full-time role at TNO, where the orchestration patterns carried into production work.',
       ],
     },
     {
@@ -471,7 +472,7 @@ export const cv: Cv = {
       highlights: [
         'National LLM training workloads exceeded single-node capacity for data processing and model runs.',
         'Ran large-scale HPC workloads on Slurm clusters, with dataset validation before hand-off.',
-        'Processed corpora contributed to the national GPT-NL training pipeline.',
+        'Processed corpora helped supply the national GPT-NL training pipeline (gpt-nl.nl).',
       ],
     },
     {
@@ -489,7 +490,7 @@ export const cv: Cv = {
       highlights: [
         'The prior best chemistry LLM set the bar for molecular property prediction.',
         'LoRA/QLoRA fine-tuning improving both pre- and post-training; Azure App Service deployment with MLflow tracking across 40+ runs.',
-        'Beat the prior best by 6.3%; the work became PolyScout AI.',
+        'Beat the prior best by 6.3% across 40+ tracked runs and was spun out as PolyScout AI.',
       ],
     },
   ],

@@ -28,6 +28,7 @@ export function personSchema(cv: Cv) {
     description: cv.meta.description,
     jobTitle: cv.personal.role,
     email: `mailto:${cv.personal.email}`,
+    ...(cv.personal.phone ? { telephone: cv.personal.phone } : {}),
     knowsAbout: cv.skills.flatMap((group) => group.items).slice(0, 20),
     address: {
       '@type': 'PostalAddress',

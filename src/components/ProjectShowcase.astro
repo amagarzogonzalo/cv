@@ -79,15 +79,26 @@ const pad = (n: number) => String(n).padStart(2, '0');
             </div>
 
             <ul class="space-y-2.5">
-              {project.highlights.map((highlight) => (
-                <li class="flex gap-2.5 text-sm leading-relaxed text-fg-muted">
-                  <span
-                    class="mt-[7px] size-1.5 shrink-0 rounded-full bg-brand"
-                    aria-hidden="true"
-                  />
-                  <span>{highlight}</span>
-                </li>
-              ))}
+              {project.highlights.map((highlight, hi) => {
+                const isImpact = hi === project.highlights.length - 1;
+                return (
+                  <li
+                    class:list={[
+                      'flex gap-2.5 text-sm leading-relaxed',
+                      isImpact ? 'font-medium text-brand' : 'text-fg-muted',
+                    ]}
+                  >
+                    <span
+                      class:list={[
+                        'mt-[7px] size-1.5 shrink-0 rounded-full',
+                        isImpact ? 'bg-brand' : 'bg-fg-subtle/40',
+                      ]}
+                      aria-hidden="true"
+                    />
+                    <span>{highlight}</span>
+                  </li>
+                );
+              })}
             </ul>
 
             <div class="flex flex-wrap items-center gap-2">
