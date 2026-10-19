@@ -73,7 +73,7 @@ function companyTenure(roles: ExperienceItem[]): { start: string; end: string } 
               {group.roles.map((job) => {
                 const jobSpan = duration(job.start, job.end);
                 return (
-                  <li class="grid gap-2 sm:grid-cols-[9.5rem_1fr] sm:gap-8">
+                  <li class="grid grid-cols-1 gap-2 sm:grid-cols-[9.5rem_1fr] sm:gap-8">
                     <div class="font-mono text-xs leading-relaxed text-fg-subtle">
                       <span class="block tabular-nums">{formatRange(job.start, job.end)}</span>
                       {jobSpan && <span class="block text-fg-subtle/70">{jobSpan}</span>}

@@ -29,7 +29,7 @@ const primaryLinks = links.filter((l) => l.icon !== 'email' && l.icon !== 'websi
       <p class="mt-4 max-w-2xl text-lg text-fg-muted">{personal.tagline}</p>
 
       <div
-        class="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1.5 font-mono text-xs text-fg-subtle"
+        class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-xs text-fg-subtle"
       >
         <span class="inline-flex items-center gap-1.5">
           <Icon name="location" class="size-4" />
@@ -37,24 +37,21 @@ const primaryLinks = links.filter((l) => l.icon !== 'email' && l.icon !== 'websi
         </span>
         {
           personal.remote && (
-            <>
-              <span aria-hidden="true">·</span>
-              <span>Open to remote</span>
-            </>
+            <span class="inline-flex items-center gap-1.5">
+              <Icon name="website" class="size-4" />
+              Open to remote
+            </span>
           )
         }
         {
           personal.phone && (
-            <>
-              <span aria-hidden="true">·</span>
-              <a
-                href={`tel:${personal.phone.replace(/\s+/g, '')}`}
-                class="inline-flex items-center gap-1.5 transition hover:text-fg"
-              >
-                <Icon name="phone" class="size-4" />
-                {personal.phone}
-              </a>
-            </>
+            <a
+              href={`tel:${personal.phone.replace(/\s+/g, '')}`}
+              class="inline-flex items-center gap-1.5 transition hover:text-fg"
+            >
+              <Icon name="phone" class="size-4" />
+              {personal.phone}
+            </a>
           )
         }
       </div>

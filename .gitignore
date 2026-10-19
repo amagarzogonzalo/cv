@@ -38,3 +38,6 @@ docs/
 
 # Local CV overrides that must never be committed (private details).
 src/data/cv.local.ts
+
+# Local audit screenshots
+.tmp/

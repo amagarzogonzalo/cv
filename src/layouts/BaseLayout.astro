@@ -97,14 +97,15 @@ const jsonLd = JSON.stringify(graph(cv));
       Skip to content
     </a>
 
-    <header class="no-print sticky top-0 z-40 border-b border-border/70 bg-bg/80 backdrop-blur">
+    <header class="no-print sticky top-0 z-40 border-b border-border/70 bg-bg/95 backdrop-blur">
       <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-5 py-3">
         <a
           href="/"
           class="min-w-0 truncate text-sm font-semibold tracking-tight sm:text-base"
           aria-label={`${cv.personal.name} — home`}
         >
-          {cv.personal.name}
+          <span class="sm:hidden">{cv.personal.alternateName ?? cv.personal.name}</span>
+          <span class="hidden sm:inline">{cv.personal.name}</span>
         </a>
         <nav aria-label="Primary" class="flex shrink-0 items-center gap-1 text-sm">
           <a

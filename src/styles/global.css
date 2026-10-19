@@ -70,6 +70,8 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    /* Prevent long words (emails, URLs, scaled-up text) from escaping boxes. */
+    overflow-wrap: break-word;
   }
 
   :focus-visible {

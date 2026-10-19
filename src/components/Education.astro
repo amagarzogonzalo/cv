@@ -17,7 +17,7 @@ const LEVELS = [1, 2, 3, 4, 5, 6];
   <ol class="divide-y divide-border">
     {
       education.map((edu) => (
-        <li class="grid gap-3 py-6 first:pt-0 last:pb-0 sm:grid-cols-[9.5rem_1fr] sm:gap-8">
+        <li class="grid grid-cols-1 gap-3 py-6 first:pt-0 last:pb-0 sm:grid-cols-[9.5rem_1fr] sm:gap-8">
           <div class="font-mono text-xs leading-relaxed text-fg-subtle">
             <span class="block tabular-nums">{formatRange(edu.start, edu.end)}</span>
             {edu.location && <span class="mt-1 block">{edu.location}</span>}
@@ -66,7 +66,7 @@ const LEVELS = [1, 2, 3, 4, 5, 6];
     }
   </ol>
 
-  <div class="mt-10 grid gap-x-14 gap-y-10 border-t border-border pt-8 lg:grid-cols-2">
+  <div class="mt-10 grid grid-cols-1 gap-x-14 gap-y-10 border-t border-border pt-8 lg:grid-cols-2">
     <div>
       <h3 class="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-fg-subtle">
         <Icon name="award" class="size-4 shrink-0 text-brand" />
@@ -99,9 +99,14 @@ const LEVELS = [1, 2, 3, 4, 5, 6];
       <ul class="mt-4 space-y-4">
         {
           languages.map((lang) => (
-            <li class="flex items-center gap-4">
-              <span class="w-24 shrink-0 text-sm font-medium text-fg">{lang.name}</span>
-              <span class="flex min-w-0 flex-1 gap-1" aria-hidden="true">
+            <li class="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+              <div class="flex items-center justify-between gap-3 sm:contents">
+                <span class="text-sm font-medium text-fg sm:w-24 sm:shrink-0">{lang.name}</span>
+                <span class="font-mono text-[10px] leading-tight text-fg-subtle sm:order-3 sm:w-24 sm:shrink-0 sm:text-right sm:text-[11px]">
+                  {lang.level}
+                </span>
+              </div>
+              <span class="flex gap-1 sm:order-2 sm:min-w-0 sm:flex-1" aria-hidden="true">
                 {LEVELS.map((step) => (
                   <span
                     class:list={[
@@ -110,9 +115,6 @@ const LEVELS = [1, 2, 3, 4, 5, 6];
                     ]}
                   />
                 ))}
-              </span>
-              <span class="w-28 shrink-0 text-right font-mono text-[10px] leading-tight text-fg-subtle sm:text-[11px]">
-                {lang.level}
               </span>
             </li>
           ))
