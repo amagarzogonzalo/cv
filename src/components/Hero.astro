@@ -48,25 +48,15 @@ const primaryLinks = links.filter((l) => l.icon !== 'email' && l.icon !== 'websi
 
     {
       personal.photo && (
-        <div class="no-print relative shrink-0">
-          <div class="rounded-full bg-gradient-to-br from-brand via-brand/40 to-transparent p-[2px] shadow-lg shadow-brand/10">
-            <div class="rounded-full bg-bg p-1">
-              <img
-                src={personal.photo}
-                alt={`Portrait of ${personal.name}`}
-                width="360"
-                height="360"
-                loading="eager"
-                decoding="async"
-                class="size-24 rounded-full object-cover sm:size-32 lg:size-44"
-              />
-            </div>
-          </div>
-          <span
-            class="absolute right-1 bottom-1 size-3.5 rounded-full bg-emerald-500 ring-2 ring-bg sm:right-2 sm:bottom-2 sm:size-4"
-            aria-hidden="true"
-          />
-        </div>
+        <img
+          src={personal.photo}
+          alt={`Portrait of ${personal.name}`}
+          width="360"
+          height="360"
+          loading="eager"
+          decoding="async"
+          class="no-print size-28 shrink-0 rounded-full border-4 border-bg object-cover shadow-xl ring-1 ring-border sm:size-36 lg:size-44"
+        />
       )
     }
   </div>
