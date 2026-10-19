@@ -54,18 +54,17 @@ export interface ExperienceItem {
   start: string;
   /** e.g. "2024-11" or "Present". */
   end: string;
-  domain: string;
-  /** Short note, e.g. "Cum Laude · full-time offer". */
+  /** Short note, e.g. "Thesis Cum Laude · full-time offer". */
   note?: string;
   /** One-line context for the role. */
   summary: string;
-  stack: string[];
   highlights: string[];
   /** Optional links related to this role (project sites, reports). */
   links?: { label: string; url: string }[];
 }
 
-export type SkillIcon = 'brain' | 'model' | 'server' | 'code' | 'layers' | 'database' | 'users';
+export type SkillIcon =
+  'brain' | 'model' | 'server' | 'code' | 'layers' | 'database' | 'users' | 'target';
 
 export interface SkillGroup {
   category: string;
@@ -152,7 +151,7 @@ export const cv: Cv = {
   meta: {
     title: 'Alejandro Magarzo Gonzalo — Applied AI & Data Engineer',
     description:
-      'Applied AI and data engineer with 3 years of experience in retrieval, agentic AI, data pipelines and evaluation. M.Sc. Artificial Intelligence, Utrecht University (thesis Cum Laude).',
+      'Applied AI and data engineer with 3 years of experience building agentic systems, data pipelines and deep LLM evaluation. M.Sc. Artificial Intelligence, Utrecht University (thesis Cum Laude).',
     keywords: [
       'Alejandro Magarzo Gonzalo',
       'AI Engineer',
@@ -178,17 +177,16 @@ export const cv: Cv = {
     name: 'Alejandro Magarzo Gonzalo',
     alternateName: 'Alejandro Magarzo',
     role: 'Applied AI & Data Engineer',
-    tagline:
-      'I build retrieval and agentic AI systems — and the data pipelines and evaluation behind them.',
+    tagline: 'I build agentic AI systems — and the data pipelines and evaluation behind them.',
     location: 'Netherlands',
     remote: true,
     availability: 'AI Engineer · Data Science @ TNO',
     email: 'amagarzogonzalo@gmail.com',
-    focus: ['Applied AI', 'RAG & agents', 'Data engineering', 'LLM evaluation'],
+    focus: ['Agentic systems', 'Applied AI', 'Data engineering', 'Evaluation'],
   },
 
   summary: [
-    'Applied AI and data engineer with 3 years of experience across research, public sector and enterprise. I take retrieval and agentic systems from prototype to production, and build the data pipelines and evaluation that keep them reliable. M.Sc. Artificial Intelligence (thesis Cum Laude, Utrecht University) and a double degree in Computer Engineering and Business Administration.',
+    'Applied AI and data engineer with 3 years of experience building agentic systems and the data and evaluation infrastructure behind them. I ship tool-using agents, deep LLM evaluation and large-scale data pipelines across public sector, research and enterprise. M.Sc. Artificial Intelligence (thesis Cum Laude, Utrecht University) and a double degree in Computer Engineering and Business Administration.',
   ],
 
   links: [
@@ -210,9 +208,7 @@ export const cv: Cv = {
       location: 'The Hague, NL',
       start: '2025-11',
       end: 'Present',
-      domain: 'Applied AI',
       summary: 'Applied AI and data engineering for research, public sector and EU consortia.',
-      stack: ['Python', 'PyTorch', 'RAG', 'Kubernetes', 'Azure', 'MLflow', 'Docker'],
       highlights: [
         'CRS — technical lead for a multi-retrieval platform supporting an international research organisation; the RAG pipeline was reused by 4+ internal projects, and I later became RAG tech lead.',
         'EUDI Oracle — technical evaluation lead for the European Digital Identity Oracle, commissioned by the Dutch Ministry of the Interior, assessing retrieval quality, explainability and trustworthiness.',
@@ -233,10 +229,8 @@ export const cv: Cv = {
       location: 'The Hague, NL',
       start: '2024-12',
       end: '2025-09',
-      domain: 'Legal AI',
       note: 'Thesis Cum Laude · full-time offer',
       summary: 'Hybrid retrieval research that became a production NLP stack.',
-      stack: ['Neo4j', 'Cypher', 'FAISS', 'Qdrant', 'PEFT', 'HPC/Slurm'],
       highlights: [
         'Hybrid RAG — legal QA combining Neo4j/Cypher knowledge-graph retrieval with FAISS/Qdrant vector search.',
         'Data engineering for GPT-NL — ETL pipelines processing Rechtspraak case law at scale, contributed to GPT-NL.',
@@ -250,14 +244,13 @@ export const cv: Cv = {
       location: 'Madrid, ES',
       start: '2024-01',
       end: '2024-12',
-      domain: 'Enterprise AI',
       note: 'Pre-commercial stage',
-      summary: 'Document intelligence that unblocked enterprise AI pipelines.',
-      stack: ['Python', 'OCR', 'DDD', 'Docker', 'Genetic algorithms'],
+      summary: 'Built the seed of Contextual Docs, a document-intelligence product.',
       highlights: [
-        'Document Intelligence — OCR and structure-extraction for contracts, invoices and technical reports (ZeroX), unblocking enterprise AI pipelines.',
+        'Contextual Docs — created the seed of the product (contextualdocs.com): OCR and structure extraction for contracts, invoices and technical reports (ZeroX), turning a parsing bottleneck into an automated document pipeline.',
         'Architecture — DDD and Hexagonal Architecture plus genetic algorithms for automated routing; the codebase became the foundation of a spin-off.',
       ],
+      links: [{ label: 'Contextual Docs', url: 'https://www.contextualdocs.com' }],
     },
     {
       company: 'Intersport International Group',
@@ -266,9 +259,7 @@ export const cv: Cv = {
       location: 'Amsterdam, NL',
       start: '2024-07',
       end: '2024-12',
-      domain: 'Retail',
       summary: 'CRM analytics and generative-AI exploration for a global retailer.',
-      stack: ['Python', 'CRM Analytics', 'Generative AI'],
       highlights: [
         'CRM Data Analysis — analysed engagement data to surface behavioural patterns and inform decisions across international teams.',
         'Generative AI Exploration — prototyped SEO-optimised product descriptions from structured retail data, shared with Denmark and Switzerland.',
@@ -278,52 +269,103 @@ export const cv: Cv = {
 
   skills: [
     {
-      category: 'AI & System Design',
+      category: 'Agents & LLM Systems',
       icon: 'brain',
-      items: ['RAG', 'GraphRAG', 'Agentic AI', 'MCP', 'LLM Evaluation', 'Knowledge Graphs'],
+      items: [
+        'Agentic workflows',
+        'Multi-agent orchestration',
+        'Tool use & function calling',
+        'MCP',
+        'RAG pipelines',
+        'GraphRAG',
+        'Knowledge graphs',
+        'Prompt engineering',
+        'Structured outputs',
+      ],
     },
     {
-      category: 'LLM & ML Stack',
-      icon: 'model',
-      items: ['Fine-Tuning', 'LoRA/QLoRA', 'Pre-training', 'PyTorch', 'NLP', 'VLMs'],
+      category: 'Evaluation & Quality',
+      icon: 'target',
+      items: [
+        'LLM-as-judge',
+        'DeepEval',
+        'RAGAS',
+        'Golden datasets',
+        'Retrieval metrics (recall@k, nDCG)',
+        'Regression gates',
+        'Hallucination analysis',
+      ],
     },
     {
-      category: 'Frameworks',
+      category: 'Frameworks & Tooling',
       icon: 'layers',
       items: [
-        'HuggingFace',
         'LangGraph',
         'LangChain',
         'PydanticAI',
         'LiteLLM',
         'OpenAI Agents SDK',
+        'Hugging Face',
       ],
     },
     {
-      category: 'Data & Infrastructure',
+      category: 'Model Development',
+      icon: 'model',
+      items: [
+        'Fine-tuning (SFT, DPO, RLHF)',
+        'LoRA / QLoRA',
+        'PEFT',
+        'Pre-training',
+        'Quantization',
+        'PyTorch',
+        'Optuna',
+      ],
+    },
+    {
+      category: 'Data Engineering',
+      icon: 'database',
+      items: [
+        'ETL / ELT pipelines',
+        'Large-scale text corpora',
+        'Data cleaning & processing',
+        'HPC / Slurm',
+        'Neo4j (Cypher)',
+        'Qdrant',
+        'FAISS',
+        'MongoDB',
+        'PostgreSQL',
+      ],
+    },
+    {
+      category: 'MLOps & Infrastructure',
       icon: 'server',
       items: [
-        'ETL pipelines',
-        'HPC / Slurm',
         'Kubernetes',
         'Docker',
-        'Azure',
+        'Azure App Service',
         'MLflow',
         'GitLab CI/CD',
+        'vLLM',
+        'TensorRT-LLM',
+        'Triton',
       ],
-    },
-    {
-      category: 'Databases',
-      icon: 'database',
-      items: ['Neo4j (Cypher)', 'Qdrant', 'FAISS', 'MongoDB', 'PostgreSQL'],
     },
     {
       category: 'Programming',
       icon: 'code',
-      items: ['Python', 'SQL', 'JavaScript', 'Node.js', 'React', 'Bash', 'C++', 'R'],
+      items: [
+        'Python (Pydantic, FastAPI)',
+        'SQL',
+        'TypeScript / JavaScript',
+        'Node.js',
+        'React',
+        'Bash',
+        'C++',
+        'R',
+      ],
     },
     {
-      category: 'Leadership & collaboration',
+      category: 'Leadership & delivery',
       icon: 'users',
       items: [
         'Technical leadership',

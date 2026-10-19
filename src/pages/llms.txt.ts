@@ -12,10 +12,7 @@ export const GET: APIRoute = () => {
   const { personal, summary } = cv;
 
   const experience = cv.experience
-    .map(
-      (job) =>
-        `- ${job.role} at ${job.company} (${formatRange(job.start, job.end)}) — ${job.domain}`,
-    )
+    .map((job) => `- ${job.role} at ${job.company} (${formatRange(job.start, job.end)})`)
     .join('\n');
 
   const skills = cv.skills

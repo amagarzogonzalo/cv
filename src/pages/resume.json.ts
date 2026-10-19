@@ -39,9 +39,8 @@ export const GET: APIRoute = () => {
       location: job.location,
       startDate: job.start,
       endDate: job.end === 'Present' ? '' : job.end,
-      summary: `${job.domain}. ${job.highlights.join(' ')}`,
+      summary: job.highlights.join(' '),
       highlights: job.highlights,
-      technologies: job.stack,
     })),
     skills: cv.skills.map((group) => ({
       name: group.category,
