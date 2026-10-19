@@ -35,6 +35,8 @@ export interface Personal {
   phone?: string;
   /** Short focus areas shown as tags under the hero. */
   focus: string[];
+  /** Portrait shown in the hero (web only; hidden in print). */
+  photo?: string;
 }
 
 export type SocialIcon = 'github' | 'linkedin' | 'email' | 'x' | 'website' | 'phone' | 'location';
@@ -182,6 +184,7 @@ export const cv: Cv = {
     availability: 'AI Engineer · Data Science @ TNO',
     email: 'amagarzogonzalo@gmail.com',
     focus: ['Agentic systems', 'LLM orchestration', 'Data engineering', 'Evaluation'],
+    photo: '/me.jpg',
   },
 
   summary: [
@@ -211,8 +214,8 @@ export const cv: Cv = {
       highlights: [
         'CRS — technical lead for a multi-retrieval platform supporting an international research organisation; deployed on Kubernetes and reused by 4+ internal projects, later becoming RAG tech lead.',
         'EUDI Oracle — technical evaluation lead for the European Digital Identity Oracle, commissioned by the Dutch Ministry of the Interior and Kingdom Relations (BZK), assessing retrieval quality, explainability and trustworthiness.',
-        'GPT-NL — built ETL pipelines processing Rechtspraak case law at scale and contributed processed datasets to the national GPT-NL initiative.',
-        'TrustLLM — designed the EU synthetic-data assessment framework around fidelity, diversity and usefulness; ran evaluation workloads on HPC clusters with Slurm.',
+        'GPT-NL — ran large-scale data and model workloads on HPC clusters with Slurm, contributing processed corpora to the national GPT-NL initiative.',
+        'TrustLLM — designed the EU synthetic-data assessment framework around fidelity, diversity and usefulness.',
         'PolyScout — deployed models on Azure App Service with MLflow tracking and improved pre- and post-training for chemical property prediction (+6.3% across 40+ runs); the work became PolyScout AI.',
       ],
       links: [
@@ -235,6 +238,7 @@ export const cv: Cv = {
       highlights: [
         'LLM orchestration — built multi-agent PydanticAI workflows with tool use and structured outputs, routing queries across graph, relational and vector stores.',
         'Hybrid RAG — designed legal QA combining Neo4j/Cypher knowledge-graph retrieval with FAISS vector search.',
+        'Data engineering — ETL over Rechtspraak case law: parsing, normalisation and deduplication for training data.',
         'Fine-tuning — PEFT, LoRA and QLoRA pipelines for legal-domain models.',
       ],
     },
@@ -395,9 +399,9 @@ export const cv: Cv = {
       metric: { value: '44', label: 'tests passing' },
       stack: ['LangGraph', 'Python', 'Docker', 'GitHub Actions'],
       highlights: [
-        'Hexagonal core (ports & adapters) with LangGraph per-PR sub-agents running k-way in parallel over real diffs.',
-        'Bounded review/refine committee gated on a numeric quality threshold (default 8.0, max 6 reviews); deterministic snapshot tests.',
-        'Per-agent model fallback chain (Gemini → OpenRouter → Groq → Mistral); colour-coded ReportLab PDF; 44 tests; daily GitHub Actions cron.',
+        'Repository activity goes unreviewed — real diffs are never summarised into something a team actually reads.',
+        'Hexagonal core (ports & adapters) with LangGraph per-PR sub-agents running k-way in parallel, gated by a bounded review/refine committee (default 8.0, max 6 reviews).',
+        'Per-agent model fallback chain (Gemini → OpenRouter → Groq → Mistral); a daily GitHub Actions run emails a colour-coded PDF; 44 tests, MIT.',
       ],
     },
     {
@@ -413,9 +417,9 @@ export const cv: Cv = {
       metric: { value: '4+', label: 'internal reuses' },
       stack: ['Agentic RAG', 'MCP', 'LLM Evaluation', 'Azure'],
       highlights: [
-        'Multi-retrieval RAG over heterogeneous knowledge sources, with tool-using agents and MCP integrations.',
-        'Retrieval and answer-quality evaluation harness; API contracts and integration patterns for downstream teams.',
-        'Deployed on Kubernetes; the retrieval pipeline was reused by 4+ internal projects and I later became RAG tech lead.',
+        'Knowledge was fragmented across disconnected documents and systems, with no single retrieval path.',
+        'Multi-retrieval RAG with tool-using agents and MCP integrations, plus an evaluation harness for retrieval and answer quality.',
+        'Deployed on Kubernetes; the pipeline was reused by 4+ internal projects and I became RAG tech lead.',
       ],
     },
     {
@@ -430,9 +434,9 @@ export const cv: Cv = {
       url: 'https://eudi-wallet-oracle.nl',
       stack: ['RAG', 'Evaluation', 'Explainability', 'Public sector'],
       highlights: [
-        'Technical evaluation of retrieval quality, explainability and trustworthiness for the European Digital Identity Oracle.',
-        'Evaluation protocol and criteria design; inspection of grounding, answer attribution and failure modes.',
-        'Findings and recommendations delivered to ministry and consultancy stakeholders.',
+        'A European Digital Identity oracle had to be trusted before deployment, with no agreed way to measure retrieval quality or explainability.',
+        'Designed the evaluation protocol and criteria; inspected grounding, answer attribution and failure modes.',
+        'Findings and recommendations delivered to the ministry and consultancy stakeholders.',
       ],
     },
     {
@@ -447,9 +451,9 @@ export const cv: Cv = {
       metric: { value: '3', label: 'data stores unified' },
       stack: ['PydanticAI', 'Neo4j', 'Cypher', 'FAISS', 'LoRA'],
       highlights: [
-        'Multi-agent PydanticAI orchestration with tool use and structured outputs across graph, relational and vector stores.',
-        'Hybrid retrieval: Neo4j/Cypher knowledge graph plus FAISS dense vectors; legal-domain embedding fine-tuning.',
-        'PEFT/LoRA/QLoRA training pipelines with retrieval and answer evaluation; thesis graded Cum Laude.',
+        'Legal answers needed evidence from graph, relational and vector data that no single store could provide.',
+        'Multi-agent PydanticAI orchestration with tool use and structured outputs; Neo4j/Cypher graph plus FAISS vectors; legal-domain embedding fine-tuning.',
+        'Trained with PEFT/LoRA/QLoRA and evaluated on legal QA; thesis graded Cum Laude.',
       ],
     },
     {
@@ -465,9 +469,9 @@ export const cv: Cv = {
       metric: { value: 'At scale', label: 'case-law ETL' },
       stack: ['Python', 'ETL', 'NLP', 'Data pipelines'],
       highlights: [
-        'ETL over Rechtspraak case law at scale: parsing, normalisation and deduplication for LLM training data.',
-        'Batch processing on HPC clusters with Slurm; dataset validation before hand-off.',
-        'Processed corpora contributed to the national GPT-NL initiative.',
+        'National LLM training workloads exceeded single-node capacity for data processing and model runs.',
+        'Ran large-scale HPC workloads on Slurm clusters, with dataset validation before hand-off.',
+        'Processed corpora contributed to the national GPT-NL training pipeline.',
       ],
     },
     {
@@ -483,9 +487,9 @@ export const cv: Cv = {
       metric: { value: '+6.3%', label: 'over prior best' },
       stack: ['LoRA/QLoRA', 'PyTorch', 'MLflow', 'Azure'],
       highlights: [
-        'LoRA/QLoRA fine-tuning for a chemistry-specialised LLM, improving pre- and post-training for property prediction.',
-        'Azure App Service deployment with MLflow experiment tracking across 40+ runs.',
-        '+6.3% over the prior best benchmark; the work became PolyScout AI.',
+        'The prior best chemistry LLM set the bar for molecular property prediction.',
+        'LoRA/QLoRA fine-tuning improving both pre- and post-training; Azure App Service deployment with MLflow tracking across 40+ runs.',
+        'Beat the prior best by 6.3%; the work became PolyScout AI.',
       ],
     },
   ],
