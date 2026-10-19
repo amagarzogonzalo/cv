@@ -72,12 +72,6 @@ export interface SkillGroup {
   items: string[];
 }
 
-export interface ProjectPoint {
-  /** Short mono label, e.g. "Challenge". */
-  label: string;
-  text: string;
-}
-
 export interface Project {
   /** URL-safe id used for the generated artwork route. */
   slug: string;
@@ -98,7 +92,8 @@ export interface Project {
   /** Optional demo video (mp4) shown instead of a still image. */
   video?: string;
   stack: string[];
-  points: ProjectPoint[];
+  /** Dense, technical statements — no labels, the reader infers. */
+  highlights: string[];
 }
 
 export interface EducationItem {
@@ -208,7 +203,7 @@ export const cv: Cv = {
     {
       company: 'TNO · Netherlands Organisation for Applied Scientific Research',
       url: 'https://www.tno.nl',
-      role: 'Applied AI & Data Engineer — Data Science',
+      role: 'Applied AI & Data Engineer',
       location: 'The Hague, NL',
       start: '2025-10',
       end: 'Present',
@@ -399,19 +394,10 @@ export const cv: Cv = {
       video: '/projects/digest-demo.mp4',
       metric: { value: '44', label: 'tests passing' },
       stack: ['LangGraph', 'Python', 'Docker', 'GitHub Actions'],
-      points: [
-        {
-          label: 'Challenge',
-          text: 'Turn raw repository activity into a useful daily engineering report.',
-        },
-        {
-          label: 'Built',
-          text: 'Parallel per-PR sub-agents with a review/refine committee, hexagonal architecture and per-agent model fallback.',
-        },
-        {
-          label: 'Impact',
-          text: 'Open source under MIT, CI-tested and running end to end on a daily schedule.',
-        },
+      highlights: [
+        'Hexagonal core (ports & adapters) with LangGraph per-PR sub-agents running k-way in parallel over real diffs.',
+        'Bounded review/refine committee gated on a numeric quality threshold (default 8.0, max 6 reviews); deterministic snapshot tests.',
+        'Per-agent model fallback chain (Gemini → OpenRouter → Groq → Mistral); colour-coded ReportLab PDF; 44 tests; daily GitHub Actions cron.',
       ],
     },
     {
@@ -426,13 +412,10 @@ export const cv: Cv = {
       url: 'https://crships.org',
       metric: { value: '4+', label: 'internal reuses' },
       stack: ['Agentic RAG', 'MCP', 'LLM Evaluation', 'Azure'],
-      points: [
-        { label: 'Challenge', text: 'Knowledge spread across disconnected documents and systems.' },
-        {
-          label: 'Built',
-          text: 'Multi-retrieval platform with tool-using agents and an eval harness.',
-        },
-        { label: 'Impact', text: 'Reused by 4+ internal projects; I later became RAG tech lead.' },
+      highlights: [
+        'Multi-retrieval RAG over heterogeneous knowledge sources, with tool-using agents and MCP integrations.',
+        'Retrieval and answer-quality evaluation harness; API contracts and integration patterns for downstream teams.',
+        'Deployed on Kubernetes; the retrieval pipeline was reused by 4+ internal projects and I later became RAG tech lead.',
       ],
     },
     {
@@ -446,13 +429,10 @@ export const cv: Cv = {
         'Technical evaluation of the European Digital Identity Oracle for the Dutch Ministry of the Interior and Kingdom Relations (BZK), focused on retrieval quality, explainability and trustworthiness.',
       url: 'https://eudi-wallet-oracle.nl',
       stack: ['RAG', 'Evaluation', 'Explainability', 'Public sector'],
-      points: [
-        { label: 'Challenge', text: 'Assess an identity oracle for retrieval quality and trust.' },
-        {
-          label: 'Built',
-          text: 'Evaluation approach across quality, explainability and trustworthiness.',
-        },
-        { label: 'Impact', text: 'Actionable recommendations delivered to ministry stakeholders.' },
+      highlights: [
+        'Technical evaluation of retrieval quality, explainability and trustworthiness for the European Digital Identity Oracle.',
+        'Evaluation protocol and criteria design; inspection of grounding, answer attribution and failure modes.',
+        'Findings and recommendations delivered to ministry and consultancy stakeholders.',
       ],
     },
     {
@@ -466,13 +446,10 @@ export const cv: Cv = {
         'A multi-agent legal QA system: PydanticAI orchestration across graph, relational and vector stores, combining Neo4j/Cypher retrieval with FAISS vector search and PEFT/LoRA/QLoRA fine-tuning.',
       metric: { value: '3', label: 'data stores unified' },
       stack: ['PydanticAI', 'Neo4j', 'Cypher', 'FAISS', 'LoRA'],
-      points: [
-        { label: 'Challenge', text: 'Legal answers required graph, relational and vector data.' },
-        {
-          label: 'Built',
-          text: 'Multi-agent PydanticAI orchestration over Neo4j and FAISS with tool use.',
-        },
-        { label: 'Impact', text: 'Grounded answers with evidence; thesis graded Cum Laude.' },
+      highlights: [
+        'Multi-agent PydanticAI orchestration with tool use and structured outputs across graph, relational and vector stores.',
+        'Hybrid retrieval: Neo4j/Cypher knowledge graph plus FAISS dense vectors; legal-domain embedding fine-tuning.',
+        'PEFT/LoRA/QLoRA training pipelines with retrieval and answer evaluation; thesis graded Cum Laude.',
       ],
     },
     {
@@ -487,10 +464,10 @@ export const cv: Cv = {
       url: 'https://gpt-nl.nl',
       metric: { value: 'At scale', label: 'case-law ETL' },
       stack: ['Python', 'ETL', 'NLP', 'Data pipelines'],
-      points: [
-        { label: 'Challenge', text: 'National LLM training needed clean, large-scale legal data.' },
-        { label: 'Built', text: 'ETL pipelines to process Rechtspraak case law at scale.' },
-        { label: 'Impact', text: 'Processed datasets contributed to the GPT-NL initiative.' },
+      highlights: [
+        'ETL over Rechtspraak case law at scale: parsing, normalisation and deduplication for LLM training data.',
+        'Batch processing on HPC clusters with Slurm; dataset validation before hand-off.',
+        'Processed corpora contributed to the national GPT-NL initiative.',
       ],
     },
     {
@@ -505,10 +482,10 @@ export const cv: Cv = {
       url: 'https://www.polyscout.ai',
       metric: { value: '+6.3%', label: 'over prior best' },
       stack: ['LoRA/QLoRA', 'PyTorch', 'MLflow', 'Azure'],
-      points: [
-        { label: 'Challenge', text: 'Beat the prior best baseline for a chemistry LLM.' },
-        { label: 'Built', text: 'Azure deployment workflows with MLflow-tracked experiments.' },
-        { label: 'Impact', text: '+6.3% over the previous best; now spun out as PolyScout AI.' },
+      highlights: [
+        'LoRA/QLoRA fine-tuning for a chemistry-specialised LLM, improving pre- and post-training for property prediction.',
+        'Azure App Service deployment with MLflow experiment tracking across 40+ runs.',
+        '+6.3% over the prior best benchmark; the work became PolyScout AI.',
       ],
     },
   ],

@@ -50,7 +50,7 @@ export const GET: APIRoute = () => {
       name: project.name,
       description: project.description,
       url: project.url ?? project.repo ?? '',
-      highlights: project.points.map((point) => `${point.label}: ${point.text}`),
+      highlights: project.highlights,
       keywords: project.stack,
     })),
     education: cv.education.map((edu) => ({

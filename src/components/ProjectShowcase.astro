@@ -78,36 +78,17 @@ const pad = (n: number) => String(n).padStart(2, '0');
               <p class="mt-1 text-sm text-fg-muted">{project.tagline}</p>
             </div>
 
-            <dl class="space-y-2.5">
-              {project.points.map((point) => {
-                const isImpact = point.label.toLowerCase() === 'impact';
-                return (
-                  <div
-                    class:list={[
-                      'grid grid-cols-[4.75rem_1fr] gap-3 rounded-lg',
-                      isImpact ? 'bg-brand-soft px-3 py-2' : '',
-                    ]}
-                  >
-                    <dt
-                      class:list={[
-                        'pt-px font-mono text-[11px] uppercase tracking-wider',
-                        isImpact ? 'text-brand' : 'text-fg-subtle',
-                      ]}
-                    >
-                      {point.label}
-                    </dt>
-                    <dd
-                      class:list={[
-                        'text-sm leading-relaxed',
-                        isImpact ? 'font-medium text-brand' : 'text-fg-muted',
-                      ]}
-                    >
-                      {point.text}
-                    </dd>
-                  </div>
-                );
-              })}
-            </dl>
+            <ul class="space-y-2.5">
+              {project.highlights.map((highlight) => (
+                <li class="flex gap-2.5 text-sm leading-relaxed text-fg-muted">
+                  <span
+                    class="mt-[7px] size-1.5 shrink-0 rounded-full bg-brand"
+                    aria-hidden="true"
+                  />
+                  <span>{highlight}</span>
+                </li>
+              ))}
+            </ul>
 
             <div class="flex flex-wrap items-center gap-2">
               {project.metric && (
