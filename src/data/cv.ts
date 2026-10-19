@@ -424,7 +424,7 @@ export const cv: Cv = {
       highlights: [
         'Five-year double degree with Business Administration across the Informatics and Economics faculties.',
         'Core areas: algorithms and data structures, databases, operating systems and networks, software engineering, computer architecture, AI/ML and cybersecurity.',
-        'Distinction for the thesis: Contextual Multi-Armed Bandits for RL in Recommender Systems.',
+        'Distinction and Bosch Prize for Best Applied AI for the thesis: Contextual Multi-Armed Bandits for RL in Recommender Systems.',
       ],
     },
     {
@@ -451,7 +451,7 @@ export const cv: Cv = {
     },
     {
       title: 'Bosch Prize — Best Applied AI',
-      detail: 'Complutense University of Madrid',
+      detail: 'Bachelor’s thesis — Complutense University of Madrid',
       year: '2023',
     },
     {
