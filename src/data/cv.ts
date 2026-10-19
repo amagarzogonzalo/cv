@@ -61,6 +61,8 @@ export interface ExperienceItem {
   summary: string;
   stack: string[];
   highlights: string[];
+  /** Optional links related to this role (project sites, reports). */
+  links?: { label: string; url: string }[];
 }
 
 export type SkillIcon = 'brain' | 'model' | 'server' | 'code' | 'layers' | 'database' | 'users';
@@ -148,9 +150,9 @@ export interface Cv {
 
 export const cv: Cv = {
   meta: {
-    title: 'Alejandro Magarzo Gonzalo — AI Engineer',
+    title: 'Alejandro Magarzo Gonzalo — Applied AI & Data Engineer',
     description:
-      'AI Engineer specialised in retrieval systems, agentic AI and LLM applications. M.Sc. Artificial Intelligence, Utrecht University (thesis Cum Laude). Based in the Netherlands.',
+      'Applied AI and data engineer with 3 years of experience in retrieval, agentic AI, data pipelines and evaluation. M.Sc. Artificial Intelligence, Utrecht University (thesis Cum Laude).',
     keywords: [
       'Alejandro Magarzo Gonzalo',
       'AI Engineer',
@@ -175,17 +177,18 @@ export const cv: Cv = {
   personal: {
     name: 'Alejandro Magarzo Gonzalo',
     alternateName: 'Alejandro Magarzo',
-    role: 'AI Engineer',
-    tagline: 'AI Engineer specialised in retrieval systems, agentic AI and LLM applications.',
+    role: 'Applied AI & Data Engineer',
+    tagline:
+      'I build retrieval and agentic AI systems — and the data pipelines and evaluation behind them.',
     location: 'Netherlands',
     remote: true,
     availability: 'AI Engineer · Data Science @ TNO',
     email: 'amagarzogonzalo@gmail.com',
-    focus: ['RAG & agents', 'LLM evaluation', 'Fine-tuning', 'Knowledge graphs'],
+    focus: ['Applied AI', 'RAG & agents', 'Data engineering', 'LLM evaluation'],
   },
 
   summary: [
-    'I build production LLM systems across research, public sector and enterprise, with a focus on retrieval, agentic AI and evaluation. M.Sc. Artificial Intelligence (thesis Cum Laude, Utrecht University) and a double degree in Computer Engineering and Business Administration.',
+    'Applied AI and data engineer with 3 years of experience across research, public sector and enterprise. I take retrieval and agentic systems from prototype to production, and build the data pipelines and evaluation that keep them reliable. M.Sc. Artificial Intelligence (thesis Cum Laude, Utrecht University) and a double degree in Computer Engineering and Business Administration.',
   ],
 
   links: [
@@ -207,14 +210,20 @@ export const cv: Cv = {
       location: 'The Hague, NL',
       start: '2025-11',
       end: 'Present',
-      domain: 'Research & Public sector',
-      summary: 'Leading AI workstreams on retrieval, LLM evaluation and deployment.',
-      stack: ['Python', 'PyTorch', 'RAG', 'Azure', 'MLflow', 'Docker'],
+      domain: 'Applied AI',
+      summary: 'Applied AI and data engineering for research, public sector and EU consortia.',
+      stack: ['Python', 'PyTorch', 'RAG', 'Kubernetes', 'Azure', 'MLflow', 'Docker'],
       highlights: [
-        'CRS Pilot — technical lead for a multi-retrieval platform: set technical direction, aligned stakeholders and turned an early concept into a clear solution path.',
-        'EUDI Oracle — technical lead evaluator for the European Digital Identity Oracle (Dutch Ministry of the Interior), assessing retrieval quality, explainability and trustworthiness.',
+        'CRS — technical lead for a multi-retrieval platform supporting an international research organisation; the RAG pipeline was reused by 4+ internal projects, and I later became RAG tech lead.',
+        'EUDI Oracle — technical evaluation lead for the European Digital Identity Oracle, commissioned by the Dutch Ministry of the Interior, assessing retrieval quality, explainability and trustworthiness.',
         'TrustLLM — designed the EU synthetic-data assessment framework around fidelity, diversity and usefulness.',
-        'PolyScout — Azure deployment workflows and MLflow experiments; improved the prior best result by 6.3% across 40+ runs.',
+        'PolyScout — deployed models on Azure App Service with MLflow tracking and improved pre- and post-training of neural networks for chemical property prediction; +6.3% over the prior best across 40+ runs.',
+        'Platform — deployed RAG services on Kubernetes and ran training workloads on HPC clusters with Slurm.',
+      ],
+      links: [
+        { label: 'CRS', url: 'https://crships.org' },
+        { label: 'EUDI Oracle', url: 'https://eudi-wallet-oracle.nl' },
+        { label: 'TrustLLM', url: 'https://trustllm.eu' },
       ],
     },
     {
@@ -227,12 +236,13 @@ export const cv: Cv = {
       domain: 'Legal AI',
       note: 'Thesis Cum Laude · full-time offer',
       summary: 'Hybrid retrieval research that became a production NLP stack.',
-      stack: ['Neo4j', 'Cypher', 'FAISS', 'Qdrant', 'PEFT', 'PydanticAI'],
+      stack: ['Neo4j', 'Cypher', 'FAISS', 'Qdrant', 'PEFT', 'HPC/Slurm'],
       highlights: [
         'Hybrid RAG — legal QA combining Neo4j/Cypher knowledge-graph retrieval with FAISS/Qdrant vector search.',
         'Data engineering for GPT-NL — ETL pipelines processing Rechtspraak case law at scale, contributed to GPT-NL.',
-        'Fine-tuning — PEFT, LoRA and QLoRA pipelines plus multi-model PydanticAI workflows across graph, relational and vector stores.',
+        'Fine-tuning — PEFT, LoRA and QLoRA pipelines plus multi-model PydanticAI workflows; trained and evaluated models on HPC clusters with Slurm.',
       ],
+      links: [{ label: 'GPT-NL', url: 'https://gpt-nl.nl' }],
     },
     {
       company: 'Contextual Studio',
@@ -290,9 +300,17 @@ export const cv: Cv = {
       ],
     },
     {
-      category: 'MLOps & Engineering',
+      category: 'Data & Infrastructure',
       icon: 'server',
-      items: ['MLflow', 'GitLab CI/CD', 'Docker', 'TDD', 'Azure', 'Hexagonal Arch.', 'DDD'],
+      items: [
+        'ETL pipelines',
+        'HPC / Slurm',
+        'Kubernetes',
+        'Docker',
+        'Azure',
+        'MLflow',
+        'GitLab CI/CD',
+      ],
     },
     {
       category: 'Databases',
@@ -322,11 +340,13 @@ export const cv: Cv = {
       slug: 'crs-agentic-rag',
       name: 'CRS — Multi-retrieval Platform',
       shortName: 'CRS',
-      tagline: 'Multi-retrieval platform for organisational knowledge',
+      tagline: 'Multi-retrieval RAG platform used across TNO projects',
       role: 'Technical Lead',
       year: '2025 — Present',
       description:
-        'Technical lead for the AI workstream of a multi-retrieval platform supporting an international research organisation, from early concept to a clear solution path.',
+        'Technical lead for a multi-retrieval platform supporting an international research organisation. The RAG pipeline was reused by 4+ internal projects, and I later became RAG tech lead.',
+      url: 'https://crships.org',
+      metric: { value: '4+', label: 'internal reuses' },
       stack: ['Agentic RAG', 'MCP', 'LLM Evaluation', 'Azure'],
       points: [
         { label: 'Challenge', text: 'Knowledge spread across disconnected documents and systems.' },
@@ -334,10 +354,27 @@ export const cv: Cv = {
           label: 'Built',
           text: 'Multi-retrieval platform with tool-using agents and an eval harness.',
         },
+        { label: 'Impact', text: 'Reused by 4+ internal projects; I later became RAG tech lead.' },
+      ],
+    },
+    {
+      slug: 'eudi-wallet-oracle',
+      name: 'EUDI Wallet Oracle',
+      shortName: 'EUDI',
+      tagline: 'Technical evaluation of a European Digital Identity oracle',
+      role: 'Technical Evaluation Lead',
+      year: '2025',
+      description:
+        'Technical evaluation of the European Digital Identity Oracle for the Dutch Ministry of the Interior, focused on retrieval quality, explainability and trustworthiness.',
+      url: 'https://eudi-wallet-oracle.nl',
+      stack: ['RAG', 'Evaluation', 'Explainability', 'Public sector'],
+      points: [
+        { label: 'Challenge', text: 'Assess an identity oracle for retrieval quality and trust.' },
         {
-          label: 'Impact',
-          text: 'Turned an early concept into a clear solution path for future TNO initiatives.',
+          label: 'Built',
+          text: 'Evaluation approach across quality, explainability and trustworthiness.',
         },
+        { label: 'Impact', text: 'Actionable recommendations delivered to ministry stakeholders.' },
       ],
     },
     {
@@ -369,6 +406,7 @@ export const cv: Cv = {
       year: '2024 — 2025',
       description:
         'ETL pipelines processing Rechtspraak case law at scale, contributing processed datasets to the GPT-NL national language-model initiative.',
+      url: 'https://gpt-nl.nl',
       metric: { value: 'At scale', label: 'case-law ETL' },
       stack: ['Python', 'ETL', 'NLP', 'Data pipelines'],
       points: [

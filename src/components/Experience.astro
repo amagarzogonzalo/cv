@@ -1,75 +1,142 @@
 ---
-import { cv } from '../data/cv';
+import { cv, type ExperienceItem } from '../data/cv';
 import { formatRange, isoDate, duration } from '../lib/format';
 import Icon from './Icon.astro';
 import Section from './Section.astro';
 
 const { experience } = cv;
+
+interface CompanyGroup {
+  company: string;
+  url?: string;
+  location: string;
+  roles: ExperienceItem[];
+}
+
+/** Group consecutive roles at the same company (e.g. TNO intern → AI Engineer). */
+const groups: CompanyGroup[] = [];
+for (const job of experience) {
+  const last = groups[groups.length - 1];
+  if (last && last.company === job.company) {
+    last.roles.push(job);
+  } else {
+    groups.push({ company: job.company, url: job.url, location: job.location, roles: [job] });
+  }
+}
+
+const endRank = (end: string) => (end === 'Present' ? '9999-99' : end);
+
+/** Total tenure across all roles held at one company. */
+function companyTenure(roles: ExperienceItem[]): { start: string; end: string } {
+  const start = roles.reduce((min, role) => (role.start < min ? role.start : min), roles[0].start);
+  const end = roles.reduce(
+    (max, role) => (endRank(role.end) > endRank(max) ? role.end : max),
+    roles[0].end,
+  );
+  return { start, end };
+}
 ---
 
-<Section id="experience" number="02" title="Experience" meta={`${experience.length} roles`}>
-  <ol class="divide-y divide-border">
+<Section id="experience" number="02" title="Experience" meta={`${groups.length} companies`}>
+  <ol class="space-y-10">
     {
-      experience.map((job) => {
-        const span = duration(job.start, job.end);
+      groups.map((group) => {
+        const tenure = companyTenure(group.roles);
+        const tenureSpan = duration(tenure.start, tenure.end);
         return (
-          <li class="grid gap-3 py-7 first:pt-0 last:pb-0 sm:grid-cols-[9.5rem_1fr] sm:gap-8">
-            <div class="font-mono text-xs leading-relaxed text-fg-subtle">
-              <time datetime={isoDate(job.start)} class="block tabular-nums">
-                {formatRange(job.start, job.end)}
-              </time>
-              {span && <span class="block text-fg-subtle/70">{span}</span>}
-              <span class="mt-1 block">{job.location}</span>
-            </div>
-
-            <div>
-              <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <h3 class="text-base font-semibold tracking-tight text-fg">{job.role}</h3>
-                <span class="rounded bg-brand-soft px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-brand">
-                  {job.domain}
-                </span>
-                {job.note && (
-                  <span class="font-mono text-[10px] uppercase tracking-wider text-fg-subtle">
-                    {job.note}
-                  </span>
-                )}
-              </div>
-
-              <p class="mt-1 text-sm font-medium text-brand">
-                {job.url ? (
+          <li>
+            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-border pb-2.5">
+              <h3 class="text-base font-semibold tracking-tight text-fg">
+                {group.url ? (
                   <a
-                    href={job.url}
+                    href={group.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     class="inline-flex items-center gap-1 hover:underline"
                   >
-                    {job.company}
+                    {group.company}
                     <Icon name="arrow-up-right" class="size-3.5" />
                   </a>
                 ) : (
-                  job.company
+                  group.company
                 )}
+              </h3>
+              <p class="font-mono text-xs text-fg-subtle">
+                <time datetime={isoDate(tenure.start)}>
+                  {formatRange(tenure.start, tenure.end)}
+                </time>
+                {tenureSpan && <span class="text-fg-subtle/70"> · {tenureSpan}</span>}
               </p>
-
-              <p class="mt-2 text-sm text-fg-muted">{job.summary}</p>
-
-              <ul class="mt-3 list-disc space-y-1.5 pl-4 text-sm text-fg-muted marker:text-fg-subtle">
-                {job.highlights.map((highlight) => (
-                  <li>{highlight}</li>
-                ))}
-              </ul>
-
-              <ul
-                class="mt-3 flex flex-wrap gap-1.5"
-                aria-label={`Technologies used at ${job.company}`}
-              >
-                {job.stack.map((tech) => (
-                  <li class="rounded border border-border px-2 py-0.5 font-mono text-[11px] text-fg-muted">
-                    {tech}
-                  </li>
-                ))}
-              </ul>
             </div>
+
+            <ol class="mt-5 space-y-6">
+              {group.roles.map((job) => {
+                const jobSpan = duration(job.start, job.end);
+                return (
+                  <li class="grid gap-2 sm:grid-cols-[9.5rem_1fr] sm:gap-8">
+                    <div class="font-mono text-xs leading-relaxed text-fg-subtle">
+                      <span class="block tabular-nums">{formatRange(job.start, job.end)}</span>
+                      {jobSpan && <span class="block text-fg-subtle/70">{jobSpan}</span>}
+                      <span class="mt-1 block">{job.location}</span>
+                    </div>
+
+                    <div>
+                      <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                        <h4 class="text-base font-semibold tracking-tight text-fg">{job.role}</h4>
+                        <span class="rounded bg-brand-soft px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-brand">
+                          {job.domain}
+                        </span>
+                        {job.note && (
+                          <span class="font-mono text-[10px] uppercase tracking-wider text-fg-subtle">
+                            {job.note}
+                          </span>
+                        )}
+                      </div>
+
+                      <p class="mt-2 text-sm text-fg-muted">{job.summary}</p>
+
+                      <ul class="mt-3 list-disc space-y-1.5 pl-4 text-sm text-fg-muted marker:text-fg-subtle">
+                        {job.highlights.map((highlight) => (
+                          <li>{highlight}</li>
+                        ))}
+                      </ul>
+
+                      {job.links && job.links.length > 0 && (
+                        <ul
+                          class="mt-3 flex flex-wrap gap-1.5"
+                          aria-label={`Links for ${job.role}`}
+                        >
+                          {job.links.map((link) => (
+                            <li>
+                              <a
+                                href={link.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center gap-1 rounded border border-border px-2 py-0.5 font-mono text-[11px] text-fg-muted transition hover:bg-bg-subtle hover:text-fg"
+                              >
+                                <Icon name="external" class="size-3" />
+                                {link.label}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+
+                      <ul
+                        class="mt-3 flex flex-wrap gap-1.5"
+                        aria-label={`Technologies used at ${group.company}`}
+                      >
+                        {job.stack.map((tech) => (
+                          <li class="rounded border border-border px-2 py-0.5 font-mono text-[11px] text-fg-muted">
+                            {tech}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
           </li>
         );
       })
