@@ -7,8 +7,8 @@ const primaryLinks = links.filter((l) => l.icon !== 'email' && l.icon !== 'websi
 ---
 
 <section class="mx-auto max-w-5xl px-5 pt-14 pb-2 sm:pt-20">
-  <div class="flex items-start justify-between gap-6 sm:gap-10">
-    <div class="min-w-0 flex-1">
+  <div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between sm:gap-10">
+    <div class="order-2 min-w-0 flex-1 sm:order-1">
       <p class="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-brand">
         <span class="relative flex size-2" aria-hidden="true">
           <span class="absolute inline-flex size-full animate-ping rounded-full bg-brand opacity-75"
@@ -26,21 +26,33 @@ const primaryLinks = links.filter((l) => l.icon !== 'email' && l.icon !== 'websi
 
       <p class="mt-4 max-w-2xl text-lg text-fg-muted">{personal.tagline}</p>
 
-      <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-fg-subtle">
-        <span class="inline-flex items-center gap-1.5 font-mono text-xs">
+      <div
+        class="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1.5 font-mono text-xs text-fg-subtle"
+      >
+        <span class="inline-flex items-center gap-1.5">
           <Icon name="location" class="size-4" />
           {personal.location}
         </span>
-        {personal.remote && <span class="font-mono text-xs">Open to remote</span>}
+        {
+          personal.remote && (
+            <>
+              <span aria-hidden="true">·</span>
+              <span>Open to remote</span>
+            </>
+          )
+        }
         {
           personal.phone && (
-            <a
-              href={`tel:${personal.phone.replace(/\s+/g, '')}`}
-              class="inline-flex items-center gap-1.5 font-mono text-xs transition hover:text-fg"
-            >
-              <Icon name="phone" class="size-4" />
-              {personal.phone}
-            </a>
+            <>
+              <span aria-hidden="true">·</span>
+              <a
+                href={`tel:${personal.phone.replace(/\s+/g, '')}`}
+                class="inline-flex items-center gap-1.5 transition hover:text-fg"
+              >
+                <Icon name="phone" class="size-4" />
+                {personal.phone}
+              </a>
+            </>
           )
         }
       </div>
@@ -55,7 +67,7 @@ const primaryLinks = links.filter((l) => l.icon !== 'email' && l.icon !== 'websi
           height="360"
           loading="eager"
           decoding="async"
-          class="no-print size-28 shrink-0 rounded-full border-4 border-bg object-cover shadow-xl ring-1 ring-border sm:size-36 lg:size-44"
+          class="no-print order-1 size-24 shrink-0 rounded-full border-4 border-bg object-cover shadow-xl ring-1 ring-border sm:order-2 sm:size-36 lg:size-44"
         />
       )
     }

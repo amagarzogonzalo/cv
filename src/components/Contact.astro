@@ -17,20 +17,20 @@ const contactLinks = links.filter((l) => l.icon !== 'email' && l.icon !== 'websi
     <div class="no-print mt-6 flex flex-wrap gap-2.5">
       <a
         href={`mailto:${personal.email}`}
-        class="inline-flex items-center gap-2 rounded-xl bg-brand px-4 py-2.5 text-sm font-semibold text-brand-fg shadow-sm transition hover:opacity-90"
+        class="inline-flex max-w-full items-center gap-2 rounded-xl bg-brand px-4 py-2.5 text-sm font-semibold text-brand-fg shadow-sm transition hover:opacity-90"
       >
-        <Icon name="email" class="size-4" />
-        {personal.email}
+        <Icon name="email" class="size-4 shrink-0" />
+        <span class="break-all">{personal.email}</span>
       </a>
 
       {
         personal.phone && (
           <a
             href={`tel:${personal.phone.replace(/\s+/g, '')}`}
-            class="inline-flex items-center gap-2 rounded-xl border border-border bg-surface px-4 py-2.5 text-sm font-semibold text-fg transition hover:bg-bg-subtle"
+            class="inline-flex max-w-full items-center gap-2 rounded-xl border border-border bg-surface px-4 py-2.5 text-sm font-semibold text-fg transition hover:bg-bg-subtle"
           >
-            <Icon name="phone" class="size-4" />
-            {personal.phone}
+            <Icon name="phone" class="size-4 shrink-0" />
+            <span class="whitespace-nowrap">{personal.phone}</span>
           </a>
         )
       }

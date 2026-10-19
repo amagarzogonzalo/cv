@@ -250,10 +250,13 @@ export const cv: Cv = {
       start: '2024-01',
       end: '2024-12',
       note: 'Seed → spin-off',
-      summary: 'Built the seed of Contextual Docs, which became a spin-off.',
+      summary:
+        'Built the technical foundation of Contextual Docs, an AI-powered document-processing product that evolved into a spin-off.',
       highlights: [
-        'Contextual Docs — built the seed of the product (contextualdocs.com): an OCR + LangGraph pipeline that extracts structured data from contracts, invoices and tax documents, unblocking enterprise AI workflows that were stuck on manual parsing.',
-        'Product & architecture — led product and technical design (DDD, Hexagonal Architecture, genetic-algorithm routing) and deployed it on Azure App Service, Functions and Container Apps; the codebase became the foundation of a spin-off.',
+        'AI engineering & document intelligence — designed and developed end-to-end AI pipelines using OCR, LangGraph and LLMs to extract structured data from complex business documents, including legal contracts, invoices and tax documentation.',
+        'Architecture & technical ownership — led the design and implementation of the product’s core architecture with DDD and Hexagonal Architecture, building a modular, maintainable, production-ready application.',
+        'Cloud infrastructure & deployment — built and deployed on Microsoft Azure using App Service, Functions and Container Apps to operationalise AI-powered document-processing workflows.',
+        'Product development & spin-off — built the initial codebase and core technical capabilities that became the foundation of Contextual Docs, contributing to the evolution of an early-stage product into an independent business.',
       ],
       links: [{ label: 'Contextual Docs', url: 'https://www.contextualdocs.com' }],
     },
@@ -402,7 +405,7 @@ export const cv: Cv = {
       highlights: [
         'Deep research means reading dozens of sources without losing provenance — and no artifact should publish without a deterministic check.',
         'LangGraph orchestrator fans out to 10 branch workers, reads 167 federated sources and keeps 20 evidence bodies, producing a seven-section article with six cited papers; the live eval ran at 54.7k tokens / 50 calls.',
-        'Article → Sources → Run views expose provenance for every citation and the publish gate; 95% zero-call wiki reuse. The demo replays a recorded run offline from cassettes.',
+        'Article → Sources → Run views expose provenance for every citation and block publication unless a deterministic gate passes; 95% of wiki lookups are served with zero model calls.',
       ],
     },
     {
@@ -413,7 +416,7 @@ export const cv: Cv = {
       role: 'Creator · Open source',
       year: '2025 — 2026',
       description:
-        'A GitHub digest agent that reads repo history, runs 44 tests, deep-dives three merged PRs in parallel, runs a review committee and renders a colour-coded report; the viewer opens the real PDF, verbatim source diffs and the deterministic gate.',
+        'A GitHub digest agent that reads repo history, deep-dives three merged PRs in parallel, runs a review committee and renders a colour-coded report; the viewer opens the real PDF, verbatim source diffs and the deterministic gate.',
       repo: 'https://github.com/amagarzogonzalo/digest-agent',
       image: '/projects/digest-poster.jpg',
       video: '/projects/digest-demo.mp4',
@@ -421,8 +424,8 @@ export const cv: Cv = {
       stack: ['LangGraph', 'Python', 'Docker', 'GitHub Actions'],
       highlights: [
         'Repository activity goes unreviewed — real diffs are never summarised into something a team actually reads.',
-        'Reads repo history, deep-dives three merged PRs in parallel and runs a review committee on free model tiers; per-PR scores, 9.0/10 approval, UID and notification checks, 44 tests.',
-        'Verifier opens the real PDF pages, verbatim source patches and the deterministic gate; zero running cost, MIT. Sample run uses deterministic fixtures; orchestrator and renderer are real.',
+        'Reads repo history, deep-dives three merged PRs in parallel and runs a review committee on free model tiers; per-PR scores, 9.0/10 approval, UID and notification checks.',
+        'Ships a reviewed, colour-coded PDF every morning at zero running cost, with a verifier that opens every source patch and refuses to publish below the quality gate.',
       ],
     },
     {
@@ -492,7 +495,7 @@ export const cv: Cv = {
       highlights: [
         'National LLM training workloads exceeded single-node capacity for data processing and model runs.',
         'Ran large-scale HPC workloads on Slurm clusters, with dataset validation before hand-off.',
-        'Processed corpora helped supply the national GPT-NL training pipeline (gpt-nl.nl).',
+        'Validated corpora supplied the national GPT-NL training pipeline (gpt-nl.nl).',
       ],
     },
     {
@@ -510,7 +513,7 @@ export const cv: Cv = {
       highlights: [
         'The prior best chemistry LLM set the bar for molecular property prediction.',
         'LoRA/QLoRA fine-tuning improving both pre- and post-training; delivered in Scrum sprints with Azure App Service deployment and MLflow tracking across 40+ runs.',
-        'The model is served to other teams at PolyScout AI; it beat the prior best by 6.3%.',
+        'The model beat the prior best by 6.3% and is served to other teams at PolyScout AI.',
       ],
     },
   ],
