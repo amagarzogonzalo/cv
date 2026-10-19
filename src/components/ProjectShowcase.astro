@@ -177,7 +177,7 @@ const ACCENTS = ['#6366f1', '#06b6d4', '#8b5cf6', '#10b981', '#f59e0b', '#f43f5e
         type="button"
         data-prev
         aria-label="Previous project"
-        class="grid size-8 place-items-center rounded-lg border border-border text-fg-muted transition hover:bg-bg-subtle hover:text-fg disabled:cursor-not-allowed disabled:opacity-35"
+        class="grid size-9 place-items-center rounded-lg border border-border text-fg-muted transition hover:bg-bg-subtle hover:text-fg disabled:cursor-not-allowed disabled:opacity-35"
       >
         <Icon name="chevron-left" class="size-4" />
       </button>
@@ -185,7 +185,7 @@ const ACCENTS = ['#6366f1', '#06b6d4', '#8b5cf6', '#10b981', '#f59e0b', '#f43f5e
         type="button"
         data-next
         aria-label="Next project"
-        class="grid size-8 place-items-center rounded-lg border border-border text-fg-muted transition hover:bg-bg-subtle hover:text-fg disabled:cursor-not-allowed disabled:opacity-35"
+        class="grid size-9 place-items-center rounded-lg border border-border text-fg-muted transition hover:bg-bg-subtle hover:text-fg disabled:cursor-not-allowed disabled:opacity-35"
       >
         <Icon name="chevron-right" class="size-4" />
       </button>
@@ -203,7 +203,7 @@ const ACCENTS = ['#6366f1', '#06b6d4', '#8b5cf6', '#10b981', '#f59e0b', '#f43f5e
               data-dot
               aria-current={i === 0 ? 'true' : 'false'}
               aria-label={`Show ${project.name}`}
-              class="rail flex items-center gap-2 rounded-lg px-2.5 py-1.5 font-mono text-xs text-fg-subtle transition hover:bg-bg-subtle hover:text-fg"
+              class="rail flex items-center gap-2 rounded-lg px-2.5 py-2 font-mono text-xs text-fg-subtle transition hover:bg-bg-subtle hover:text-fg"
             >
               <span class="tabular-nums">{pad(i + 1)}</span>
               <span class="hidden lg:inline">{project.shortName}</span>
