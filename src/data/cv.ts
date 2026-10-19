@@ -208,7 +208,7 @@ export const cv: Cv = {
     {
       company: 'TNO · Netherlands Organisation for Applied Scientific Research',
       url: 'https://www.tno.nl',
-      role: 'Applied AI Engineer — Data Science',
+      role: 'Applied AI & Data Engineer — Data Science',
       location: 'The Hague, NL',
       start: '2025-10',
       end: 'Present',

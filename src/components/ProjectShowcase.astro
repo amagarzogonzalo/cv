@@ -29,10 +29,15 @@ const pad = (n: number) => String(n).padStart(2, '0');
           aria-roledescription="slide"
           aria-label={`${project.name} — project ${i + 1} of ${count}`}
         >
-          <div class="proj-media relative aspect-[16/10] w-full overflow-hidden bg-bg-subtle lg:aspect-auto lg:min-h-[27rem]">
+          <div
+            class:list={[
+              'proj-media relative w-full overflow-hidden lg:aspect-auto lg:min-h-[27rem]',
+              project.video ? 'aspect-video bg-black' : 'aspect-[16/10] bg-bg-subtle',
+            ]}
+          >
             {project.video ? (
               <video
-                class="absolute inset-0 size-full object-cover"
+                class="absolute inset-0 size-full bg-black object-contain"
                 src={project.video}
                 poster={project.image}
                 muted
@@ -73,15 +78,35 @@ const pad = (n: number) => String(n).padStart(2, '0');
               <p class="mt-1 text-sm text-fg-muted">{project.tagline}</p>
             </div>
 
-            <dl class="space-y-3">
-              {project.points.map((point) => (
-                <div class="grid grid-cols-[4.75rem_1fr] gap-3">
-                  <dt class="pt-px font-mono text-[11px] uppercase tracking-wider text-fg-subtle">
-                    {point.label}
-                  </dt>
-                  <dd class="text-sm leading-relaxed text-fg-muted">{point.text}</dd>
-                </div>
-              ))}
+            <dl class="space-y-2.5">
+              {project.points.map((point) => {
+                const isImpact = point.label.toLowerCase() === 'impact';
+                return (
+                  <div
+                    class:list={[
+                      'grid grid-cols-[4.75rem_1fr] gap-3 rounded-lg',
+                      isImpact ? 'bg-brand-soft px-3 py-2' : '',
+                    ]}
+                  >
+                    <dt
+                      class:list={[
+                        'pt-px font-mono text-[11px] uppercase tracking-wider',
+                        isImpact ? 'text-brand' : 'text-fg-subtle',
+                      ]}
+                    >
+                      {point.label}
+                    </dt>
+                    <dd
+                      class:list={[
+                        'text-sm leading-relaxed',
+                        isImpact ? 'font-medium text-brand' : 'text-fg-muted',
+                      ]}
+                    >
+                      {point.text}
+                    </dd>
+                  </div>
+                );
+              })}
             </dl>
 
             <div class="flex flex-wrap items-center gap-2">
