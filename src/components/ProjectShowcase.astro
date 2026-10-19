@@ -94,18 +94,11 @@ const ACCENTS = ['#6366f1', '#06b6d4', '#8b5cf6', '#10b981', '#f59e0b', '#f43f5e
                 return (
                   <li
                     class:list={[
-                      'flex gap-2.5 text-sm leading-relaxed',
+                      'text-sm leading-relaxed',
                       isImpact ? 'font-medium text-brand' : 'text-fg-muted',
                     ]}
                   >
-                    <span
-                      class:list={[
-                        'mt-[7px] size-1.5 shrink-0 rounded-full',
-                        isImpact ? 'bg-brand' : 'bg-fg-subtle/40',
-                      ]}
-                      aria-hidden="true"
-                    />
-                    <span>{highlight}</span>
+                    {highlight}
                   </li>
                 );
               })}

@@ -214,7 +214,7 @@ export const cv: Cv = {
       summary: 'Applied AI and data engineering for research, public sector and EU consortia.',
       highlights: [
         'CRS — technical lead for a multi-retrieval platform supporting an international research organisation; deployed on Kubernetes and reused by 4+ internal projects, later becoming RAG tech lead.',
-        'EUDI Oracle — technical evaluation lead for the European Digital Identity Oracle, commissioned by the Dutch Ministry of the Interior and Kingdom Relations (BZK), assessing retrieval quality, explainability and trustworthiness.',
+        'EUDI Oracle — technical evaluation lead for the European Digital Identity Oracle (Dutch Ministry of the Interior and Kingdom Relations), assessing retrieval quality, explainability and trustworthiness; fine-tuned legal embedding models for RAG, improving legal-requirement coverage by 50%.',
         'GPT-NL — ran large-scale data and model workloads on HPC clusters with Slurm, contributing processed corpora to the national GPT-NL initiative.',
         'TrustLLM — designed the EU synthetic-data assessment framework around fidelity, diversity and usefulness.',
         'PolyScout — deployed models on Azure App Service with MLflow tracking and improved pre- and post-training for chemical property prediction (+6.3% across 40+ runs); the work became PolyScout AI.',
@@ -402,7 +402,7 @@ export const cv: Cv = {
       highlights: [
         'Repository activity goes unreviewed — real diffs are never summarised into something a team actually reads.',
         'Hexagonal core (ports & adapters) with LangGraph per-PR sub-agents running k-way in parallel, gated by a bounded review/refine committee (default 8.0, max 6 reviews).',
-        'Runs daily in production on GitHub Actions — a colour-coded PDF in the inbox every morning; 44 tests green, MIT-licensed.',
+        'Runs daily in production on GitHub Actions — a colour-coded PDF every morning using free LLM tiers (Gemini → OpenRouter → Groq → Mistral); open source, MIT, 44 tests green.',
       ],
     },
     {
@@ -436,8 +436,8 @@ export const cv: Cv = {
       stack: ['RAG', 'Evaluation', 'Explainability', 'Public sector'],
       highlights: [
         'A European Digital Identity oracle had to be trusted before deployment, with no agreed way to measure retrieval quality or explainability.',
-        'Designed the evaluation protocol and criteria; inspected grounding, answer attribution and failure modes.',
-        'Evaluation shaped the ministry assessment, with actionable recommendations delivered to ministry and consultancy stakeholders.',
+        'Designed the evaluation protocol and inspected grounding, answer attribution and failure modes; fine-tuned legal embedding models for the oracle’s RAG.',
+        'Embedding fine-tuning improved coverage of legal requirements by 50%, with recommendations delivered to ministry and consultancy stakeholders.',
       ],
     },
     {
