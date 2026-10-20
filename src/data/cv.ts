@@ -415,7 +415,6 @@ export const cv: Cv = {
       repo: 'https://github.com/amagarzogonzalo/research-orchestration-agents',
       image: '/projects/research-poster.jpg',
       video: '/projects/research-demo.mp4',
-      metric: { value: '167', label: 'sources read' },
       stack: ['LangGraph', 'Hexagonal architecture', 'OpenTelemetry', 'DeepEval', 'MCP', 'FastAPI'],
       highlights: [
         'Deep research means reading dozens of sources without losing provenance — and no artifact should publish without a deterministic check.',
@@ -435,7 +434,6 @@ export const cv: Cv = {
       repo: 'https://github.com/amagarzogonzalo/digest-agent',
       image: '/projects/digest-poster-v2.jpg',
       video: '/projects/digest-demo-v2.mp4',
-      metric: { value: '9.0/10', label: 'review score' },
       stack: ['LangGraph', 'Python', 'Docker', 'GitHub Actions'],
       highlights: [
         'Repository activity goes unreviewed — real diffs are never summarised into something a team actually reads.',
