@@ -191,7 +191,7 @@ export const cv: Cv = {
   },
 
   summary: [
-    'Applied AI and data engineer with 2+ years of experience (since January 2024, including internships and part-time roles) building agentic systems, LLM orchestration and the data and evaluation infrastructure behind them. Technical lead on multi-retrieval and evaluation projects for public-sector and research clients, shipping tool-using agents, deep LLM evaluation and large-scale data pipelines. M.Sc. Artificial Intelligence (thesis Cum Laude, Utrecht University) and a double degree in Computer Engineering and Business Administration.',
+    'Applied AI and data engineer with 2+ years of experience (since January 2024) building agentic systems, LLM orchestration and the data and evaluation infrastructure behind them. Technical lead on multi-retrieval and evaluation projects for public-sector and research clients, shipping tool-using agents, deep LLM evaluation and large-scale data pipelines. M.Sc. Artificial Intelligence (thesis Cum Laude, Utrecht University) and a double degree in Computer Engineering and Business Administration.',
   ],
 
   links: [
@@ -247,7 +247,7 @@ export const cv: Cv = {
     },
     {
       company: 'Contextual Studio',
-      role: 'Data Engineer',
+      role: 'AI Engineer',
       location: 'Madrid, ES',
       start: '2024-01',
       end: '2024-12',
