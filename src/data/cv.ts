@@ -191,7 +191,7 @@ export const cv: Cv = {
   },
 
   summary: [
-    'Applied AI and data engineer with 2+ years of experience (since January 2024) building agentic systems, LLM orchestration and the data and evaluation infrastructure behind them. Technical lead on multi-retrieval and evaluation projects for public-sector and research clients, shipping tool-using agents, deep LLM evaluation and large-scale data pipelines. M.Sc. Artificial Intelligence (thesis Cum Laude, Utrecht University) and a double degree in Computer Engineering and Business Administration.',
+    'Applied AI and data engineer with 2+ years of experience building agentic systems, LLM orchestration and the data and evaluation infrastructure behind them. Technical lead on multi-retrieval and evaluation projects for public-sector and research clients, shipping tool-using agents, deep LLM evaluation and large-scale data pipelines. M.Sc. Artificial Intelligence (thesis Cum Laude, Utrecht University) and a double degree in Computer Engineering and Business Administration.',
   ],
 
   links: [
@@ -379,11 +379,13 @@ export const cv: Cv = {
       icon: 'code',
       items: [
         'Python (Pydantic, FastAPI)',
+        'Java',
         'SQL',
         'TypeScript / JavaScript',
         'Node.js',
         'React',
         'Bash',
+        'C',
         'C++',
         'R',
         'Rust',
