@@ -24,7 +24,7 @@ The whole site is generated from a single file — [`src/data/cv.ts`](src/data/c
 - **Interactive project showcase** — all projects share one stage; move between them with arrows, named rail buttons, keyboard (←/→, Home/End) or swipe. Generated artwork, position counter and a `prefers-reduced-motion` path.
 - **SEO + AEO + GEO** — descriptive titles, canonical URL, Open Graph & Twitter cards, `sitemap.xml`, `robots.txt`, and **JSON-LD** (`Person`, `WebSite`, `ProfilePage`, `CreativeWork`) that matches the visible page.
 - **AI-discoverable** — `/resume.json` (JSON Resume) and `/llms.txt` so assistants can read structured facts instead of scraping.
-- **ATS-friendly PDF** — a print stylesheet produces a clean, single-column, text-selectable A4 PDF straight from the browser (no separate document to keep in sync).
+- **ATS-friendly PDFs** — the site's print stylesheet produces a clean, single-column, text-selectable A4 PDF; the application PDF is built from `cv.yaml` in the sibling `alejandro_cv` project.
 - **Dark mode** — system-aware with a manual toggle, no flash on load.
 - **Accessible** — semantic landmarks, skip link, visible focus styles, reduced-motion support.
 - **Secure by default** — strict security headers and a Content Security Policy via `public/_headers`.
@@ -45,6 +45,13 @@ npm run check        # type-check + content validation
 npm run build        # static output in dist/
 npm run preview      # preview the production build
 ```
+
+### Automated checks
+
+- `npm run check` runs Astro's type-check plus `scripts/check-content.mjs`: 2+ years, live URL, required projects, three highlights per project, no PolyScout LoRA/QLoRA, and no removed metric pills.
+- `npm run audit:mobile` checks 320–412 px viewports for horizontal overflow.
+- CI runs `npm run check` and `npm run build` on every push.
+- The application PDF has its own ATS preflight in `../alejandro_cv` (`.\check.ps1`).
 
 ## Make it yours
 

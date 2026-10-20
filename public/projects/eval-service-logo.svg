@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="eval-service">
+  <rect width="1200" height="600" rx="56" fill="#0f172a"/>
+  <circle cx="164" cy="300" r="100" fill="#6366f1"/>
+  <path d="M118 300l32 32 64-72" fill="none" stroke="#ffffff" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="304" y="292" fill="#f8fafc" font-size="112" font-weight="700" letter-spacing="-4">eval-service</text>
+    <text x="308" y="362" fill="#94a3b8" font-size="34" letter-spacing="3">QUALITY · COST · LATENCY</text>
+    <text x="308" y="430" fill="#64748b" font-size="26" letter-spacing="1">Rust · Terraform · AWS</text>
+  </g>
+</svg>

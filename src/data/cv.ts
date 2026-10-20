@@ -201,7 +201,7 @@ export const cv: Cv = {
       url: 'https://www.linkedin.com/in/alejandro-magarzo-gonzalo-2397b9230',
       icon: 'linkedin',
     },
-    { label: 'Website', url: 'https://amagarzogonzalo.dev', icon: 'website' },
+    { label: 'Website', url: 'https://cv.amagarzogonzalo.workers.dev', icon: 'website' },
     { label: 'Email', url: 'mailto:amagarzogonzalo@gmail.com', icon: 'email' },
   ],
 
@@ -218,8 +218,8 @@ export const cv: Cv = {
         'CRS — end-to-end technical lead for a multi-retrieval platform supporting an international research organisation: owned architecture, retrieval design, Kubernetes deployment and evaluation; reused by 4+ internal projects, later becoming RAG tech lead.',
         'EUDI Oracle — technical evaluation lead for the European Digital Identity Oracle (Dutch Ministry of the Interior and Kingdom Relations), assessing retrieval quality, explainability and trustworthiness; fine-tuned legal embedding models for RAG, improving legal-requirement coverage by 50%.',
         'GPT-NL — ran large-scale data and model workloads on HPC clusters with Slurm, contributing processed corpora to the national GPT-NL initiative.',
-        'TrustLLM — European Union project: trained neural models to generate and evaluate synthetic data in low-resource languages, and designed the assessment framework around fidelity, diversity and usefulness.',
-        'PolyScout — machine learning specialist on chemistry LLMs: domain pre-training and property-prediction training; Azure App Service deployment and MLflow tracking (+6.3%); the model is used at PolyScout AI.',
+        'TrustLLM — European Union project: synthetic data generation and evaluation for low-resource languages, plus an assessment framework around fidelity, diversity and usefulness.',
+        'PolyScout — machine learning specialist on chemistry LLMs: neural model training through domain pre-training and property-prediction training; Azure App Service deployment and MLflow tracking (+6.3%); the model is used at PolyScout AI.',
       ],
       links: [
         { label: 'CRS', url: 'https://crships.org' },
@@ -251,14 +251,14 @@ export const cv: Cv = {
       location: 'Madrid, ES',
       start: '2024-01',
       end: '2024-12',
-      note: 'Seed → spin-off',
+      note: 'Seed-stage product',
       summary:
-        'Built the technical foundation of Contextual Docs, an AI-powered document-processing product that evolved into a spin-off.',
+        'Built the technical foundation of Contextual Docs, an AI-powered document-processing product that became a spin-off; concurrent with the Intersport internship.',
       highlights: [
         'AI engineering & document intelligence — designed and developed end-to-end AI pipelines using OCR, LangGraph and LLMs to extract structured data from complex business documents, including legal contracts, invoices and tax documentation.',
         'Architecture & technical ownership — led the design and implementation of the product’s core architecture with DDD and Hexagonal Architecture, building a modular, maintainable, production-ready application.',
         'Cloud infrastructure & deployment — built and deployed on Microsoft Azure using App Service, Functions and Container Apps to operationalise AI-powered document-processing workflows.',
-        'Product development & spin-off — built the initial codebase and core technical capabilities that became the foundation of Contextual Docs, contributing to the evolution of an early-stage product into an independent business.',
+        'Product development — built the initial codebase and core technical capabilities behind Contextual Docs.',
       ],
       links: [{ label: 'Contextual Docs', url: 'https://www.contextualdocs.com' }],
     },
@@ -406,6 +406,24 @@ export const cv: Cv = {
 
   projects: [
     {
+      slug: 'eval-service',
+      name: 'eval-service — cross-project LLM evaluation',
+      shortName: 'Eval',
+      tagline: 'One versioned protocol for LLM quality, cost and latency across projects',
+      role: 'Creator & Maintainer',
+      year: '2026',
+      description:
+        'Reusable Rust platform that evaluates heterogeneous LLM projects through one versioned protocol: usage tracking, benchmark suites, regression gates and a static dashboard. The same suites run across the CV and research projects.',
+      repo: 'https://github.com/amagarzogonzalo/eval-service',
+      logo: '/projects/eval-service-logo.svg',
+      stack: ['Rust', 'Terraform', 'AWS', 'Docker', 'LLM evaluation', 'OpenTelemetry'],
+      highlights: [
+        'Cross-project evaluation was ad hoc: every project measured quality, cost and latency differently.',
+        'Versioned eval protocol and Rust engine run Python, Rust and LangGraph targets through one interface; records tokens, latency, errors and cost, grades outputs and blocks regressions.',
+        'One protocol now compares quality, cost and latency across the CV and research projects, with sandboxed execution and Terraform-managed AWS behind it.',
+      ],
+    },
+    {
       slug: 'research-agent-orchestration',
       name: 'Research Agent Orchestration',
       shortName: 'Research',
@@ -413,14 +431,14 @@ export const cv: Cv = {
       role: 'Creator & Maintainer',
       year: '2026',
       description:
-        'A real Knowledge Engine deep-research run, replayed offline: the agent plans a question, fans out to 10 branch workers, reads 167 sources, keeps 20 evidence bodies and writes a seven-section article with six cited papers; the viewer exposes provenance behind every citation and the deterministic gate that decides whether the artifact can publish.',
+        'A real Knowledge Engine deep-research run, replayed offline: the agent plans a question, fans out to 10 branch workers, gathers the evidence, keeps 20 evidence bodies and writes a seven-section article with six cited papers; the viewer exposes provenance behind every citation and the deterministic gate that decides whether the artifact can publish.',
       repo: 'https://github.com/amagarzogonzalo/research-orchestration-agents',
       image: '/projects/research-poster.jpg',
       video: '/projects/research-demo.mp4',
       stack: ['LangGraph', 'Hexagonal architecture', 'OpenTelemetry', 'DeepEval', 'MCP', 'FastAPI', 'Supabase', 'Render', 'Postgres'],
       highlights: [
         'Deep research means reading dozens of sources without losing provenance — and no artifact should publish without a deterministic check.',
-        'LangGraph orchestrator fans out to 10 branch workers, reads 167 sources and keeps 20 evidence bodies, producing a seven-section article with six cited papers; the live eval ran at 54.7k tokens / 50 calls.',
+        'LangGraph orchestrator fans out to 10 branch workers, gathers the evidence and keeps 20 evidence bodies, producing a seven-section article with six cited papers.',
         'Deployed as a Dockerised FastAPI service on Render: Supabase Postgres holds LangGraph checkpoints, the durable job queue and the wiki, while private Storage buckets persist artifacts, sources and bodies; migrations run at boot.',
         'Built a provenance-aware research pipeline that turns parallel agent research into citation-backed articles, with deterministic safeguards against publishing broken evidence.',
       ],
@@ -440,8 +458,8 @@ export const cv: Cv = {
       stack: ['LangGraph', 'Python', 'Docker', 'GitHub Actions'],
       highlights: [
         'Repository activity goes unreviewed — real diffs are never summarised into something a team actually reads.',
-        'Reads repo history, deep-dives three merged PRs in parallel and runs an automated review on free model tiers; per-PR scores, 9.0/10 approval, UID and notification checks.',
-        'Runs the full digest on free model tiers, and nothing ships until the automated review clears the quality gate with the real diff attached.',
+        'Reads repo history, deep-dives three merged PRs in parallel and runs an automated review; per-PR findings, UID and notification checks.',
+        'Runs the full digest on free model tiers, and nothing ships until the quality gate clears with the real diff attached.',
       ],
     },
     {

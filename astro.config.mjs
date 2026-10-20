@@ -13,7 +13,7 @@ import tailwindcss from '@tailwindcss/vite';
  * When you attach a custom domain, update SITE_URL in Cloudflare (and in a local
  * `.env` file) so canonical tags, the sitemap and robots.txt stay correct.
  */
-const site = process.env.SITE_URL ?? 'https://amagarzogonzalo.dev';
+const site = process.env.SITE_URL ?? 'https://cv.amagarzogonzalo.workers.dev';
 
 export default defineConfig({
   site,
