@@ -154,7 +154,7 @@ export const cv: Cv = {
   meta: {
     title: 'Alejandro Magarzo Gonzalo — Applied AI & Data Engineer',
     description:
-      'Applied AI and data engineer with 3 years of experience building agentic systems, data pipelines and deep LLM evaluation. M.Sc. Artificial Intelligence, Utrecht University (thesis Cum Laude).',
+      'Applied AI and data engineer with 2+ years of experience building agentic systems, data pipelines and deep LLM evaluation. M.Sc. Artificial Intelligence, Utrecht University (thesis Cum Laude).',
     keywords: [
       'Alejandro Magarzo Gonzalo',
       'AI Engineer',
@@ -191,7 +191,7 @@ export const cv: Cv = {
   },
 
   summary: [
-    'Applied AI and data engineer with 3 years of experience building agentic systems, LLM orchestration and the data and evaluation infrastructure behind them. Technical lead on multi-retrieval and evaluation projects for public-sector and research clients, shipping tool-using agents, deep LLM evaluation and large-scale data pipelines. M.Sc. Artificial Intelligence (thesis Cum Laude, Utrecht University) and a double degree in Computer Engineering and Business Administration.',
+    'Applied AI and data engineer with 2+ years of experience (since January 2024, including internships and part-time roles) building agentic systems, LLM orchestration and the data and evaluation infrastructure behind them. Technical lead on multi-retrieval and evaluation projects for public-sector and research clients, shipping tool-using agents, deep LLM evaluation and large-scale data pipelines. M.Sc. Artificial Intelligence (thesis Cum Laude, Utrecht University) and a double degree in Computer Engineering and Business Administration.',
   ],
 
   links: [
@@ -218,8 +218,8 @@ export const cv: Cv = {
         'CRS — end-to-end technical lead for a multi-retrieval platform supporting an international research organisation: owned architecture, retrieval design, Kubernetes deployment and evaluation; reused by 4+ internal projects, later becoming RAG tech lead.',
         'EUDI Oracle — technical evaluation lead for the European Digital Identity Oracle (Dutch Ministry of the Interior and Kingdom Relations), assessing retrieval quality, explainability and trustworthiness; fine-tuned legal embedding models for RAG, improving legal-requirement coverage by 50%.',
         'GPT-NL — ran large-scale data and model workloads on HPC clusters with Slurm, contributing processed corpora to the national GPT-NL initiative.',
-        'TrustLLM — designed the EU synthetic-data assessment framework around fidelity, diversity and usefulness.',
-        'PolyScout — machine learning specialist on chemistry LLM fine-tuning: LoRA/QLoRA pre- and post-training, Azure App Service deployment and MLflow tracking (+6.3% across 40+ runs); the model is used at PolyScout AI.',
+        'TrustLLM — trained neural models to generate and evaluate synthetic data in low-resource languages, and designed the EU assessment framework around fidelity, diversity and usefulness.',
+        'PolyScout — machine learning specialist on chemistry LLMs: domain pre-training and property-prediction training; Azure App Service deployment and MLflow tracking (+6.3% across 40+ runs); the model is used at PolyScout AI.',
       ],
       links: [
         { label: 'CRS', url: 'https://crships.org' },
@@ -419,7 +419,7 @@ export const cv: Cv = {
       highlights: [
         'Deep research means reading dozens of sources without losing provenance — and no artifact should publish without a deterministic check.',
         'LangGraph orchestrator fans out to 10 branch workers, reads 167 federated sources and keeps 20 evidence bodies, producing a seven-section article with six cited papers; the live eval ran at 54.7k tokens / 50 calls.',
-        'In its deterministic WikiBench suite, repeated-fact queries reach a 95% zero-call rate (5 live calls per 100) with zero broken provenance links; publication is gated by invariants, budgets and snapshot checks.',
+        'Repeat queries hit cache 95% of the time (5 live calls per 100), the deterministic gate blocks any article without full provenance, and the whole run replays offline from cassettes.',
       ],
     },
     {
@@ -439,7 +439,7 @@ export const cv: Cv = {
       highlights: [
         'Repository activity goes unreviewed — real diffs are never summarised into something a team actually reads.',
         'Reads repo history, deep-dives three merged PRs in parallel and runs a review committee on free model tiers; per-PR scores, 9.0/10 approval, UID and notification checks.',
-        'Runs unattended on free model tiers and ships a colour-coded PDF only after its review committee clears the quality gate, with the real diff behind every PR deep-dive.',
+        'Runs the full digest on free model tiers, and nothing ships until the review committee clears the quality gate with the real diff attached.',
       ],
     },
     {
@@ -501,18 +501,18 @@ export const cv: Cv = {
       slug: 'polyscout-finetuning',
       name: 'PolyScout',
       shortName: 'PolyScout',
-      tagline: 'Chemistry LLM fine-tuning adopted at PolyScout AI',
+      tagline: 'Chemistry LLM pre-training and property prediction adopted at PolyScout AI',
       role: 'Machine Learning Specialist',
       year: '2025',
       description:
-        'Chemistry-focused LLM work — LoRA/QLoRA fine-tuning, Azure App Service deployment and MLflow tracking across 40+ runs — supporting PolyScout AI (polyscout.ai).',
+        'Chemistry LLM pre-training and property-prediction training — Azure App Service deployment and MLflow tracking across 40+ runs — supporting PolyScout AI (polyscout.ai).',
       url: 'https://www.polyscout.ai',
       logo: '/projects/polyscout-logo.svg',
       metric: { value: '+6.3%', label: 'over prior best' },
-      stack: ['LoRA/QLoRA', 'PyTorch', 'MLflow', 'Azure'],
+      stack: ['Pre-training', 'Property prediction', 'PyTorch', 'MLflow', 'Azure'],
       highlights: [
-        'The prior best chemistry LLM set the bar for molecular property prediction.',
-        'LoRA/QLoRA fine-tuning improving both pre- and post-training; delivered in Scrum sprints with Azure App Service deployment and MLflow tracking across 40+ runs.',
+        'Molecular property prediction needed chemistry-aware LLMs, not a generic model.',
+        'Pre-trained chemistry LLMs and ran additional training for molecular property prediction; Azure App Service deployment and MLflow tracking over 40+ runs.',
         'The model beat the prior best by 6.3% and is served to other teams at PolyScout AI.',
       ],
     },
