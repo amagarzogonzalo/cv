@@ -420,7 +420,7 @@ export const cv: Cv = {
       highlights: [
         'Deep research means reading dozens of sources without losing provenance — and no artifact should publish without a deterministic check.',
         'LangGraph orchestrator fans out to 10 branch workers, reads 167 sources and keeps 20 evidence bodies, producing a seven-section article with six cited papers; the live eval ran at 54.7k tokens / 50 calls.',
-        'Repeat queries hit cache 95% of the time (5 live calls per 100), the deterministic gate blocks any article without full provenance, and the whole run replays offline from cassettes.',
+        'Ten branch workers turn 167 sources into a seven-section article with six cited papers in 50 calls, repeat queries reuse cached evidence, and the deterministic gate blocks any article with broken provenance.',
       ],
     },
     {
