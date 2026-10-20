@@ -361,6 +361,8 @@ export const cv: Cv = {
       items: [
         'Kubernetes',
         'Docker',
+        'Supabase',
+        'Render',
         'Azure App Service',
         'Azure Functions',
         'Azure Container Apps',
