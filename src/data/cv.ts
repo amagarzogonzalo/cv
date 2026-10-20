@@ -415,10 +415,11 @@ export const cv: Cv = {
       repo: 'https://github.com/amagarzogonzalo/research-orchestration-agents',
       image: '/projects/research-poster.jpg',
       video: '/projects/research-demo.mp4',
-      stack: ['LangGraph', 'Hexagonal architecture', 'OpenTelemetry', 'DeepEval', 'MCP', 'FastAPI'],
+      stack: ['LangGraph', 'Hexagonal architecture', 'OpenTelemetry', 'DeepEval', 'MCP', 'FastAPI', 'Supabase', 'Render', 'Postgres'],
       highlights: [
         'Deep research means reading dozens of sources without losing provenance — and no artifact should publish without a deterministic check.',
         'LangGraph orchestrator fans out to 10 branch workers, reads 167 sources and keeps 20 evidence bodies, producing a seven-section article with six cited papers; the live eval ran at 54.7k tokens / 50 calls.',
+        'Deployed as a Dockerised FastAPI service on Render: Supabase Postgres holds LangGraph checkpoints, the durable job queue and the wiki, while private Storage buckets persist artifacts, sources and bodies; migrations run at boot.',
         'Built a provenance-aware research pipeline that turns parallel agent research into citation-backed articles, with deterministic safeguards against publishing broken evidence.',
       ],
     },
