@@ -432,8 +432,8 @@ export const cv: Cv = {
       description:
         'A GitHub digest agent that reads repo history, deep-dives three merged PRs in parallel, runs a review committee and renders a colour-coded report; the viewer opens the real PDF, verbatim source diffs and the deterministic gate.',
       repo: 'https://github.com/amagarzogonzalo/digest-agent',
-      image: '/projects/digest-poster.jpg',
-      video: '/projects/digest-demo.mp4',
+      image: '/projects/digest-poster-v2.jpg',
+      video: '/projects/digest-demo-v2.mp4',
       metric: { value: '9.0/10', label: 'committee approval' },
       stack: ['LangGraph', 'Python', 'Docker', 'GitHub Actions'],
       highlights: [
