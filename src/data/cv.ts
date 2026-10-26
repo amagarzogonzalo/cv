@@ -614,6 +614,11 @@ export const cv: Cv = {
       url: 'https://hdl.handle.net/20.500.14352/87700',
     },
     {
+      title: 'Academic Achievement Award — Secondary Education',
+      detail: 'Diploma de Aprovechamiento (ESO) — Community of Madrid',
+      year: '2016',
+    },
+    {
       title: 'Distinction — Thesis, Computer Engineering',
       detail: 'Multi-Armed Bandits for RL in Recommender Systems — UCM',
     },
