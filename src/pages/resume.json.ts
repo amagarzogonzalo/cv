@@ -72,6 +72,7 @@ export const GET: APIRoute = () => {
       title: award.title,
       summary: award.detail,
       date: award.year ?? '',
+      url: award.url ?? '',
     })),
     languages: cv.languages.map((lang) => ({
       language: lang.name,

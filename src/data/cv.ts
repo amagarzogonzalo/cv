@@ -111,6 +111,8 @@ export interface EducationItem {
   end: string;
   awards?: string[];
   highlights: string[];
+  /** Optional related documents (thesis, code). */
+  links?: { label: string; url: string }[];
 }
 
 export interface Award {
@@ -118,6 +120,8 @@ export interface Award {
   detail: string;
   /** Optional year, e.g. "2023". */
   year?: string;
+  /** Optional public record for the award or the work behind it. */
+  url?: string;
 }
 
 export interface Certification {
@@ -568,7 +572,17 @@ export const cv: Cv = {
       highlights: [
         'Five-year double degree with Business Administration across the Informatics and Economics faculties.',
         'Core areas: algorithms and data structures, databases, operating systems and networks, software engineering, computer architecture, AI/ML and cybersecurity.',
-        'Distinction and Bosch Prize for Best Applied AI for the thesis: Contextual Multi-Armed Bandits for RL in Recommender Systems.',
+        'Distinction and Bosch Prize for Best Applied AI. Bachelor’s thesis published in Docta Complutense: Contextual Bandits: Foundations and Applications.',
+      ],
+      links: [
+        {
+          label: 'Thesis — Docta Complutense (hdl.handle.net/20.500.14352/87700)',
+          url: 'https://hdl.handle.net/20.500.14352/87700',
+        },
+        {
+          label: 'Code — computer-science-final-degree-project-2023',
+          url: 'https://github.com/amagarzogonzalo/computer-science-final-degree-project-2023',
+        },
       ],
     },
     {
@@ -597,6 +611,7 @@ export const cv: Cv = {
       title: 'Bosch Prize — Best Applied AI',
       detail: 'Bachelor’s thesis — Complutense University of Madrid',
       year: '2023',
+      url: 'https://hdl.handle.net/20.500.14352/87700',
     },
     {
       title: 'Distinction — Thesis, Computer Engineering',
