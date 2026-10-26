@@ -156,9 +156,9 @@ export interface Cv {
 
 export const cv: Cv = {
   meta: {
-    title: 'Alejandro Magarzo Gonzalo — Applied AI & Data Engineer',
+    title: 'Alejandro Magarzo Gonzalo — AI Engineer',
     description:
-      'Applied AI and data engineer with 2+ years of experience building agentic systems, data pipelines and deep LLM evaluation. M.Sc. Artificial Intelligence, Utrecht University (thesis Cum Laude).',
+      'AI engineer with 2+ years of experience building agentic systems, data pipelines and deep LLM evaluation. M.Sc. Artificial Intelligence, Utrecht University (thesis Cum Laude).',
     keywords: [
       'Alejandro Magarzo Gonzalo',
       'AI Engineer',
@@ -183,7 +183,7 @@ export const cv: Cv = {
   personal: {
     name: 'Alejandro Magarzo Gonzalo',
     alternateName: 'Alejandro Magarzo',
-    role: 'Applied AI & Data Engineer',
+    role: 'AI Engineer',
     tagline: 'I build agentic AI systems — and the data pipelines and evaluation behind them.',
     location: 'Netherlands',
     remote: true,
@@ -195,7 +195,7 @@ export const cv: Cv = {
   },
 
   summary: [
-    'Applied AI and data engineer with 2+ years of experience building agentic systems, LLM orchestration and the data and evaluation infrastructure behind them. Technical lead on multi-retrieval and evaluation projects for public-sector and research clients, shipping tool-using agents, deep LLM evaluation and large-scale data pipelines. M.Sc. Artificial Intelligence (thesis Cum Laude, Utrecht University) and a double degree in Computer Engineering and Business Administration.',
+    'AI engineer with 2+ years of experience building agentic systems, LLM orchestration and the data and evaluation infrastructure behind them. Technical lead on multi-retrieval and evaluation projects for public-sector and research clients, shipping tool-using agents, deep LLM evaluation and large-scale data pipelines. M.Sc. Artificial Intelligence (thesis Cum Laude, Utrecht University) and a double degree in Computer Engineering and Business Administration.',
   ],
 
   links: [
@@ -223,7 +223,7 @@ export const cv: Cv = {
         'EUDI Oracle — technical evaluation lead for the European Digital Identity Oracle (Dutch Ministry of the Interior and Kingdom Relations), assessing retrieval quality, explainability and trustworthiness; fine-tuned legal embedding models for RAG, improving legal-requirement coverage by 50%.',
         'GPT-NL — ran large-scale data and model workloads on HPC clusters with Slurm, contributing processed corpora to the national GPT-NL initiative.',
         'TrustLLM — EU project: built a Postgres-backed annotation tool for external partner annotators (role-based access, bulk import/export), plus synthetic data generation and an evaluation framework around fidelity, diversity and usefulness.',
-        'PolyScout — machine learning specialist on chemistry LLMs: neural model training through domain pre-training and property-prediction training; Azure App Service deployment and MLflow tracking (+6.3%); the model is used at PolyScout AI.',
+        'PolyScout — pre-trained chemistry LLMs and ran neural model training for molecular property prediction; Azure App Service deployment and MLflow tracking (+6.3%); the model is used at PolyScout AI.',
       ],
       links: [
         { label: 'CRS', url: 'https://crships.org' },
@@ -530,18 +530,18 @@ export const cv: Cv = {
       slug: 'polyscout-finetuning',
       name: 'PolyScout',
       shortName: 'PolyScout',
-      tagline: 'Chemistry LLM pre-training and property prediction adopted at PolyScout AI',
+      tagline: 'Chemistry LLM pre-training and neural-network training for property prediction',
       role: 'Machine Learning Specialist',
       year: '2025',
       description:
-        'Chemistry LLM pre-training and property-prediction training — Azure App Service deployment and MLflow tracking — supporting PolyScout AI (polyscout.ai).',
+        'Chemistry LLM pre-training plus neural-network training for molecular property prediction — Azure App Service deployment and MLflow tracking — supporting PolyScout AI (polyscout.ai).',
       url: 'https://www.polyscout.ai',
       logo: '/projects/polyscout-logo.svg',
       metric: { value: '+6.3%', label: 'over prior best' },
       stack: ['Pre-training', 'Property prediction', 'PyTorch', 'MLflow', 'Azure'],
       highlights: [
         'Molecular property prediction needed chemistry-aware LLMs, not a generic model.',
-        'Pre-trained chemistry LLMs and ran additional training for molecular property prediction; Azure App Service deployment and MLflow tracking.',
+        'Pre-trained chemistry LLMs, then trained neural networks for molecular property prediction; deployed on Azure App Service with MLflow tracking.',
         'The model beat the prior best by 6.3% and is served to other teams at PolyScout AI.',
       ],
     },
