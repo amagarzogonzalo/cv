@@ -241,7 +241,8 @@ export const cv: Cv = {
       start: '2024-12',
       end: '2025-09',
       note: 'Thesis Cum Laude',
-      summary: 'Multi-agent LLM orchestration and hybrid retrieval for legal QA, graded Cum Laude.',
+      summary:
+        'Multi-agent LLM orchestration and hybrid retrieval for legal QA. Thesis graded Cum Laude and led directly to a full-time role at TNO, where the orchestration patterns carried into production work.',
       highlights: [
         'LLM orchestration — built multi-agent PydanticAI workflows with tool use and structured outputs, routing queries across graph, relational and vector stores.',
         'Hybrid RAG — designed legal QA combining Neo4j/Cypher knowledge-graph retrieval with FAISS vector search.',
