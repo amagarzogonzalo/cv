@@ -269,7 +269,7 @@ export const cv: Cv = {
     {
       company: 'Intersport International Group',
       url: 'https://www.intersport.com',
-      role: 'Data Engineer Intern',
+      role: 'Data Scientist Intern',
       location: 'Amsterdam, NL',
       start: '2024-07',
       end: '2024-12',
