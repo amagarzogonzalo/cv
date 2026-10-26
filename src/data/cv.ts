@@ -257,7 +257,7 @@ export const cv: Cv = {
       end: '2024-12',
       note: 'Seed-stage product',
       summary:
-        'Built the technical foundation of Contextual Docs, an AI-powered document-processing product that became a spin-off; concurrent with the Intersport internship.',
+        'Built the technical foundation of Contextual Docs, an AI-powered document-processing product that became a spin-off.',
       highlights: [
         'AI engineering & document intelligence — designed and developed end-to-end AI pipelines using OCR, LangGraph and LLMs to extract structured data from complex business documents, including legal contracts, invoices and tax documentation.',
         'Architecture & technical ownership — led the design and implementation of the product’s core architecture with DDD and Hexagonal Architecture, building a modular, maintainable, production-ready application.',
