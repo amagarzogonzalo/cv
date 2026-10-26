@@ -222,7 +222,7 @@ export const cv: Cv = {
         'CRS — end-to-end technical lead for a multi-retrieval platform supporting an international research organisation: owned architecture, retrieval design, Kubernetes deployment and evaluation; reused by 4+ internal projects, later becoming RAG tech lead.',
         'EUDI Oracle — technical evaluation lead for the European Digital Identity Oracle (Dutch Ministry of the Interior and Kingdom Relations), assessing retrieval quality, explainability and trustworthiness; fine-tuned legal embedding models for RAG, improving legal-requirement coverage by 50%.',
         'GPT-NL — ran large-scale data and model workloads on HPC clusters with Slurm, contributing processed corpora to the national GPT-NL initiative.',
-        'TrustLLM — European Union project: synthetic data generation and evaluation for low-resource languages, plus an assessment framework around fidelity, diversity and usefulness.',
+        'TrustLLM — EU project: built a Postgres-backed annotation tool for external partner annotators (role-based access, bulk import/export), plus synthetic data generation and an evaluation framework around fidelity, diversity and usefulness.',
         'PolyScout — machine learning specialist on chemistry LLMs: neural model training through domain pre-training and property-prediction training; Azure App Service deployment and MLflow tracking (+6.3%); the model is used at PolyScout AI.',
       ],
       links: [
