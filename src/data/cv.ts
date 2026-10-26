@@ -422,6 +422,8 @@ export const cv: Cv = {
         'Reusable Rust platform that evaluates heterogeneous LLM projects through one versioned protocol: usage tracking, benchmark suites, regression gates and a static dashboard. The same suites run across the CV and research projects.',
       repo: 'https://github.com/amagarzogonzalo/eval-service',
       logo: '/projects/eval-service-logo.svg',
+      image: '/projects/eval-service-poster.jpg',
+      video: '/projects/eval-service-demo.mp4',
       stack: ['Rust', 'Terraform', 'AWS', 'Docker', 'LLM evaluation', 'OpenTelemetry'],
       highlights: [
         'Cross-project evaluation was ad hoc: every project measured quality, cost and latency differently.',
