@@ -213,11 +213,11 @@ export const cv: Cv = {
     {
       company: 'TNO · Netherlands Organisation for Applied Scientific Research',
       url: 'https://www.tno.nl',
-      role: 'Applied AI & Data Engineer',
+      role: 'AI Engineer',
       location: 'The Hague, NL',
       start: '2025-10',
       end: 'Present',
-      summary: 'Applied AI and data engineering for research, public sector and EU consortia.',
+      summary: 'AI engineering for research, public sector and EU consortia.',
       highlights: [
         'CRS — end-to-end technical lead for a multi-retrieval platform supporting an international research organisation: owned architecture, retrieval design, Kubernetes deployment and evaluation; reused by 4+ internal projects, later becoming RAG tech lead.',
         'EUDI Oracle — technical evaluation lead for the European Digital Identity Oracle (Dutch Ministry of the Interior and Kingdom Relations), assessing retrieval quality, explainability and trustworthiness; fine-tuned legal embedding models for RAG, improving legal-requirement coverage by 50%.',
