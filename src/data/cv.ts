@@ -217,7 +217,8 @@ export const cv: Cv = {
       location: 'The Hague, NL',
       start: '2025-10',
       end: 'Present',
-      summary: 'AI engineering for research, public sector and EU consortia.',
+      summary:
+        'Multi-domain AI engineering across research, public sector, EU consortia and industry — LLM inference, synthetic data and evaluation.',
       highlights: [
         'CRS — end-to-end technical lead for a multi-retrieval platform supporting an international research organisation: owned architecture, retrieval design, Kubernetes deployment and evaluation; reused by 4+ internal projects, later becoming RAG tech lead.',
         'EUDI Oracle — technical evaluation lead for the European Digital Identity Oracle (Dutch Ministry of the Interior and Kingdom Relations), assessing retrieval quality, explainability and trustworthiness; fine-tuned legal embedding models for RAG, improving legal-requirement coverage by 50%.',
